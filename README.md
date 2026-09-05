@@ -17,9 +17,20 @@ Existing projects already provision Zcash regtest networks and test wallet behav
 
 The [methodology](docs/METHODOLOGY.md) defines what each result means. The [threat model](docs/THREAT_MODEL.md) states what it does not establish.
 
-## Install from a source checkout
+## Install
 
 Python 3.11 or newer is required.
+
+Version 0.1.0 is available on [PyPI](https://pypi.org/project/wallet-privacy-testkit/0.1.0/):
+
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install wallet-privacy-testkit==0.1.0
+wpt --help
+```
+
+## Develop from a source checkout
 
 ```sh
 python3 -m venv .venv
