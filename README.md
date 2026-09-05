@@ -23,12 +23,15 @@ Python 3.11 or newer is required.
 
 ```sh
 python3 -m venv .venv
+source .venv/bin/activate
 .venv/bin/python -m pip install -r requirements-dev.txt
 .venv/bin/python -m pip install --no-deps -e .
 .venv/bin/python -m unittest discover -s tests -v
 ```
 
-The release was developed with Python 3.12.9, gRPC 1.83.1, and protobuf 7.36.1. Runtime dependency ranges are broader than the pinned development environment and are checked in CI.
+The release was developed with Python 3.12.9, gRPC 1.83.1, and protobuf 7.36.1. CI tests the pinned development environment on Python 3.11–3.13 on Linux and macOS. The broader runtime dependency ranges are not exhaustively tested.
+
+Packaged wheels and source archives are available from [GitHub Releases](https://github.com/ztsalexey/wallet-privacy-testkit/releases). After activating a virtual environment, install a downloaded wheel with `python -m pip install ./wallet_privacy_testkit-0.1.0-py3-none-any.whl`.
 
 ## Passive TLS metadata capture
 

@@ -28,6 +28,8 @@
 - [ ] Create the repository, enable private vulnerability reporting and branch protection, and run the declared GitHub Actions matrix.
 - [ ] Configure the PyPI pending trusted publisher for `.github/workflows/publish.yml` and the `pypi` environment.
 - [ ] Tag the exact reviewed commit as `v0.1.0` and attach the locally reproduced artifacts plus SHA-256 checksums.
-- [ ] Ask the first wallet maintainer which repository should own the adapter before opening any upstream PR.
+## After publication
 
-No public upload, repository creation, issue, or PR is part of the local release preparation.
+- [ ] Ask the first wallet maintainer which repository should own the adapter before opening any upstream PR. This is an adoption step, not a release prerequisite.
+
+PyPI publishing is gated by the repository variable `PYPI_PUBLISH_ENABLED=true`. Once the pending trusted publisher is configured, a published GitHub release triggers the workflow. To publish an existing release later, dispatch `publish.yml` using its release tag as the workflow ref. The workflow verifies the downloaded artifacts against the checksum file committed in that tag.

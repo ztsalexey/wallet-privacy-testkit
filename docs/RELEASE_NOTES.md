@@ -16,4 +16,4 @@ The next adoption milestone is one maintainer-acknowledged integration into an e
 
 The installed wheel was also exercised against released Zingolib v5.0.0, lightwalletd, and Zebra. A newly constructed transaction was accepted before its response was lost, stayed byte-identical across four attempts, appeared in the real node mempool, and reached three confirmations in node and wallet state.
 
-The release workflow publishes only checksum-verified GitHub release assets. PyPI authentication uses a short-lived trusted-publisher identity and produces package attestations; it contains no repository token or PyPI password.
+The PyPI workflow publishes only checksum-verified GitHub release assets after the repository's publishing switch is enabled. Its Trusted Publishing configuration uses a short-lived identity and requests package attestations without a stored PyPI credential. GitHub release availability does not imply that the package is already on PyPI.
