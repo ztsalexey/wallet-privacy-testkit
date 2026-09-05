@@ -30,12 +30,14 @@
 
 The [release page](https://github.com/ztsalexey/wallet-privacy-testkit/releases/tag/v0.1.0) identifies the tagged commit and downloadable wheel, source archive, and SHA-256 checksums. The [CI history](https://github.com/ztsalexey/wallet-privacy-testkit/actions/workflows/ci.yml) records the checks for each pushed commit. Main-branch protection requires all six CI checks and blocks branch deletion and force pushes.
 
-## PyPI publication still requires account setup
+## PyPI publication
 
-- [ ] Configure the PyPI pending trusted publisher: project `wallet-privacy-testkit`, owner `ztsalexey`, repository `wallet-privacy-testkit`, workflow filename `publish.yml`, environment `pypi`.
-- [ ] Enable publishing, run the workflow for the release tag, and verify installation from PyPI.
+- [x] Configured the PyPI trusted publisher: project `wallet-privacy-testkit`, owner `ztsalexey`, repository `wallet-privacy-testkit`, workflow filename `publish.yml`, environment `pypi`.
+- [x] Published version 0.1.0 from the reviewed release tag through [GitHub Actions](https://github.com/ztsalexey/wallet-privacy-testkit/actions/runs/33990073305).
+- [x] Verified that both PyPI artifact hashes match the tagged release checksums and that PyPI exposes publication attestations for both files.
+- [x] Installed version 0.1.0 directly from PyPI in a clean virtual environment, passed all 14 tests against that installation, exercised the CLI and example matcher, and passed `pip check`.
 
-GitHub release files can be installed independently of PyPI.
+The package is available on [PyPI](https://pypi.org/project/wallet-privacy-testkit/0.1.0/). GitHub release files can also be installed independently.
 
 ## After publication
 
