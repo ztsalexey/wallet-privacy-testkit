@@ -10,7 +10,7 @@ import grpc
 
 from .protocol import RawTransaction, SEND_TRANSACTION, SendResponse
 
-FAULT_MODES = frozenset(("before-once", "after-once", "after-all"))
+FAULT_MODES = frozenset(("before-once", "after-once", "after-all", "after-hold"))
 LIGHTWALLET_PROTOCOL_VERSION = "v0.5.0"
 SERVER_STREAMING_METHODS = frozenset(
     (
@@ -56,7 +56,11 @@ class SendTransactionRelay(grpc.GenericRpcHandler):
             self.channel = grpc.secure_channel(
                 upstream, grpc.ssl_channel_credentials(root_certificates=roots)
             )
-        grpc.channel_ready_future(self.channel).result(timeout=ready_timeout)
+        try:
+            grpc.channel_ready_future(self.channel).result(timeout=ready_timeout)
+        except BaseException:
+            self.channel.close()
+            raise
         self.server = grpc.server(concurrent.futures.ThreadPoolExecutor(max_workers=16))
         self.server.add_generic_rpc_handlers((self,))
         address = f"{listen_host}:{listen_port}"
@@ -96,14 +100,32 @@ class SendTransactionRelay(grpc.GenericRpcHandler):
         )
 
     def _forward_stream(self, method, request, context):
+        call = self.channel.unary_stream(method)(request, timeout=self._timeout(context))
+        self._cancel_with_context(call, context)
         try:
-            yield from self.channel.unary_stream(method)(request, timeout=120)
+            yield from call
         except grpc.RpcError as error:
             context.abort(error.code(), error.details())
+        finally:
+            call.cancel()
+
+    @staticmethod
+    def _timeout(context):
+        remaining = context.time_remaining()
+        return 120 if remaining is None else max(0, min(120, remaining))
+
+    @staticmethod
+    def _cancel_with_context(call, context):
+        if not context.add_callback(call.cancel):
+            call.cancel()
 
     def _forward_client_stream(self, method, requests, context):
+        call = self.channel.stream_unary(method).future(requests, timeout=self._timeout(context))
+        self._cancel_with_context(call, context)
         try:
-            return self.channel.stream_unary(method)(requests, timeout=120)
+            return call.result()
+        except grpc.FutureCancelledError:
+            context.abort(grpc.StatusCode.CANCELLED, "downstream call cancelled")
         except grpc.RpcError as error:
             context.abort(error.code(), error.details())
 
@@ -128,7 +150,11 @@ class SendTransactionRelay(grpc.GenericRpcHandler):
                 )
             event["forwarded"] = True
         try:
-            response = self.channel.unary_unary(method)(request, timeout=120)
+            call = self.channel.unary_unary(method).future(request, timeout=self._timeout(context))
+            self._cancel_with_context(call, context)
+            response = call.result()
+        except grpc.FutureCancelledError:
+            context.abort(grpc.StatusCode.CANCELLED, "downstream call cancelled")
         except grpc.RpcError as error:
             if event is not None:
                 event["upstream_grpc_error"] = error.code().name
@@ -139,6 +165,16 @@ class SendTransactionRelay(grpc.GenericRpcHandler):
                 "error_code": decoded.errorCode,
                 "message": decoded.errorMessage,
             }
+            if self.mode == "after-hold":
+                # Let an external test kill the wallet after node acceptance,
+                # while its RPC is still waiting for an acknowledgement.
+                finished = threading.Event()
+                if not context.add_callback(finished.set):
+                    finished.set()
+                event["response_held"] = True
+                event["response_lost"] = True
+                finished.wait()
+                context.abort(grpc.StatusCode.CANCELLED, "privacy-testkit: held response cancelled")
             lose_response = self.mode == "after-all" or (
                 self.mode == "after-once" and event["attempt"] == 1
             )

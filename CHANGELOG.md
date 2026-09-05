@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.0.dev0 - Unreleased
+
+- Added `after-hold` to hold submission responses until client cancellation for process-restart tests.
+- Forward client deadlines (capped at 120 seconds) and propagate cancellation to upstream calls.
+- Close the upstream channel when relay readiness fails.
+- Added TLS trust/hostname, RPC streaming, partial-stream error, cancellation, deadline, and held-response tests.
+- Added a Docker Compose lab that builds pinned wallet/indexer sources and generates fresh regtest wallets and TLS keys.
+- Added lost-acknowledgement and crash-before-acknowledgement recovery scenarios with node, byte-identity, wallet-history, and recipient-balance checks.
+
 ## 0.1.0 - 2026-09-05
 
 - Added a metadata-only TLS record forwarder and trace validator.

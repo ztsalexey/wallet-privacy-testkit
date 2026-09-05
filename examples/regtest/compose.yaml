@@ -1,0 +1,24 @@
+services:
+  zebra:
+    image: zfnd/zebra:6.2.3@sha256:bb2a6029db277ee3a10e951dcc0ddd36b4cbcbe0fad684746d695ee21d53fde2
+    entrypoint: [zebrad]
+    command: [-c, /lab/zebra.toml, start]
+    volumes:
+      - lab:/lab
+    mem_limit: 4g
+    cpus: 4
+  lab:
+    image: wallet-privacy-testkit-regtest:local
+    build:
+      context: ../..
+      dockerfile: examples/regtest/Dockerfile
+    volumes:
+      - lab:/lab
+      - ${WPT_OUTPUT:?Set WPT_OUTPUT to a new output directory}:/output
+    mem_limit: 4g
+    cpus: 4
+networks:
+  default:
+    internal: true
+volumes:
+  lab:

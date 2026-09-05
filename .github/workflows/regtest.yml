@@ -1,0 +1,33 @@
+name: regtest
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'examples/regtest/**'
+      - 'src/**'
+      - 'requirements-dev.txt'
+      - 'pyproject.toml'
+      - '.dockerignore'
+      - '.github/workflows/regtest.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  wallet-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Run fresh-wallet recovery scenarios
+        run: python3 examples/regtest/run.py --output "$RUNNER_TEMP/wpt-regtest"
+      - name: Retain sanitized report and build diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: regtest-report
+          path: |
+            ${{ runner.temp }}/wpt-regtest/report.json
+            ${{ runner.temp }}/wpt-regtest/build.log
+          retention-days: 14
