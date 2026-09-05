@@ -122,6 +122,8 @@ The included [Zingolib v5 regtest report](evidence/zingolib-v5-regtest/REPORT.md
 
 The case study also found that encrypted lengths distinguished 1-, 2-, and 4-recipient transaction structures in a favorable observer model. Equal-structure payments tied at chance. The result does not estimate deanonymization in normal wallet traffic.
 
+Development's [fresh Compose recovery experiments](evidence/zingolib-v5-compose/README.md) passed on OrbStack ARM64 and native Linux Docker x86-64. They construct new payments and verify recovery after a lost acknowledgement and after killing the wallet before acknowledgement. Both runs confirmed the payments and the exact recipient balance increases. Docker Desktop has not been separately tested.
+
 ## Project status
 
 The release boundary is intentionally small. Z3, Zcash Integration Tests, Regchest, and wallet-specific suites already cover network provisioning and broad functional behavior. The testkit is designed to complement them. See the [competitive and overlap review](docs/COMPETITIVE_LANDSCAPE.md) and [release checklist](docs/RELEASE_CHECKLIST.md).
