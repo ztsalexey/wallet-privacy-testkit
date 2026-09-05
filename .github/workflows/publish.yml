@@ -1,0 +1,27 @@
+name: publish
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  pypi:
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/wallet-privacy-testkit
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Download reviewed release files
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir dist
+          gh release download "$GITHUB_REF_NAME" --pattern '*.whl' --pattern '*.tar.gz' --dir dist
+          gh release download "$GITHUB_REF_NAME" --pattern SHA256SUMS --dir .
+      - name: Verify release checksums
+        run: sha256sum --check SHA256SUMS
+      - name: Publish to PyPI with attestations
+        uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # v1.14.2

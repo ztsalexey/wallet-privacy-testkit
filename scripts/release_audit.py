@@ -30,6 +30,8 @@ FORBIDDEN_TEXT = (
     ("mainnet unified address", re.compile(r"u1[0-9a-z]{40,}")),
 )
 REQUIRED_FILES = (
+    ".github/workflows/ci.yml",
+    ".github/workflows/publish.yml",
     "CHANGELOG.md",
     "CITATION.cff",
     "CONTRIBUTING.md",

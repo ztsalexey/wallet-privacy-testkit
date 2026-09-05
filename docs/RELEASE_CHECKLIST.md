@@ -19,11 +19,14 @@
 - [x] The independent name and “for Zcash” descriptor were checked against the current Zcash Foundation trademark policy.
 - [x] Exact-name GitHub and PyPI checks found no existing project on September 5, 2026; this does not reserve the name.
 - [x] The repository owner, source URL, issue URL, citation URL, and private security-reporting route target `ztsalexey/wallet-privacy-testkit`.
+- [x] Pinned development dependencies pass `pip-audit`, and CI repeats the advisory check.
+- [x] The PyPI workflow verifies release-asset checksums and uses Trusted Publishing with attestations.
 
 ## Required immediately before public publication
 
 - [ ] Reconfirm the package and repository names immediately before creation or upload; prior checks do not reserve them.
 - [ ] Create the repository, enable private vulnerability reporting and branch protection, and run the declared GitHub Actions matrix.
+- [ ] Configure the PyPI pending trusted publisher for `.github/workflows/publish.yml` and the `pypi` environment.
 - [ ] Tag the exact reviewed commit as `v0.1.0` and attach the locally reproduced artifacts plus SHA-256 checksums.
 - [ ] Ask the first wallet maintainer which repository should own the adapter before opening any upstream PR.
 

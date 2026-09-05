@@ -15,3 +15,5 @@ The release does not claim that encrypted size alone deanonymizes normal wallet 
 The next adoption milestone is one maintainer-acknowledged integration into an existing wallet or ecosystem test suite.
 
 The installed wheel was also exercised against released Zingolib v5.0.0, lightwalletd, and Zebra. A newly constructed transaction was accepted before its response was lost, stayed byte-identical across four attempts, appeared in the real node mempool, and reached three confirmations in node and wallet state.
+
+The release workflow publishes only checksum-verified GitHub release assets. PyPI authentication uses a short-lived trusted-publisher identity and produces package attestations; it contains no repository token or PyPI password.
