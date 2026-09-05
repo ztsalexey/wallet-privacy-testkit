@@ -1,0 +1,39 @@
+{
+  "measurement_date": "2026-09-04",
+  "wallet": {
+    "release": "zingolib_v5.0.0",
+    "revision": "9e897f8b2fc5f12a99604f2533164af62af7d3ac"
+  },
+  "indexer": {
+    "project": "lightwalletd",
+    "revision": "d79cd1100575ff909d70e00d5514a4092df94934"
+  },
+  "node": {
+    "image": "zfnd/zebra:6.2.3",
+    "image_digest": "sha256:bb2a6029db277ee3a10e951dcc0ddd36b4cbcbe0fad684746d695ee21d53fde2",
+    "source_revision_from_image_label": "7121c82ba6795a151523d5b308a19743f4a1ade7"
+  },
+  "network": "isolated Zebra regtest with upgrades through NU6.2 active at height 1",
+  "runtime": "Zebra under OrbStack; Zingolib CLI and lightwalletd on macOS arm64",
+  "wallet_code_change": "The only dependency change added an explicitly configured localhost CA to the existing WebPKI roots. Transaction construction, proof, fee, retry, and sync behavior were unchanged.",
+  "archive_verification": {
+    "released_source_files_compared": 300,
+    "released_source_files_unchanged_except_lockfile": true,
+    "only_lockfile_change": "zingo-netutils 5.0.1 registry dependency replaced by the same-version local path containing the CA trust addition"
+  },
+  "release_artifact_smoke": {
+    "date": "2026-09-05",
+    "distribution": "wallet-privacy-testkit",
+    "version": "0.1.0",
+    "fault_mode": "after-once",
+    "new_orchard_transaction": true,
+    "transaction_bytes": 9165,
+    "attempts": 4,
+    "same_signed_bytes": true,
+    "mempool_verified": true,
+    "node_confirmations": 3,
+    "wallet_history_confirmed": true
+  },
+  "raw_evidence_location": "The source workspace retains raw traces and wallet output outside this distributable package. It is excluded because the same workspace also retains private test state.",
+  "secrets_in_distributable_evidence": false
+}

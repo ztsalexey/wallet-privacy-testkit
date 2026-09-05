@@ -1,0 +1,9 @@
+[
+  {"id":"train-one","batch":0,"observed_bytes":9207,"transaction_bytes":9165},
+  {"id":"train-two","batch":0,"observed_bytes":12363,"transaction_bytes":12321},
+  {"id":"different-one","batch":1,"observed_bytes":9207,"transaction_bytes":9165},
+  {"id":"different-two","batch":1,"observed_bytes":12363,"transaction_bytes":12321},
+  {"id":"equal-a","batch":2,"observed_bytes":9207,"transaction_bytes":9165},
+  {"id":"equal-b","batch":2,"observed_bytes":9207,"transaction_bytes":9165}
+]
+

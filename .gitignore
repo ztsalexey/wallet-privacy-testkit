@@ -1,0 +1,12 @@
+*.egg-info/
+.coverage
+.pytest_cache/
+.venv/
+__pycache__/
+build/
+dist/
+*.pem
+*.key
+events.json
+trace.jsonl
+

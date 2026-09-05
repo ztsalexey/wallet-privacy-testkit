@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wallet-privacy-testkit"
+version = "0.1.0"
+description = "Adversarial network privacy and transaction-delivery tests for Zcash wallets"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT OR Apache-2.0"
+authors = [{ name = "Wallet Privacy Testkit contributors" }]
+keywords = ["zcash", "wallet", "privacy", "testing", "grpc", "tls"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Testing",
+  "Topic :: Security",
+]
+dependencies = [
+  "grpcio>=1.70,<2",
+  "protobuf>=5,<8",
+]
+
+[project.urls]
+Homepage = "https://github.com/ztsalexey/wallet-privacy-testkit"
+Repository = "https://github.com/ztsalexey/wallet-privacy-testkit"
+Issues = "https://github.com/ztsalexey/wallet-privacy-testkit/issues"
+Changelog = "https://github.com/ztsalexey/wallet-privacy-testkit/blob/main/CHANGELOG.md"
+
+[project.scripts]
+wpt = "wallet_privacy_testkit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

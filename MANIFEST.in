@@ -1,0 +1,13 @@
+include CHANGELOG.md
+include CITATION.cff
+include CONTRIBUTING.md
+include LICENSE-APACHE
+include LICENSE-MIT
+include README.md
+include requirements-dev.txt
+include SECURITY.md
+recursive-include docs *.md
+recursive-include evidence *.json *.md
+recursive-include examples *.md *.json
+recursive-include scripts *.py
+recursive-include tests *.py

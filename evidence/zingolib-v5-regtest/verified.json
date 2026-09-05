@@ -1,0 +1,41 @@
+{
+  "run": "wallet-real-03",
+  "payments_verified": 18,
+  "faults_verified": 3,
+  "training_payments": 3,
+  "held_out_payments": 15,
+  "training_offset_bytes": 42,
+  "held_out_top1_fractional": 0.6,
+  "random_reference": 0.3333333333333333,
+  "batches": [
+    {"batch": 1, "payments": 3, "distinct_sizes": 1, "top1_fractional": 0.3333333333333333},
+    {"batch": 2, "payments": 3, "distinct_sizes": 3, "top1_fractional": 1.0},
+    {"batch": 3, "payments": 3, "distinct_sizes": 1, "top1_fractional": 0.3333333333333333},
+    {"batch": 4, "payments": 3, "distinct_sizes": 1, "top1_fractional": 0.3333333333333333},
+    {"batch": 5, "payments": 3, "distinct_sizes": 3, "top1_fractional": 1.0}
+  ],
+  "raw_sizes": {"9165": 9, "12321": 6, "18633": 3},
+  "median_process_s": 2.0992765629926,
+  "shape_summary": [
+    {"recipients": 1, "n": 9, "raw_bytes": [9165], "largest_record_bytes": [9207], "median_client_bytes": 9936},
+    {"recipients": 2, "n": 6, "raw_bytes": [12321], "largest_record_bytes": [12363], "median_client_bytes": 13092.0},
+    {"recipients": 4, "n": 3, "raw_bytes": [18633], "largest_record_bytes": [16406], "median_client_bytes": 19458}
+  ],
+  "fault_outcomes": [
+    {"mode": "before_once", "attempts": 2, "before": "transmitted", "after": "confirmed", "same_signed_bytes": true, "node_confirmations": 3, "retry_gaps_s": [1.005]},
+    {"mode": "after_once", "attempts": 4, "before": "failed", "after": "confirmed", "same_signed_bytes": true, "node_confirmations": 3, "retry_gaps_s": [1.203, 1.014, 1.012]},
+    {"mode": "after_all", "attempts": 4, "before": "failed", "after": "confirmed", "same_signed_bytes": true, "node_confirmations": 3, "retry_gaps_s": [1.208, 1.01, 1.008]}
+  ],
+  "release_artifact_smoke": {
+    "distribution": "wallet-privacy-testkit",
+    "version": "0.1.0",
+    "mode": "after-once",
+    "transaction_bytes": 9165,
+    "attempts": 4,
+    "same_signed_bytes": true,
+    "mempool_verified": true,
+    "node_confirmations": 3,
+    "wallet_history_confirmed": true
+  },
+  "full_run_complete": true
+}

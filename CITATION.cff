@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If this testkit or its case study supports your work, cite this software release."
+title: "Wallet Privacy Testkit for Zcash"
+version: 0.1.0
+date-released: 2026-09-05
+license: "MIT OR Apache-2.0"
+type: software
+repository-code: "https://github.com/ztsalexey/wallet-privacy-testkit"
+url: "https://github.com/ztsalexey/wallet-privacy-testkit"
+authors:
+  - name: "Wallet Privacy Testkit contributors"
