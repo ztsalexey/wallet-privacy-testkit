@@ -14,13 +14,16 @@ jobs:
       contents: read
       id-token: write
     steps:
+      - name: Check out the tagged checksum
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.event.release.tag_name }}
       - name: Download reviewed release files
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir dist
           gh release download "$GITHUB_REF_NAME" --pattern '*.whl' --pattern '*.tar.gz' --dir dist
-          gh release download "$GITHUB_REF_NAME" --pattern SHA256SUMS --dir .
       - name: Verify release checksums
         run: sha256sum --check SHA256SUMS
       - name: Publish to PyPI with attestations
