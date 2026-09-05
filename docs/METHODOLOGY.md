@@ -58,3 +58,5 @@ The testkit does not prescribe user-facing terminology. The wallet team defines 
 4. Field study: real transports and realistic background traffic are measured under an approved research protocol.
 
 Version 0.1.0 provides level 1 in its test suite and one retained level-2 Zingolib case study. It has not reached levels 3 or 4.
+
+Development version 0.2.0.dev0 adds a fresh-state Compose recipe and executed recovery reports on OrbStack ARM64 and native Linux Docker x86-64. The [recovery evidence](../evidence/zingolib-v5-compose/README.md) records what was asserted live and what the sanitized reports cannot independently establish offline. This project's Linux CI runs the example; that is not yet adoption into a wallet repository's own release regression suite.

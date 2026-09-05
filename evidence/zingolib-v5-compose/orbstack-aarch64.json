@@ -1,0 +1,46 @@
+{
+  "status": "pass",
+  "sources": {
+    "zingolib": "9e897f8b2fc5f12a99604f2533164af62af7d3ac",
+    "lightwalletd": "d79cd1100575ff909d70e00d5514a4092df94934",
+    "zebra": "6.2.3"
+  },
+  "architecture": "aarch64",
+  "testkit_version": "0.2.0.dev0",
+  "binaries": {
+    "zingo-cli": "f4f1ca734d26a65b5920c1f3066cca05376873dd3e92878da5f875196ff46845",
+    "lightwalletd": "1e85e09b796e5fb212dc368047a7ba15843b5a6b0e283f097829f6c08f8e5770"
+  },
+  "scenarios": [
+    {
+      "mode": "after-once",
+      "wallet_killed_before_ack": false,
+      "wallet_exit_code": 0,
+      "attempt_count": 4,
+      "transaction_sha256": "997328d778fe9a06355da43691baafb64766e13f7312e66b45bb717bba3707f5",
+      "txid": "1841860bf2b826fe6137931c5bb5f54eef17d3c9b00eda98f832d53115746651",
+      "same_signed_bytes": true,
+      "node_mempool_unique": true,
+      "wallet_status_after_reopen_before_mining": "failed",
+      "wallet_status_after_sync": "confirmed",
+      "confirmations": 3,
+      "recipient_balance_delta": 100000,
+      "status": "pass"
+    },
+    {
+      "mode": "after-hold",
+      "wallet_killed_before_ack": true,
+      "wallet_exit_code": -9,
+      "attempt_count": 1,
+      "transaction_sha256": "21c6197d2892cef088293ffb88da3b6ae079a0d447701bb102fb101e4084e436",
+      "txid": "578da1a3081dc4e94b9daa702176238e59e82092c26416f8099ea04fc7e20e58",
+      "same_signed_bytes": true,
+      "node_mempool_unique": true,
+      "wallet_status_after_reopen_before_mining": "calculated",
+      "wallet_status_after_sync": "confirmed",
+      "confirmations": 3,
+      "recipient_balance_delta": 100000,
+      "status": "pass"
+    }
+  ]
+}
