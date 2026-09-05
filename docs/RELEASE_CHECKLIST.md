@@ -22,12 +22,21 @@
 - [x] Pinned development dependencies pass `pip-audit`, and CI repeats the advisory check.
 - [x] The PyPI workflow verifies release-asset checksums and uses Trusted Publishing with attestations.
 
-## Required immediately before public publication
+## GitHub publication
 
-- [ ] Reconfirm the package and repository names immediately before creation or upload; prior checks do not reserve them.
-- [ ] Create the repository, enable private vulnerability reporting and branch protection, and run the declared GitHub Actions matrix.
-- [ ] Configure the PyPI pending trusted publisher for `.github/workflows/publish.yml` and the `pypi` environment.
-- [ ] Tag the exact reviewed commit as `v0.1.0` and attach the locally reproduced artifacts plus SHA-256 checksums.
+- [x] Reconfirmed the repository name before creation and the package name on September 5, 2026. PyPI availability does not reserve the name.
+- [x] Created the public repository and enabled private vulnerability reporting, dependency alerts, and secret scanning with push protection.
+- [x] Passed all six declared GitHub Actions jobs: Python 3.11–3.13 on Linux and macOS, including tests, dependency audit, source audit, and package builds.
+
+The [release page](https://github.com/ztsalexey/wallet-privacy-testkit/releases/tag/v0.1.0) identifies the tagged commit and downloadable wheel, source archive, and SHA-256 checksums. The [CI history](https://github.com/ztsalexey/wallet-privacy-testkit/actions/workflows/ci.yml) records the checks for each pushed commit. Main-branch protection requires all six CI checks and blocks branch deletion and force pushes.
+
+## PyPI publication still requires account setup
+
+- [ ] Configure the PyPI pending trusted publisher: project `wallet-privacy-testkit`, owner `ztsalexey`, repository `wallet-privacy-testkit`, workflow filename `publish.yml`, environment `pypi`.
+- [ ] Enable publishing, run the workflow for the release tag, and verify installation from PyPI.
+
+GitHub release files can be installed independently of PyPI.
+
 ## After publication
 
 - [ ] Ask the first wallet maintainer which repository should own the adapter before opening any upstream PR. This is an adoption step, not a release prerequisite.
