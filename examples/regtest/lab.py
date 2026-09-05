@@ -129,11 +129,13 @@ def initialize():
     subprocess.run(['openssl', 'req', '-x509', '-newkey', 'rsa:2048', '-nodes',
                     '-keyout', str(STATE / 'key.pem'), '-out', str(STATE / 'cert.pem'),
                     '-days', '2', '-subj', '/CN=localhost',
+                    '-addext', 'basicConstraints=critical,CA:FALSE',
+                    '-addext', 'extendedKeyUsage=serverAuth',
                     '-addext', 'subjectAltName=DNS:localhost,IP:127.0.0.1'],
                    check=True, capture_output=True)
     os.chmod(STATE / 'key.pem', 0o600)
     # A random, unspendable bootstrap P2PKH destination enables the regtest
-    # miner before any wallet exists. No blocks are mined to this destination.
+    # miner before any wallet exists. Only the bootstrap block pays this address.
     payload = bytes([0x1d, 0x25]) + os.urandom(20)
     checksum = hashlib.sha256(hashlib.sha256(payload).digest()).digest()[:4]
     number = int.from_bytes(payload + checksum, 'big')
@@ -172,6 +174,8 @@ filter = "warn"
 
 
 def bootstrap():
+    wait_node()
+    rpc('generate', [1])
     with indexer():
         emit('creating fresh wallets')
         addresses = {name: parsed(wallet(name, 'addresses'))[0]['encoded_address']

@@ -20,6 +20,8 @@ Every output directory must be new. The wrapper builds the image, uses a unique 
 
 `--skip-build` reuses the local `wallet-privacy-testkit-regtest:local` image; use it only when its source is known and unchanged. The default builds the current checkout. No prebuilt lab image is published.
 
+For local diagnosis, `--keep-state-on-failure` retains the uniquely named project only if a step fails. Its volume contains disposable wallet secrets and must not be published. Clean it up afterward with `WPT_OUTPUT=/path/to/output docker compose -p PRINTED_PROJECT -f examples/regtest/compose.yaml down --volumes --remove-orphans`, adding `--context orbstack` after `docker` if used for the run.
+
 ## Scenarios and pass criteria
 
 1. **Lost first acknowledgement:** submit one Orchard payment through `after-once`. Observe one accepted transaction in the node mempool, require identical signed bytes across observed attempts, mine three blocks, and require confirmation in the reopened wallet.
@@ -31,7 +33,7 @@ The wallet can report a failed or missing transaction before chain synchronizati
 
 ## Build and trust boundary
 
-Base images use immutable manifest digests; wallet and indexer archives use revision URLs and SHA-256 verification. Rust and Go use the upstream dependency locks. `patch_trust.py` adds only an explicit extra-CA option to locked `zingo-netutils 5.0.1`, checks its original source hash, and verifies that the resulting Cargo lock differs only by that dependency's local path. Certificate and hostname verification stay enabled. The lab creates its certificate at runtime and includes both localhost and 127.0.0.1 SANs.
+Base images use immutable manifest digests; wallet and indexer archives use revision URLs and SHA-256 verification. Rust and Go use the upstream dependency locks. `patch_trust.py` adds only an explicit extra-CA option to locked `zingo-netutils 5.0.1`, checks its original source hash, and verifies that the resulting Cargo lock differs only by that dependency's local path. Certificate and hostname verification stay enabled. The lab creates a server certificate at runtime with both localhost and 127.0.0.1 SANs. Peer discovery is explicitly disabled. One activation block is mined to a random bootstrap destination before wallets exist; subsequent coinbase rewards fund the fresh sender wallet.
 
 OS packages are installed from the base distribution's repositories, so builds are source-pinned experiments, not byte-for-byte reproducible images. Downloaded dependencies retain their own licenses; the testkit's MIT-or-Apache license does not relicense them.
 

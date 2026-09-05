@@ -14,6 +14,8 @@ def main():
     parser.add_argument('--output', type=Path, required=True, help='new directory for the sanitized report')
     parser.add_argument('--context', help='Docker context; defaults to the active Docker context')
     parser.add_argument('--skip-build', action='store_true', help='reuse the previously built local lab image')
+    parser.add_argument('--keep-state-on-failure', action='store_true',
+                        help='retain this disposable project for local debugging if a step fails')
     args = parser.parse_args()
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=False)
@@ -26,6 +28,7 @@ def main():
     def call(*arguments, **kwargs):
         return subprocess.run([*compose, *arguments], env=env, check=True, **kwargs)
 
+    passed = False
     try:
         if not args.skip_build:
             with (output / 'build.log').open('w') as log:
@@ -40,10 +43,14 @@ def main():
         if report['status'] != 'pass' or len(report['scenarios']) != 2:
             raise RuntimeError('lab did not produce a complete passing report')
         print(json.dumps(report, indent=2))
+        passed = True
     finally:
         # The random project name belongs only to this invocation. Never prune
         # the engine or touch other projects, networks, images, or volumes.
-        call('down', '--volumes', '--remove-orphans', timeout=120)
+        if passed or not args.keep_state_on_failure:
+            call('down', '--volumes', '--remove-orphans', timeout=120)
+        else:
+            print(f'Failed project {project} retained for local debugging; its volume contains disposable wallet secrets.', flush=True)
 
 
 if __name__ == '__main__':
