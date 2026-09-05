@@ -12,7 +12,7 @@ Traffic segmentation is a major assumption. Starting a fresh wallet process arou
 
 The relay is a trusted test component between a disposable wallet and a regtest indexer. It terminates TLS, receives serialized transaction bytes in memory, and records their hash and length. The host operating the relay can inspect process memory and is inside this test's trust boundary.
 
-The relay models three delivery boundaries. It does not estimate their frequency in production, reproduce every HTTP/2 or mobile-network failure, prove exactly-once payment semantics, or determine what a user will do after seeing an error.
+The relay models delivery failure before submission, lost responses after submission, and (in development) responses held while a test kills the wallet process. It does not estimate their frequency in production, reproduce every HTTP/2 or mobile-network failure, prove exactly-once payment semantics, or determine what a user will do after seeing an error.
 
 ## Excluded adversaries
 
@@ -33,4 +33,3 @@ These can become separate test scenarios only with explicit observables and pass
 ## Safe test boundary
 
 Use disposable wallet state and valueless regtest funds. Bind relays to loopback unless a test plan names and protects another interface. Keep private keys and certificates out of result directories. Never treat the semantic relay as a production proxy.
-

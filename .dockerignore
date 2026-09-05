@@ -1,0 +1,13 @@
+*
+!pyproject.toml
+!README.md
+!LICENSE-MIT
+!LICENSE-APACHE
+!requirements-dev.txt
+!src
+!src/wallet_privacy_testkit
+!src/wallet_privacy_testkit/*.py
+!examples
+!examples/regtest
+!examples/regtest/*.py
+!examples/regtest/Dockerfile

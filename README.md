@@ -66,6 +66,8 @@ The forwarder copies bytes unchanged. Its trace contains connection numbers, mon
 
 ## Transaction delivery faults
 
+The checkout includes development features for 0.2.0.dev0; the PyPI instructions above install the existing 0.1.0 release. The `after-hold` mode and [disposable Compose lab](examples/regtest/README.md) require this checkout.
+
 The semantic relay terminates a test TLS connection and forwards the real gRPC service. It understands only enough of the lightwalletd protocol to identify and hash `RawTransaction.data`; it never writes signed transaction bytes. All other known RPCs are forwarded as opaque bytes using their required streaming cardinality.
 
 The forwarding table was checked against canonical `lightwallet-protocol` v0.5.0. A later protocol version that adds a streaming RPC requires a testkit update before that RPC can pass through correctly.
@@ -89,12 +91,15 @@ The supported modes are:
 | `before-once` | Fail the first submission without forwarding it, then forward normally |
 | `after-once` | Forward the first submission and discard its response, then forward normally |
 | `after-all` | Forward every submission and discard every response |
+| `after-hold` (development) | Forward submission and hold its response until the client cancels, reaches its deadline, or the relay stops |
 
 Use the relay only with disposable wallets and isolated regtest funds. The tool deliberately changes transaction-delivery behavior. The test operator remains responsible for checking the node's mempool or chain and the wallet's eventual state.
 
 An insecure local upstream or client can omit the certificate options. The relay binds to `127.0.0.1` by default. Supplying only one of `--certificate` and `--private-key` is rejected.
 
 The printed endpoint uses `127.0.0.1`. When the wallet-facing side uses TLS, the server certificate must therefore contain the IP address `127.0.0.1` in its Subject Alternative Name. The upstream CA file is required for a TLS upstream; omitting it selects an insecure upstream channel.
+
+Development forwarding respects shorter client deadlines, caps each upstream RPC at 120 seconds, and cancels upstream calls when the downstream RPC ends. The relay does not preserve application metadata or trailers and remains a controlled test instrument.
 
 ## Size-only matching
 

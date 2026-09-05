@@ -1,4 +1,10 @@
-# Wallet Privacy Testkit for Zcash 0.1.0
+# Wallet Privacy Testkit for Zcash
+
+## 0.2.0.dev0 (unreleased)
+
+Development adds a disposable Compose regtest lab, a held-response fault for wallet crash tests, and broader relay transport coverage. See the [regtest instructions](../examples/regtest/README.md) for requirements, assertions, and limits. These additions are not in the published 0.1.0 package.
+
+## 0.1.0
 
 This research-preview release extracts the reusable adversarial layer from a complete Zingolib/Zebra/lightwalletd regtest experiment.
 
