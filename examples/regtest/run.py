@@ -7,12 +7,14 @@ import os
 import subprocess
 import uuid
 import sys
+import secrets
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'src'))
 from wallet_privacy_testkit.recovery import verify_recovery_report
 from wallet_privacy_testkit.privacy import analyze_privacy
 from wallet_privacy_testkit.study import analyze_study
+from wallet_privacy_testkit.study_design import make_plan
 
 
 def main():
@@ -21,11 +23,17 @@ def main():
     parser.add_argument('--context', help='Docker context; defaults to the active Docker context')
     parser.add_argument('--skip-build', action='store_true', help='reuse the previously built local lab image')
     parser.add_argument('--study', action='store_true', help='run the repeated two-wallet frozen-detector study')
+    parser.add_argument('--study-seed', help='64 lowercase hex characters; defaults to a fresh public scheduling seed')
     parser.add_argument('--keep-state-on-failure', action='store_true',
                         help='retain this disposable project for local debugging if a step fails')
     args = parser.parse_args()
+    if args.study_seed and not args.study:
+        parser.error('--study-seed requires --study')
+    design = make_plan(args.study_seed or secrets.token_hex(32)) if args.study else None
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=False)
+    if design:
+        (output / 'study-plan.json').write_text(json.dumps(design, indent=2) + '\n')
     project = 'wpt-' + uuid.uuid4().hex[:12]
     docker = ['docker'] + (['--context', args.context] if args.context else [])
     compose = docker + ['compose', '-p', project, '-f', str(Path(__file__).with_name('compose.yaml'))]

@@ -17,10 +17,10 @@ from wallet_privacy_testkit.privacy import analyze_privacy
 
 
 class InteractiveWallet:
-    def __init__(self, endpoint, log_path):
+    def __init__(self, endpoint, log_path, *, name='alice'):
         self.master, slave = pty.openpty()
         self.log = log_path.open('wb')
-        args = [a for a in wallet_args('alice', 'balance', server=endpoint)[:-1] if a != '--nosync']
+        args = [a for a in wallet_args(name, 'balance', server=endpoint)[:-1] if a != '--nosync']
         self.process = subprocess.Popen(args, stdin=slave, stdout=slave, stderr=slave,
                                         env=dict(os.environ, TERM='dumb'))
         os.close(slave)

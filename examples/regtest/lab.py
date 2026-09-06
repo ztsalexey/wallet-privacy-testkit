@@ -56,7 +56,7 @@ def wait_node():
 
 
 def wallet_args(name, command, args=(), sync=False, server=ENDPOINT):
-    if name not in ('alice', 'bob'):
+    if name not in ('alice', 'bob') and not re.fullmatch(r'study-[a-z0-9-]+', name):
         raise ValueError('unknown disposable wallet')
     folder = STATE / name
     folder.mkdir(exist_ok=True)

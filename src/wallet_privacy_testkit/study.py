@@ -3,6 +3,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from .study_design import make_plan
+
 from .privacy import window_features, labels_for_windows, confusion, fit_threshold
 
 
@@ -40,13 +42,15 @@ def analyze_study(manifest_path):
     path = Path(manifest_path)
     try:
         manifest = json.loads(path.read_text())
-        if type(manifest['schema_version']) is not int or manifest['schema_version'] != 1:
+        if type(manifest['schema_version']) is not int or manifest['schema_version'] not in (1, 2):
             raise ValueError('unsupported study schema')
         sessions = manifest['sessions']
         plan_path = path.parent / 'study-plan.json'
         if hashlib.sha256(plan_path.read_bytes()).hexdigest() != manifest['plan_sha256']:
             raise ValueError('study plan checksum mismatch')
         plan = json.loads(plan_path.read_text())
+        if manifest['schema_version'] == 2:
+            validate_randomized_study(plan, sessions)
         if plan['window_ns'] != manifest['window_ns']:
             raise ValueError('study window differs from plan')
         duration = plan['duration_ns']
@@ -86,9 +90,65 @@ def analyze_study(manifest_path):
             key = (session['split'], session['wallet'], session['condition'])
             predictions, labels = grouped.setdefault(key, ([], []))
             predictions.extend(predicted); labels.extend(truth)
-        return {'schema_version': 1, 'threshold_bytes': model['threshold_bytes'], 'window_ns': model['window_ns'],
+        report = {'schema_version': 1, 'threshold_bytes': model['threshold_bytes'], 'window_ns': model['window_ns'],
                 'groups': [{'split': k[0], 'wallet': k[1], 'condition': k[2], 'metrics': confusion(*v)} for k,v in grouped.items()],
                 'sessions': results,
                 'scope': 'descriptive local send-window detection; correlated windows; not wallet ranking or identity linkage'}
+        if manifest['schema_version'] == 2:
+            report['schema_version'] = 2
+            report['design_seed'] = plan['seed']
+            for result, session in zip(results, sessions):
+                result['repeat'] = session['repeat']
+                result['payment_timing'] = [
+                    {'scheduled_phase_ns': offset % model['window_ns'],
+                     'actual_phase_ns': (payment['start_ns'] - session['start_ns']) % model['window_ns'],
+                     'scheduling_delay_ns': payment['start_ns'] - payment['scheduled_start_ns']}
+                    for offset, payment in zip(session['payment_offsets_ns'], session['payments'])]
+            for group in report['groups']:
+                members = [r['metrics'] for r in results if all(r[k] == group[k] for k in ('split', 'wallet', 'condition'))]
+                group['session_count'] = len(members)
+                group['session_rates'] = {k: {'mean': sum(m[k] for m in members) / len(members),
+                    'min': min(m[k] for m in members), 'max': max(m[k] for m in members)}
+                    for k in ('recall', 'false_positive_rate', 'balanced_accuracy')}
+        return report
     except (KeyError, TypeError, IndexError) as error:
         raise ValueError('incomplete or malformed study') from error
+
+
+def validate_randomized_study(plan, sessions):
+    """Reject departures from the seeded design, including reused sender evidence."""
+    if plan != make_plan(plan['seed']):
+        raise ValueError('study plan differs from seeded design')
+    addresses, funding_ids, payment_ids = set(), set(), set()
+    previous_end = 0
+    for session in sessions:
+        address = session['sender_address_sha256']
+        if not isinstance(address, str) or len(address) != 64 or any(c not in '0123456789abcdef' for c in address) or address in addresses:
+            raise ValueError('study requires distinct sender address hashes')
+        addresses.add(address)
+        created = session['sender_created_ns']
+        if session['sender_directory_was_absent'] is not True or type(created) is not int or not previous_end <= created < session['start_ns']:
+            raise ValueError('study requires fresh sender state before every session')
+        previous_end = session['end_ns']
+        if type(session['sender_initial_balance']) is not int or session['sender_initial_balance'] != 0:
+            raise ValueError('study sender must start empty')
+        if type(session['sender_funded_balance']) is not int or session['sender_funded_balance'] != plan['funding_outputs'] * plan['funding_amount_per_output']:
+            raise ValueError('study sender funding differs from plan')
+        if type(session['funding_confirmations']) is not int or session['funding_confirmations'] < 10:
+            raise ValueError('study funding did not settle before capture')
+        if type(session['payment_amount']) is not int or session['payment_amount'] != plan['payment_amount']:
+            raise ValueError('study payment amount differs from plan')
+        funding = session['funding_txid']
+        if not isinstance(funding, str) or len(funding) != 64 or any(c not in '0123456789abcdef' for c in funding) or funding in funding_ids:
+            raise ValueError('study requires distinct funding transactions')
+        funding_ids.add(funding)
+        if len(session['payments']) != len(session['payment_offsets_ns']):
+            raise ValueError('study payment count differs from plan')
+        for offset, payment in zip(session['payment_offsets_ns'], session['payments']):
+            scheduled = payment['scheduled_start_ns']
+            if type(scheduled) is not int or scheduled != session['start_ns'] + offset or payment['start_ns'] < scheduled:
+                raise ValueError('study payment schedule differs from plan')
+            txid = payment['txid']
+            if not isinstance(txid, str) or len(txid) != 64 or any(c not in '0123456789abcdef' for c in txid) or txid in payment_ids:
+                raise ValueError('study requires distinct payment transactions')
+            payment_ids.add(txid)

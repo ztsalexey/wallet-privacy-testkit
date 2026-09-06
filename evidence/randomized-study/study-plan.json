@@ -1,0 +1,346 @@
+{
+  "schema_version": 2,
+  "seed": "95603b5aa3b472ea9862d65c9344591c98713396b1731767e7a6913e17632063",
+  "sessions": [
+    {
+      "id": "calibration-zingolib-baseline-1",
+      "split": "calibration",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 1,
+      "sender_state_id": "calibration-zingolib-baseline-1",
+      "payment_offsets_ns": [
+        13148849558,
+        42122888270,
+        75096311043
+      ],
+      "sync_offset_ns": 4000758061,
+      "conditioner_seed": 13257768399132258567
+    },
+    {
+      "id": "calibration-zingolib-baseline-2",
+      "split": "calibration",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 2,
+      "sender_state_id": "calibration-zingolib-baseline-2",
+      "payment_offsets_ns": [
+        19771337791,
+        50726471602,
+        78999506487
+      ],
+      "sync_offset_ns": 4698707448,
+      "conditioner_seed": 5545790792085968973
+    },
+    {
+      "id": "calibration-zingolib-baseline-3",
+      "split": "calibration",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 3,
+      "sender_state_id": "calibration-zingolib-baseline-3",
+      "payment_offsets_ns": [
+        13780209288,
+        42418583375,
+        77424015965
+      ],
+      "sync_offset_ns": 3369521902,
+      "conditioner_seed": 3014241750476739869
+    },
+    {
+      "id": "evaluation-zcash-devtool-latency-1",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "latency",
+      "repeat": 1,
+      "sender_state_id": "evaluation-zcash-devtool-latency-1",
+      "payment_offsets_ns": [
+        22992382261,
+        50991619032,
+        74378690188
+      ],
+      "sync_offset_ns": 4742995435,
+      "conditioner_seed": 6407237838770731166
+    },
+    {
+      "id": "evaluation-zingolib-latency-1",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "latency",
+      "repeat": 1,
+      "sender_state_id": "evaluation-zingolib-latency-1",
+      "payment_offsets_ns": [
+        19886309713,
+        42767930099,
+        69784502296
+      ],
+      "sync_offset_ns": 4986942960,
+      "conditioner_seed": 15630933924695931080
+    },
+    {
+      "id": "evaluation-zingolib-baseline-1",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 1,
+      "sender_state_id": "evaluation-zingolib-baseline-1",
+      "payment_offsets_ns": [
+        14656991446,
+        40035312080,
+        70820714987
+      ],
+      "sync_offset_ns": 3352709922,
+      "conditioner_seed": 16706134014206830067
+    },
+    {
+      "id": "evaluation-zingolib-bandwidth-1",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "bandwidth",
+      "repeat": 1,
+      "sender_state_id": "evaluation-zingolib-bandwidth-1",
+      "payment_offsets_ns": [
+        19367596127,
+        47278108101,
+        78286280678
+      ],
+      "sync_offset_ns": 2724369877,
+      "conditioner_seed": 14186990558080642904
+    },
+    {
+      "id": "evaluation-zcash-devtool-bandwidth-1",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "bandwidth",
+      "repeat": 1,
+      "sender_state_id": "evaluation-zcash-devtool-bandwidth-1",
+      "payment_offsets_ns": [
+        18465113967,
+        47108877272,
+        78132093942
+      ],
+      "sync_offset_ns": 3746309777,
+      "conditioner_seed": 3475598534488650969
+    },
+    {
+      "id": "evaluation-zcash-devtool-baseline-1",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "baseline",
+      "repeat": 1,
+      "sender_state_id": "evaluation-zcash-devtool-baseline-1",
+      "payment_offsets_ns": [
+        16111771059,
+        50260720091,
+        72009469005
+      ],
+      "sync_offset_ns": 4108083909,
+      "conditioner_seed": 2338796484958449467
+    },
+    {
+      "id": "evaluation-zingolib-bandwidth-2",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "bandwidth",
+      "repeat": 2,
+      "sender_state_id": "evaluation-zingolib-bandwidth-2",
+      "payment_offsets_ns": [
+        17459945321,
+        42271107022,
+        75178562268
+      ],
+      "sync_offset_ns": 5219834452,
+      "conditioner_seed": 12025177904384968818
+    },
+    {
+      "id": "evaluation-zcash-devtool-bandwidth-2",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "bandwidth",
+      "repeat": 2,
+      "sender_state_id": "evaluation-zcash-devtool-bandwidth-2",
+      "payment_offsets_ns": [
+        13216190753,
+        44306908393,
+        79757720153
+      ],
+      "sync_offset_ns": 2895211820,
+      "conditioner_seed": 18048522799886631865
+    },
+    {
+      "id": "evaluation-zingolib-baseline-2",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 2,
+      "sender_state_id": "evaluation-zingolib-baseline-2",
+      "payment_offsets_ns": [
+        12704364287,
+        44069298520,
+        70347708771
+      ],
+      "sync_offset_ns": 5045846011,
+      "conditioner_seed": 16878349556076247646
+    },
+    {
+      "id": "evaluation-zingolib-latency-2",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "latency",
+      "repeat": 2,
+      "sender_state_id": "evaluation-zingolib-latency-2",
+      "payment_offsets_ns": [
+        15545882930,
+        47501899906,
+        74265370406
+      ],
+      "sync_offset_ns": 4501447533,
+      "conditioner_seed": 1539910553958866701
+    },
+    {
+      "id": "evaluation-zcash-devtool-baseline-2",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "baseline",
+      "repeat": 2,
+      "sender_state_id": "evaluation-zcash-devtool-baseline-2",
+      "payment_offsets_ns": [
+        22570996755,
+        45637383503,
+        75071420385
+      ],
+      "sync_offset_ns": 2866639641,
+      "conditioner_seed": 12115375896848827041
+    },
+    {
+      "id": "evaluation-zcash-devtool-latency-2",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "latency",
+      "repeat": 2,
+      "sender_state_id": "evaluation-zcash-devtool-latency-2",
+      "payment_offsets_ns": [
+        13536491941,
+        41107452743,
+        72320003255
+      ],
+      "sync_offset_ns": 2071125087,
+      "conditioner_seed": 4917812969480855257
+    },
+    {
+      "id": "evaluation-zcash-devtool-baseline-3",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "baseline",
+      "repeat": 3,
+      "sender_state_id": "evaluation-zcash-devtool-baseline-3",
+      "payment_offsets_ns": [
+        23396735374,
+        45585557551,
+        70458652691
+      ],
+      "sync_offset_ns": 305073082,
+      "conditioner_seed": 11206127001163424749
+    },
+    {
+      "id": "evaluation-zingolib-baseline-3",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 3,
+      "sender_state_id": "evaluation-zingolib-baseline-3",
+      "payment_offsets_ns": [
+        16527202957,
+        42114076385,
+        72284564455
+      ],
+      "sync_offset_ns": 1255996857,
+      "conditioner_seed": 4966095885349856989
+    },
+    {
+      "id": "evaluation-zingolib-latency-3",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "latency",
+      "repeat": 3,
+      "sender_state_id": "evaluation-zingolib-latency-3",
+      "payment_offsets_ns": [
+        13398165635,
+        40999811559,
+        68178095306
+      ],
+      "sync_offset_ns": 4638549261,
+      "conditioner_seed": 10881098935347811387
+    },
+    {
+      "id": "evaluation-zcash-devtool-bandwidth-3",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "bandwidth",
+      "repeat": 3,
+      "sender_state_id": "evaluation-zcash-devtool-bandwidth-3",
+      "payment_offsets_ns": [
+        18168921930,
+        49231805362,
+        68814972441
+      ],
+      "sync_offset_ns": 740454015,
+      "conditioner_seed": 5647780333916027175
+    },
+    {
+      "id": "evaluation-zcash-devtool-latency-3",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "latency",
+      "repeat": 3,
+      "sender_state_id": "evaluation-zcash-devtool-latency-3",
+      "payment_offsets_ns": [
+        22313833492,
+        40154366430,
+        70841853270
+      ],
+      "sync_offset_ns": 5139321721,
+      "conditioner_seed": 9715837996542191701
+    },
+    {
+      "id": "evaluation-zingolib-bandwidth-3",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "bandwidth",
+      "repeat": 3,
+      "sender_state_id": "evaluation-zingolib-bandwidth-3",
+      "payment_offsets_ns": [
+        19816593152,
+        42341827956,
+        76526958922
+      ],
+      "sync_offset_ns": 4527822058,
+      "conditioner_seed": 3246759188514641615
+    }
+  ],
+  "window_ns": 4000000000,
+  "duration_ns": 96000000000,
+  "conditions": {
+    "baseline": {},
+    "latency": {
+      "delay_ms": 25,
+      "jitter_ms": 10
+    },
+    "bandwidth": {
+      "delay_ms": 5,
+      "bytes_per_second": 65536
+    }
+  },
+  "payment_amount": 50000,
+  "funding_outputs": 8,
+  "funding_amount_per_output": 60000,
+  "sender_state": "new directory and OS-generated wallet keys for every session",
+  "shared_state": "node, indexer, funder, recipient; chain grows across sessions",
+  "detector": "largest client TLS record; calibration balanced accuracy; higher cutoff breaks ties",
+  "conditioner": "independent TCP directions; delay/jitter and pacing per read of at most 16384 bytes; not packet-level emulation",
+  "client_lifecycle": {
+    "zingolib": "persistent interactive process",
+    "zcash-devtool": "process per command; continuous capture"
+  },
+  "devtool_revision": "5a26ee854e634a4e88d1d79dab13f8fbb1eac6b8"
+}
