@@ -44,3 +44,14 @@ The package is available on [PyPI](https://pypi.org/project/wallet-privacy-testk
 - [ ] Ask the first wallet maintainer which repository should own the adapter before opening any upstream PR. This is an adoption step, not a release prerequisite.
 
 PyPI publishing is gated by the repository variable `PYPI_PUBLISH_ENABLED=true`. Once the pending trusted publisher is configured, a published GitHub release triggers the workflow. To publish an existing release later, dispatch `publish.yml` using its release tag as the workflow ref. The workflow verifies the downloaded artifacts against the checksum file committed in that tag.
+
+
+## Development 0.2.0.dev1
+
+- [x] Added schema-2 recovery verification, a live negative control, three indexer recovery scenarios, held-out continuous-traffic analysis, and application metadata forwarding.
+- [x] Passed all 36 tests in the six-version/platform CI matrix and in a clean wheel installation.
+- [x] Completed the fresh Compose recipe on OrbStack ARM64 and native Linux Docker x86-64.
+- [x] Independently recomputed both recovery and privacy reports with the installed CLI.
+- [x] Retained [observations, metadata traces, provenance, results, and limitations](../evidence/zingolib-v5-continuous/README.md).
+
+These additions are available from the source checkout. The published PyPI release remains 0.1.0.

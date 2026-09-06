@@ -1,0 +1,18 @@
+{
+  "testkit_source_commit": "a5d20cd877ba8d18f3a0abc719bdc135b571ae10",
+  "merge_commit": "38b8cff022d8c1acab98b67d2b25447d70873a8c",
+  "linux_actions_run": "https://github.com/ztsalexey/wallet-privacy-testkit/actions/runs/34006560792",
+  "orbstack_docker_engine": "29.4.0",
+  "files_sha256": {
+    "linux-x86_64/calibration.trace.jsonl": "9204b6f6c16434c4f37c021700011c1882da456f2cc8a9c7f70b27e7a3dd3b4e",
+    "linux-x86_64/evaluation.trace.jsonl": "e952adcefed8c01fc6f7460ab0d1b204fc078cbc7e9ad6b571159da94df88616",
+    "linux-x86_64/privacy-manifest.json": "a3506dc29afcbbb95ec67857a72c976516ba2a55ba7a93651cbc8f331a3330d9",
+    "linux-x86_64/privacy-report.json": "d90be5696d79f95326a5e00782e93ef79bccc62569af7ab71e46c34d3a16f0f8",
+    "linux-x86_64/report.json": "468ca0397688b3d27b1eb8d44f835dc1b5213c83e271ecef8ab5ed8c45910038",
+    "orbstack-aarch64/calibration.trace.jsonl": "7b08d5e2a81ca009043eb8c1395056ec18007d704f1699fef776d2729c457920",
+    "orbstack-aarch64/evaluation.trace.jsonl": "e68e50498be03e040ff1e54df82a9f9cf36834810bd8a27a7f662cb453b8c028",
+    "orbstack-aarch64/privacy-manifest.json": "ac9bdeaafcda5345bf63f5ec3accfa600db5ceff566544a4aee816cd316dca31",
+    "orbstack-aarch64/privacy-report.json": "2a233d66ab84452326aa111434d717ec24aa7bde3c58b7d8965ea77a93ccc699",
+    "orbstack-aarch64/report.json": "f6ca0bab5bc0aed1822b179a3bb9379e3f7c2347c57b0c07477238a34cbe5005"
+  }
+}

@@ -1,4 +1,6 @@
-# Fresh-state Compose recovery evidence
+# Fresh-state Compose recovery evidence (0.2.0.dev0)
+
+For the expanded schema-2 reports and continuous-traffic traces, see the [dev1 evidence](../zingolib-v5-continuous/README.md).
 
 The [OrbStack ARM64 report](orbstack-aarch64.json) was produced on September 5, 2026 by the [Compose lab](../../examples/regtest/README.md), using new wallet seeds, a new TLS certificate, and an empty chain volume. The tested lab and runtime source correspond to commit `0e9f59f615fe4d53d7e8e03f3a4c9ef7c34cbf8f`. This is an executed Linux container experiment on OrbStack, not a replay of the older retained Mac wallet state.
 
