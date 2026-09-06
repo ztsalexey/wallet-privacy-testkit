@@ -21,7 +21,7 @@ def study_fixture(root):
             s['trace_sha256'] = hashlib.sha256(trace.read_bytes()).hexdigest()
             s['start_ns'] += 100; s['end_ns'] += 100
             for p in s['payments']: p['start_ns'] += 100; p['end_ns'] += 100
-    plan = {'window_ns': 10, 'sessions': [{k:s[k] for k in ('id','split','wallet','condition')} for s in sessions]}
+    plan = {'window_ns': 10, 'duration_ns': 40, 'sessions': [{k:s[k] for k in ('id','split','wallet','condition')} for s in sessions]}
     plan_path = root / 'study-plan.json'; plan_path.write_text(json.dumps(plan))
     model_path = root / 'frozen-detector.json'
     model_path.write_text(json.dumps(freeze_detector(root, sessions[:1], 10)))
@@ -51,11 +51,13 @@ class StudyTests(unittest.TestCase):
 
     def test_late_freeze_partial_plan_and_model_changes_are_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
-            for mutation in ('late', 'partial', 'model'):
+            for mutation in ('late', 'partial', 'duration', 'overlap', 'model'):
                 with self.subTest(mutation=mutation):
                     path=study_fixture(Path(tmp)); data=json.loads(path.read_text())
                     if mutation=='late': data['frozen_time_ns']=101
                     elif mutation=='partial': data['sessions'].pop()
+                    elif mutation=='duration': data['sessions'][1]['end_ns'] -= 10
+                    elif mutation=='overlap': data['sessions'][1].update(start_ns=30,end_ns=70)
                     else:
                         model_path=Path(tmp)/'frozen-detector.json'
                         model=json.loads(model_path.read_text()); model['threshold_bytes']=1

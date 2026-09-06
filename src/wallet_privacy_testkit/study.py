@@ -49,6 +49,11 @@ def analyze_study(manifest_path):
         plan = json.loads(plan_path.read_text())
         if plan['window_ns'] != manifest['window_ns']:
             raise ValueError('study window differs from plan')
+        duration = plan['duration_ns']
+        if type(duration) is not int or duration <= 0 or any(s['end_ns'] - s['start_ns'] != duration for s in sessions):
+            raise ValueError('study session duration differs from plan')
+        if any(a['end_ns'] > b['start_ns'] for a,b in zip(sessions, sessions[1:])):
+            raise ValueError('study sessions must not overlap')
         if [{k: s[k] for k in p} for s,p in zip(sessions, plan['sessions'])] != plan['sessions'] or len(sessions) != len(plan['sessions']):
             raise ValueError('study does not contain every planned session in order')
         if not sessions or len({s['id'] for s in sessions}) != len(sessions):
