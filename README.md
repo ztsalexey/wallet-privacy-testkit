@@ -121,7 +121,7 @@ python3 examples/regtest/run.py --context orbstack --study --output /tmp/wpt-stu
 wpt analyze-study /tmp/wpt-study/study-manifest.json
 ```
 
-The study records its plan before capture and saves the fitted detector before any evaluation session. It evaluates another wallet implementation with a different CLI process lifecycle, so it does not rank consumer wallet privacy. See the [study methodology](docs/PRIVACY_STUDY.md) and [retained 15-session results](evidence/privacy-study-020/README.md). All 45 payments confirmed. The frozen cutoff detected Zingolib send activity but missed every send-active window from zcash-devtool, whose largest records fell three bytes below the cutoff. This demonstrates a limit of the detector, not a privacy ranking.
+The study records its plan before capture and saves the fitted detector before any evaluation session. The [new 21-session results](evidence/randomized-study/README.md) confirmed all 63 payments. Zingolib evaluation window recall ranged from 52.9% to 69.2%; the independent wallet had no flagged window under any condition. A separately labeled post-hoc diagnostic shows that every Zingolib evaluation payment overlapped at least one flagged window, illustrating why window recall and whole-operation coverage differ. See the [methodology](docs/PRIVACY_STUDY.md) for the small sample and shared-state limitations. The [historical 0.2.0 study](evidence/privacy-study-020/README.md) remains reproducible.
 
 ## Size-only matching
 

@@ -1,0 +1,1485 @@
+{
+  "schema_version": 2,
+  "window_ns": 4000000000,
+  "plan_sha256": "ba10f792344006da68c8db2c97a24de0fb7a94f5c4c66b5ca11f2ea98e969319",
+  "architecture": "aarch64",
+  "sessions": [
+    {
+      "id": "calibration-zingolib-baseline-1",
+      "split": "calibration",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 1,
+      "sender_state_id": "calibration-zingolib-baseline-1",
+      "payment_offsets_ns": [
+        13148849558,
+        42122888270,
+        75096311043
+      ],
+      "sync_offset_ns": 4000758061,
+      "conditioner_seed": 13257768399132258567,
+      "trace": "calibration-zingolib-baseline-1.trace.jsonl",
+      "trace_sha256": "7cec499689eb34f6f2312932dd34c5350ae7179d641af95579523120fa0e00f7",
+      "sender_address_sha256": "503b929b977dbf9b82b62b0aeb76a3f58c92fe40d7096d0690ea833d6ea4f332",
+      "sender_created_ns": 99383092391645,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 99419657657271,
+      "end_ns": 99515657657271,
+      "payments": [
+        {
+          "start_ns": 99432811834681,
+          "end_ns": 99435257433830,
+          "txid": "90a9713cbb8a6b28182dfd4db47466dc20877e97eacb3a7c27e90320665a8128",
+          "scheduled_start_ns": 99432806506829,
+          "confirmations": 35
+        },
+        {
+          "start_ns": 99461785074459,
+          "end_ns": 99464386320661,
+          "txid": "8607b4218a0dab1a9bd6dbc235964d5e4586d5b75cd83b812ed28632a59ce40a",
+          "scheduled_start_ns": 99461780545541,
+          "confirmations": 26
+        },
+        {
+          "start_ns": 99494758212879,
+          "end_ns": 99497287196667,
+          "txid": "d4d5b918f6adefdc254c4780ce8fec734d4282207934136d5308f0930f5b2aaf",
+          "scheduled_start_ns": 99494753968314,
+          "confirmations": 15
+        }
+      ],
+      "sync_command_times_ns": [
+        99423662366886,
+        99429660149605,
+        99435660470882,
+        99441659643417,
+        99447662951482,
+        99453660650022,
+        99459663411964,
+        99465661447669,
+        99471660469502,
+        99477662501856,
+        99483661384997,
+        99489662955474,
+        99497287264882,
+        99501662369496,
+        99507660153951,
+        99513662944376
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 600000,
+      "recipient_after": 750000,
+      "funding_txid": "339357e7c8c411c9dcd402b8935c5560c47319afc4ff6a38fb7384a9fc3ac471",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "calibration-zingolib-baseline-2",
+      "split": "calibration",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 2,
+      "sender_state_id": "calibration-zingolib-baseline-2",
+      "payment_offsets_ns": [
+        19771337791,
+        50726471602,
+        78999506487
+      ],
+      "sync_offset_ns": 4698707448,
+      "conditioner_seed": 5545790792085968973,
+      "trace": "calibration-zingolib-baseline-2.trace.jsonl",
+      "trace_sha256": "f82be27265fa4df18bb1aa1ae21bbcc7d77736e83542927378211a7e481d5174",
+      "sender_address_sha256": "5a339c8f7e4a623317575cca1d49ff84f2eb09c2cd51d0ce14dff7fd1ee617c2",
+      "sender_created_ns": 99526339521825,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 99563255724386,
+      "end_ns": 99659255724386,
+      "payments": [
+        {
+          "start_ns": 99583029819858,
+          "end_ns": 99585733066435,
+          "txid": "2fe9f7cc16b25489ed73c446496040f9f8959f249ebe94de1a7c6640a8627be7",
+          "scheduled_start_ns": 99583027062177,
+          "confirmations": 33
+        },
+        {
+          "start_ns": 99613985619546,
+          "end_ns": 99616511195632,
+          "txid": "54c8aa405bcff6509e5c2c26c4d328e00fba4942e4595564b1c6ce831f4d7789",
+          "scheduled_start_ns": 99613982195988,
+          "confirmations": 24
+        },
+        {
+          "start_ns": 99642258859018,
+          "end_ns": 99644682782642,
+          "txid": "dc58b2db3737f783cde4e8a491a0a9142a106a90206281b56501bb57d2fd31cc",
+          "scheduled_start_ns": 99642255230873,
+          "confirmations": 15
+        }
+      ],
+      "sync_command_times_ns": [
+        99567954755736,
+        99573959741508,
+        99579954815681,
+        99585955771171,
+        99591957571699,
+        99597955248828,
+        99603958279078,
+        99609957346053,
+        99616511317305,
+        99621958665656,
+        99627958798016,
+        99633960262149,
+        99639955664904,
+        99645954912513,
+        99651956911046,
+        99657959826165
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 750000,
+      "recipient_after": 900000,
+      "funding_txid": "1647448ba359b6e87b043b10b66fef83bca80d76e0e2318cf981fab550655f53",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "calibration-zingolib-baseline-3",
+      "split": "calibration",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 3,
+      "sender_state_id": "calibration-zingolib-baseline-3",
+      "payment_offsets_ns": [
+        13780209288,
+        42418583375,
+        77424015965
+      ],
+      "sync_offset_ns": 3369521902,
+      "conditioner_seed": 3014241750476739869,
+      "trace": "calibration-zingolib-baseline-3.trace.jsonl",
+      "trace_sha256": "24ab433d5bedc33fbfb1ae7588d29f08435617eef00c90a767d0992f6421f0db",
+      "sender_address_sha256": "906a90f4cfdb3fcec220731f7e771367cd8b218d5e17d293d019325fa1d0a1dd",
+      "sender_created_ns": 99669071351906,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 99705917086131,
+      "end_ns": 99801917086131,
+      "payments": [
+        {
+          "start_ns": 99719699578204,
+          "end_ns": 99722204082479,
+          "txid": "cd50419b22cfa5de1ad08a129f9190f82c8cdc1d0f5829f35741a85b9c3249de",
+          "scheduled_start_ns": 99719697295419,
+          "confirmations": 35
+        },
+        {
+          "start_ns": 99748336781333,
+          "end_ns": 99750809093224,
+          "txid": "c62cd9a6d2c99f53c0302f16423b22f86119a44d615989ac02c1469d49558a66",
+          "scheduled_start_ns": 99748335669506,
+          "confirmations": 26
+        },
+        {
+          "start_ns": 99783342854720,
+          "end_ns": 99785862136586,
+          "txid": "a3da00c29f2d1c50fb6edf31b43c959d3e02eea8bd6f33b0fa211c6d60610bb3",
+          "scheduled_start_ns": 99783341102096,
+          "confirmations": 15
+        }
+      ],
+      "sync_command_times_ns": [
+        99709291821155,
+        99715288094536,
+        99722204175775,
+        99727290313721,
+        99733291911542,
+        99739289299065,
+        99745288820113,
+        99751288991167,
+        99757288867760,
+        99763289153774,
+        99769288675238,
+        99775291917076,
+        99781291383581,
+        99787288158181,
+        99793290842388,
+        99799288816668
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 900000,
+      "recipient_after": 1050000,
+      "funding_txid": "4ac94e8e9234178e39941722c6005a1b13f882baf6d746b6d872f56023583989",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zcash-devtool-latency-1",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "latency",
+      "repeat": 1,
+      "sender_state_id": "evaluation-zcash-devtool-latency-1",
+      "payment_offsets_ns": [
+        22992382261,
+        50991619032,
+        74378690188
+      ],
+      "sync_offset_ns": 4742995435,
+      "conditioner_seed": 6407237838770731166,
+      "trace": "evaluation-zcash-devtool-latency-1.trace.jsonl",
+      "trace_sha256": "41cbe143b03f5902f4a9da59501cdad2e84bf7447ffeacb0a1b6f5dec70c0c06",
+      "sender_address_sha256": "fa8c185d9619dc34861ff393c664f4faea9e0a0b7000796a072c14e7e1ba8f73",
+      "sender_created_ns": 99812875343592,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 99842929906621,
+      "end_ns": 99938929906621,
+      "payments": [
+        {
+          "start_ns": 99866507739847,
+          "end_ns": 99869209114019,
+          "txid": "a2315e7cd3dde352ed0f28d96d34612fe67b7ce3a36fe9b5161e9283fdffff2b",
+          "scheduled_start_ns": 99865922288882,
+          "confirmations": 32
+        },
+        {
+          "start_ns": 99893926665223,
+          "end_ns": 99896588501505,
+          "txid": "5ad5354435f7336ff72d351e7e12a5d40d3443f2a6111ac8d6a8bed75be29268",
+          "scheduled_start_ns": 99893921525653,
+          "confirmations": 24
+        },
+        {
+          "start_ns": 99917309173285,
+          "end_ns": 99920003414788,
+          "txid": "2e21b1202db2a808c506c2264b5435a530b59d9b79fcee885aca961889f69fee",
+          "scheduled_start_ns": 99917308596809,
+          "confirmations": 16
+        }
+      ],
+      "sync_command_times_ns": [
+        99847675937095,
+        99853676126082,
+        99859675779366,
+        99865678119358,
+        99871674232432,
+        99877675389383,
+        99883677427459,
+        99889673337491,
+        99896588599755,
+        99901678094519,
+        99907678239803,
+        99913678141545,
+        99920003513121,
+        99925674096902,
+        99931676077895,
+        99937675150928
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 1050000,
+      "recipient_after": 1200000,
+      "funding_txid": "da8954a6d56387f888ed7c45dc3a81f935c6085967b708c13ff8ff15ee17943a",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zingolib-latency-1",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "latency",
+      "repeat": 1,
+      "sender_state_id": "evaluation-zingolib-latency-1",
+      "payment_offsets_ns": [
+        19886309713,
+        42767930099,
+        69784502296
+      ],
+      "sync_offset_ns": 4986942960,
+      "conditioner_seed": 15630933924695931080,
+      "trace": "evaluation-zingolib-latency-1.trace.jsonl",
+      "trace_sha256": "4fa7287f49b5570a514da38cb17fc75c1b8640a85dfb0f90f9e5238992df7c4f",
+      "sender_address_sha256": "fa6a43324c66e261698981d9b0dcdda0a93cc78c1939c8a321e5de78c5c13ad7",
+      "sender_created_ns": 99948906142156,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 99986578950963,
+      "end_ns": 100082578950963,
+      "payments": [
+        {
+          "start_ns": 100006465893851,
+          "end_ns": 100009315367074,
+          "txid": "c04d130d1afe0963e9ae5858d6c1ba7b8936d2fd7d85ed9521009abbcc13f416",
+          "scheduled_start_ns": 100006465260676,
+          "confirmations": 33
+        },
+        {
+          "start_ns": 100029347682363,
+          "end_ns": 100031966845286,
+          "txid": "cc4bd4ae6acc24fd3ff62574bfd2a84d137d184e4bf8e4b8a84b7c84f4df5b7a",
+          "scheduled_start_ns": 100029346881062,
+          "confirmations": 26
+        },
+        {
+          "start_ns": 100056364785482,
+          "end_ns": 100058871955967,
+          "txid": "23a2cc26e8e463829a7a445cab17bbf905581d7b83d066a250dd845e4dcbb6f9",
+          "scheduled_start_ns": 100056363453259,
+          "confirmations": 18
+        }
+      ],
+      "sync_command_times_ns": [
+        99991570563940,
+        99997570404777,
+        100003571239527,
+        100009567127000,
+        100015567583267,
+        100021569134069,
+        100027569558880,
+        100033568761906,
+        100039568658136,
+        100045567913743,
+        100051567176474,
+        100058871973758,
+        100063566286603,
+        100069568475201,
+        100075566387146,
+        100081569201826
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 1200000,
+      "recipient_after": 1350000,
+      "funding_txid": "6a291f9f2b149f73bcb680ea28494151bc2ee9ba3ad2725b18721435e92c5ee6",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zingolib-baseline-1",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 1,
+      "sender_state_id": "evaluation-zingolib-baseline-1",
+      "payment_offsets_ns": [
+        14656991446,
+        40035312080,
+        70820714987
+      ],
+      "sync_offset_ns": 3352709922,
+      "conditioner_seed": 16706134014206830067,
+      "trace": "evaluation-zingolib-baseline-1.trace.jsonl",
+      "trace_sha256": "44b0c559d34d1517cc5ab5e1639a87805d5609fb2c2856fbc288b1f040aca4aa",
+      "sender_address_sha256": "95a378996f5ede0150fac700821805bcdfbcaa7aff4561696d7a0fa96e6752bf",
+      "sender_created_ns": 100092582689444,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 100129949186929,
+      "end_ns": 100225949186929,
+      "payments": [
+        {
+          "start_ns": 100144607210263,
+          "end_ns": 100147142578340,
+          "txid": "ea94a3ddbe0fb2afc739b04073b59f36e31b3e351af499f2bce532f949f46202",
+          "scheduled_start_ns": 100144606178375,
+          "confirmations": 35
+        },
+        {
+          "start_ns": 100169985406337,
+          "end_ns": 100172538592830,
+          "txid": "240d0ca679fce8297560d97fc3fb1fdfbe27662ef0bb0c177086a8674786a1c0",
+          "scheduled_start_ns": 100169984499009,
+          "confirmations": 27
+        },
+        {
+          "start_ns": 100200770442222,
+          "end_ns": 100203281957909,
+          "txid": "63da05f4ebfa8bb6ec8258d5f217e446d14e5abc2251a4be188e6b9dbb9dcb70",
+          "scheduled_start_ns": 100200769901916,
+          "confirmations": 17
+        }
+      ],
+      "sync_command_times_ns": [
+        100133302537995,
+        100139306231823,
+        100147142672132,
+        100151303824998,
+        100157302806982,
+        100163302989926,
+        100169306993339,
+        100175306189656,
+        100181303788928,
+        100187307270589,
+        100193306294448,
+        100199307279603,
+        100205307290589,
+        100211307238366,
+        100217302812759,
+        100223303189329
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 1350000,
+      "recipient_after": 1500000,
+      "funding_txid": "c20b82f4cddbce4426e76a12c127a2e9296ebb92ece3bec4f8c27a3b6dec676d",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zingolib-bandwidth-1",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "bandwidth",
+      "repeat": 1,
+      "sender_state_id": "evaluation-zingolib-bandwidth-1",
+      "payment_offsets_ns": [
+        19367596127,
+        47278108101,
+        78286280678
+      ],
+      "sync_offset_ns": 2724369877,
+      "conditioner_seed": 14186990558080642904,
+      "trace": "evaluation-zingolib-bandwidth-1.trace.jsonl",
+      "trace_sha256": "edae1a278491722b0d834dfe2820c7734f1947ff5bedbbb69c04dc997030b81e",
+      "sender_address_sha256": "bf7f195cca30df3ff296c7c528e673a1c58f82b1d7ca7f5513ee84b35230c040",
+      "sender_created_ns": 100236091929312,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 100274439930763,
+      "end_ns": 100370439930763,
+      "payments": [
+        {
+          "start_ns": 100293807990629,
+          "end_ns": 100296457604360,
+          "txid": "d284420a998b80d472ec38dc027a2814f376442495be732fe3b045ac7f6c0808",
+          "scheduled_start_ns": 100293807526890,
+          "confirmations": 34
+        },
+        {
+          "start_ns": 100321721247580,
+          "end_ns": 100324439210262,
+          "txid": "87a5099db9af1759e35596e444e5fc6de0b7d4714a2a0131c4030d34ba0a8ac5",
+          "scheduled_start_ns": 100321718038864,
+          "confirmations": 25
+        },
+        {
+          "start_ns": 100352731559558,
+          "end_ns": 100355402155962,
+          "txid": "2830ccf898ab8b9b7bac43e62487f593c376575927fe12f57e9ab1877be2413c",
+          "scheduled_start_ns": 100352726211441,
+          "confirmations": 15
+        }
+      ],
+      "sync_command_times_ns": [
+        100277168817095,
+        100283168818069,
+        100289169396669,
+        100296457661735,
+        100301165728232,
+        100307166105498,
+        100313169580438,
+        100319168107741,
+        100325169505760,
+        100331164748181,
+        100337164884154,
+        100343166720007,
+        100349169109195,
+        100355402276504,
+        100361169683185,
+        100367164619813
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 1500000,
+      "recipient_after": 1650000,
+      "funding_txid": "3ea7d32bda2e732508b6c353800368ebf307c07cb929e2c36439b33ee03a9f33",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zcash-devtool-bandwidth-1",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "bandwidth",
+      "repeat": 1,
+      "sender_state_id": "evaluation-zcash-devtool-bandwidth-1",
+      "payment_offsets_ns": [
+        18465113967,
+        47108877272,
+        78132093942
+      ],
+      "sync_offset_ns": 3746309777,
+      "conditioner_seed": 3475598534488650969,
+      "trace": "evaluation-zcash-devtool-bandwidth-1.trace.jsonl",
+      "trace_sha256": "b2a11709cb5f91c5a51bfd0cb40227a86d89db8d1424039ee17772a472773e92",
+      "sender_address_sha256": "ec265286c8b4f8d6e339b300c39f778e8352f5d74bc093dbee077dddfaf110b0",
+      "sender_created_ns": 100380863419441,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 100410606380942,
+      "end_ns": 100506606380942,
+      "payments": [
+        {
+          "start_ns": 100429075688404,
+          "end_ns": 100431936773450,
+          "txid": "4bc5df6553255f08a1bbd9a2d9c7df26ea82c473aadfdbca2992a93320042310",
+          "scheduled_start_ns": 100429071494909,
+          "confirmations": 34
+        },
+        {
+          "start_ns": 100457716926912,
+          "end_ns": 100460483250491,
+          "txid": "bb00354c6c336d66dbe12b2ad48a5a1c808d41cc2da8c57192793dc3c584cfb1",
+          "scheduled_start_ns": 100457715258214,
+          "confirmations": 25
+        },
+        {
+          "start_ns": 100488739472125,
+          "end_ns": 100491580784416,
+          "txid": "373e713a7af27e416976abf0680b19500d7694ac45c1e5734d3d00f3f019c5d5",
+          "scheduled_start_ns": 100488738474884,
+          "confirmations": 15
+        }
+      ],
+      "sync_command_times_ns": [
+        100414355826150,
+        100420357780916,
+        100426355415347,
+        100432357911051,
+        100438356922471,
+        100444355056966,
+        100450357640584,
+        100456357830199,
+        100462357656989,
+        100468355658317,
+        100474355851858,
+        100480356939401,
+        100486355330813,
+        100492355475221,
+        100498354733398,
+        100504356800638
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 1650000,
+      "recipient_after": 1800000,
+      "funding_txid": "db62606a160a0215caaa436617b0b9b9e763f06dddd037ca4622662c8a9499cb",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zcash-devtool-baseline-1",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "baseline",
+      "repeat": 1,
+      "sender_state_id": "evaluation-zcash-devtool-baseline-1",
+      "payment_offsets_ns": [
+        16111771059,
+        50260720091,
+        72009469005
+      ],
+      "sync_offset_ns": 4108083909,
+      "conditioner_seed": 2338796484958449467,
+      "trace": "evaluation-zcash-devtool-baseline-1.trace.jsonl",
+      "trace_sha256": "2d398a6bbb33b54d52ef707ba5e743d6edce6396d903c4446e9d39f65dbbd8ae",
+      "sender_address_sha256": "5f8459fe5b07a827daeeab9a974a9bd6fbd66118b5cdf903438d5d852580478b",
+      "sender_created_ns": 100516575954933,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 100546505454827,
+      "end_ns": 100642505454827,
+      "payments": [
+        {
+          "start_ns": 100562863727852,
+          "end_ns": 100565356714014,
+          "txid": "d95aa06d568130b45bc33b63edc7d2d09925f5ded446396a7750d233b7f92f59",
+          "scheduled_start_ns": 100562617225886,
+          "confirmations": 35
+        },
+        {
+          "start_ns": 100596766949361,
+          "end_ns": 100599270254046,
+          "txid": "1e3bfc106d0ae49f165a66bcf2f69201433aa171a9bee5ebdd0a20c85b2bf190",
+          "scheduled_start_ns": 100596766174918,
+          "confirmations": 24
+        },
+        {
+          "start_ns": 100618516541500,
+          "end_ns": 100621113910899,
+          "txid": "0a1a1a27e7d1a597796166a7dea9b1ec1a057574d434e23572d2d139276a26ed",
+          "scheduled_start_ns": 100618514923832,
+          "confirmations": 17
+        }
+      ],
+      "sync_command_times_ns": [
+        100550614244723,
+        100556615211029,
+        100562615619597,
+        100568617674629,
+        100574617539543,
+        100580618731927,
+        100586618771462,
+        100592615113744,
+        100599272489580,
+        100604613838176,
+        100610618919282,
+        100616614691188,
+        100622617367651,
+        100628615616813,
+        100634613837142,
+        100640616562094
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 1800000,
+      "recipient_after": 1950000,
+      "funding_txid": "32eecaffb08a7ce57db9cb18cc42eb9c83c272248a3f7c00bb1adea23a599237",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zingolib-bandwidth-2",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "bandwidth",
+      "repeat": 2,
+      "sender_state_id": "evaluation-zingolib-bandwidth-2",
+      "payment_offsets_ns": [
+        17459945321,
+        42271107022,
+        75178562268
+      ],
+      "sync_offset_ns": 5219834452,
+      "conditioner_seed": 12025177904384968818,
+      "trace": "evaluation-zingolib-bandwidth-2.trace.jsonl",
+      "trace_sha256": "7d999ae0b9a26e0c33931eaa42c87d129350b3e26f9a640ee480232e042b2350",
+      "sender_address_sha256": "bcf7e4f3072fd091f2bef019a196e5491f5791418e2e9dad8da665ea3d3d9158",
+      "sender_created_ns": 100652381537766,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 100689723156180,
+      "end_ns": 100785723156180,
+      "payments": [
+        {
+          "start_ns": 100707323697939,
+          "end_ns": 100709959366992,
+          "txid": "e1e719d35cea4ada06ca2729b197bbf6192cfb5ebf0f92e48e9919b432413244",
+          "scheduled_start_ns": 100707183101501,
+          "confirmations": 34
+        },
+        {
+          "start_ns": 100731996554479,
+          "end_ns": 100734665649455,
+          "txid": "df5a16111a4206367d1d0906dcdbe0b12bd7ec94c587c80c2cd65dfd8fe042f3",
+          "scheduled_start_ns": 100731994263202,
+          "confirmations": 26
+        },
+        {
+          "start_ns": 100764905093820,
+          "end_ns": 100767724893488,
+          "txid": "28e0c9236630e5176e457536de1d78cf48db50c427e534df23f7d844d2bda8e3",
+          "scheduled_start_ns": 100764901718448,
+          "confirmations": 16
+        }
+      ],
+      "sync_command_times_ns": [
+        100694944965895,
+        100700948297716,
+        100706943825113,
+        100712944178129,
+        100718944108067,
+        100724943469260,
+        100730948340774,
+        100736948245920,
+        100742944565851,
+        100748944556017,
+        100754946861726,
+        100760945161279,
+        100767725178821,
+        100772945703957,
+        100778948142541,
+        100784944420515
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 1950000,
+      "recipient_after": 2100000,
+      "funding_txid": "8515a7df96556229f0028bfd1889a33fa19601825a75011e740b6851e6040eef",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zcash-devtool-bandwidth-2",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "bandwidth",
+      "repeat": 2,
+      "sender_state_id": "evaluation-zcash-devtool-bandwidth-2",
+      "payment_offsets_ns": [
+        13216190753,
+        44306908393,
+        79757720153
+      ],
+      "sync_offset_ns": 2895211820,
+      "conditioner_seed": 18048522799886631865,
+      "trace": "evaluation-zcash-devtool-bandwidth-2.trace.jsonl",
+      "trace_sha256": "95d69841c003fff623c735e0dc1b66504c6a3732597f5fef21de46bd9e6b610b",
+      "sender_address_sha256": "c114b59bb6b81005278488634217fa5b462ab097064c2c1b8f566ede320737e1",
+      "sender_created_ns": 100795836444540,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 100825711166903,
+      "end_ns": 100921711166903,
+      "payments": [
+        {
+          "start_ns": 100838931993978,
+          "end_ns": 100841745418828,
+          "txid": "a653fe264f04b67677f85ecfb98274707ecdac6865ee2d51b4d014d150b3eb8f",
+          "scheduled_start_ns": 100838927357656,
+          "confirmations": 35
+        },
+        {
+          "start_ns": 100870022932121,
+          "end_ns": 100872796119647,
+          "txid": "29cfefb2c14474bf51e70b9b99a0d016c142871a9cf4f6f1a4e2ff2481d0cc01",
+          "scheduled_start_ns": 100870018075296,
+          "confirmations": 26
+        },
+        {
+          "start_ns": 100905472724692,
+          "end_ns": 100908235589869,
+          "txid": "b4cc11cbf02f59877e8ff2dce9b58838bab274cff406d5231e3f720c945017f4",
+          "scheduled_start_ns": 100905468887056,
+          "confirmations": 14
+        }
+      ],
+      "sync_command_times_ns": [
+        100828611245011,
+        100834611713600,
+        100841748336779,
+        100846611373406,
+        100852608388253,
+        100858608248301,
+        100864610898135,
+        100872796215564,
+        100876611639903,
+        100882610836668,
+        100888611656393,
+        100894610917575,
+        100900611547508,
+        100908236111162,
+        100912611566332,
+        100918611693098
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 2100000,
+      "recipient_after": 2250000,
+      "funding_txid": "da4f1b942160976d8e5490cae27c797db5639895c7228e6456c9a9c71787c780",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zingolib-baseline-2",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 2,
+      "sender_state_id": "evaluation-zingolib-baseline-2",
+      "payment_offsets_ns": [
+        12704364287,
+        44069298520,
+        70347708771
+      ],
+      "sync_offset_ns": 5045846011,
+      "conditioner_seed": 16878349556076247646,
+      "trace": "evaluation-zingolib-baseline-2.trace.jsonl",
+      "trace_sha256": "0a994f509635b30ec0b08b4a237e8241e93fa442273f12e955a719eef787ad0b",
+      "sender_address_sha256": "7afcf4b867be01bb1299e9d6a74efc306442b31443d831ef98e8e38f78c48344",
+      "sender_created_ns": 100931916392557,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 100968928143618,
+      "end_ns": 101064928143618,
+      "payments": [
+        {
+          "start_ns": 100981635868430,
+          "end_ns": 100984159082396,
+          "txid": "d8a77e4346a83457a34cc5daedb5129ccd09b2d1bfa722049aa9f069b8ede8ab",
+          "scheduled_start_ns": 100981632507905,
+          "confirmations": 36
+        },
+        {
+          "start_ns": 101013000142956,
+          "end_ns": 101015519678731,
+          "txid": "6bf476261b07bf66aeee89716b4d28f58aebdac9bc82d2f01292ca9393f406bd",
+          "scheduled_start_ns": 101012997442138,
+          "confirmations": 26
+        },
+        {
+          "start_ns": 101039280105090,
+          "end_ns": 101041926108659,
+          "txid": "dbb9d7ac95a5c88081bf4d4e7cf05a033c5cce0967d28acd500f4daf1d5c5810",
+          "scheduled_start_ns": 101039275852389,
+          "confirmations": 18
+        }
+      ],
+      "sync_command_times_ns": [
+        100973977424390,
+        100979975073902,
+        100985974529459,
+        100991978088147,
+        100997975462867,
+        101003974686058,
+        101009978500218,
+        101015975431688,
+        101021978900164,
+        101027978881679,
+        101033977855317,
+        101041928280370,
+        101045980108431,
+        101051975437608,
+        101057977148707,
+        101063975549720
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 2250000,
+      "recipient_after": 2400000,
+      "funding_txid": "a3541dd9d761cab5c7db4537fc48a28968779c4b725fd3c51e2f436858c91717",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zingolib-latency-2",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "latency",
+      "repeat": 2,
+      "sender_state_id": "evaluation-zingolib-latency-2",
+      "payment_offsets_ns": [
+        15545882930,
+        47501899906,
+        74265370406
+      ],
+      "sync_offset_ns": 4501447533,
+      "conditioner_seed": 1539910553958866701,
+      "trace": "evaluation-zingolib-latency-2.trace.jsonl",
+      "trace_sha256": "d35e596cf245fa9cfb5d53b26eb3251116a3e4c855756d9031ddd821429700a0",
+      "sender_address_sha256": "a7f39e6dc6bc93401d2b38bd96a2d5426787d30aeb9bb2eca916a3612de2b824",
+      "sender_created_ns": 101075287236767,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 101112888251500,
+      "end_ns": 101208888251500,
+      "payments": [
+        {
+          "start_ns": 101128438137671,
+          "end_ns": 101130982103346,
+          "txid": "c09626eb502c055af3b648bc225bfce38e95894499bb918885ceb20e046e39b2",
+          "scheduled_start_ns": 101128434134430,
+          "confirmations": 35
+        },
+        {
+          "start_ns": 101160394895281,
+          "end_ns": 101162931543371,
+          "txid": "9ef1c75a9bd032cbaf2caa6f20d8e6550e7f116fc5729ec604a8b2f4329eace1",
+          "scheduled_start_ns": 101160390151406,
+          "confirmations": 25
+        },
+        {
+          "start_ns": 101187156368306,
+          "end_ns": 101189664975706,
+          "txid": "1aeb4d9463d96699064e3bbf216fd3fb4197afd59b960e7942cfa3259b4dbec1",
+          "scheduled_start_ns": 101187153621906,
+          "confirmations": 16
+        }
+      ],
+      "sync_command_times_ns": [
+        101117394304059,
+        101123392653530,
+        101130982163554,
+        101135394663169,
+        101141390543982,
+        101147395088901,
+        101153391143856,
+        101159393855565,
+        101165391495979,
+        101171392942105,
+        101177393520479,
+        101183393341020,
+        101189665245956,
+        101195393259018,
+        101201389932681,
+        101207392909350
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 2400000,
+      "recipient_after": 2550000,
+      "funding_txid": "672ef53027a9b05d015d8bf4bb8419002504bf8cecee8e87e0f6cf39f34e9232",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zcash-devtool-baseline-2",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "baseline",
+      "repeat": 2,
+      "sender_state_id": "evaluation-zcash-devtool-baseline-2",
+      "payment_offsets_ns": [
+        22570996755,
+        45637383503,
+        75071420385
+      ],
+      "sync_offset_ns": 2866639641,
+      "conditioner_seed": 12115375896848827041,
+      "trace": "evaluation-zcash-devtool-baseline-2.trace.jsonl",
+      "trace_sha256": "49d707ccd10d470f45163601f8389f332029cf03ac4af1c0c918802c8f6e5603",
+      "sender_address_sha256": "e0a863fb9f76328bbb32cae4f883637fb6398a4f170e79de73bcc014870a9706",
+      "sender_created_ns": 101219411529197,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 101249160947024,
+      "end_ns": 101345160947024,
+      "payments": [
+        {
+          "start_ns": 101271734183506,
+          "end_ns": 101274269178797,
+          "txid": "c4afa8990feadb0b2ca8583bc0be1a3dd56a197048e43e8d60333bf5a3164e36",
+          "scheduled_start_ns": 101271731943779,
+          "confirmations": 33
+        },
+        {
+          "start_ns": 101294802692526,
+          "end_ns": 101297316380477,
+          "txid": "f75dc697eb0268b3b81a360179fa96ff2fb1806dc9d4519c159e105a6aa06e32",
+          "scheduled_start_ns": 101294798330527,
+          "confirmations": 25
+        },
+        {
+          "start_ns": 101324253522857,
+          "end_ns": 101326757254008,
+          "txid": "10482ffe59d86c1d581f9372c6b44c83c75d3fecc8c2c407f1bc59b0d8aa4b74",
+          "scheduled_start_ns": 101324232367409,
+          "confirmations": 16
+        }
+      ],
+      "sync_command_times_ns": [
+        101252032887770,
+        101258031927810,
+        101264032486146,
+        101270032765230,
+        101276028175017,
+        101282032107533,
+        101288031162501,
+        101294031822541,
+        101300031551380,
+        101306032462543,
+        101312032751294,
+        101318028608078,
+        101324031774766,
+        101330032898469,
+        101336032116311,
+        101342032786309
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 2550000,
+      "recipient_after": 2700000,
+      "funding_txid": "4ec80fd3e0af76e513978a7a2c72b242855ce8ea1c81c1d6dfc5fb86b18d9f62",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zcash-devtool-latency-2",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "latency",
+      "repeat": 2,
+      "sender_state_id": "evaluation-zcash-devtool-latency-2",
+      "payment_offsets_ns": [
+        13536491941,
+        41107452743,
+        72320003255
+      ],
+      "sync_offset_ns": 2071125087,
+      "conditioner_seed": 4917812969480855257,
+      "trace": "evaluation-zcash-devtool-latency-2.trace.jsonl",
+      "trace_sha256": "463faa35dd557b4f31461e98c31616cb2a6638505d60b90a3b41d5175e3bbbf6",
+      "sender_address_sha256": "3635e3d1e967aa7aed7503bd3742a4c690b8223649e3aa4957a8d5ae7e8b7185",
+      "sender_created_ns": 101355322942073,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 101385508480641,
+      "end_ns": 101481508480641,
+      "payments": [
+        {
+          "start_ns": 101399045604737,
+          "end_ns": 101401881687599,
+          "txid": "fdff78053feaaed0426b2954b2c1baeceba9f31dd6896c509a853786fd405df0",
+          "scheduled_start_ns": 101399044972582,
+          "confirmations": 35
+        },
+        {
+          "start_ns": 101426618677435,
+          "end_ns": 101429304735014,
+          "txid": "d64b1311e34ae18887d8d6ef0bf1849ba2f42c8935e78357148ec38270825ab4",
+          "scheduled_start_ns": 101426615933384,
+          "confirmations": 27
+        },
+        {
+          "start_ns": 101457831077041,
+          "end_ns": 101460652641939,
+          "txid": "d0c21dce195c87e7611c36087e77a7fa4f1f3a8055cc693a5948640fd76a195d",
+          "scheduled_start_ns": 101457828483896,
+          "confirmations": 17
+        }
+      ],
+      "sync_command_times_ns": [
+        101387581930968,
+        101393584625095,
+        101401881801973,
+        101405581805515,
+        101411581183909,
+        101417583733911,
+        101423581154982,
+        101429580546876,
+        101435581452845,
+        101441584810217,
+        101447584754691,
+        101453585180621,
+        101460652752355,
+        101465584833529,
+        101471584717378,
+        101477580161751
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 2700000,
+      "recipient_after": 2850000,
+      "funding_txid": "5ff63de889cdad27c88c872a77063176e7ff3088bef45324340c39f6b2886485",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zcash-devtool-baseline-3",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "baseline",
+      "repeat": 3,
+      "sender_state_id": "evaluation-zcash-devtool-baseline-3",
+      "payment_offsets_ns": [
+        23396735374,
+        45585557551,
+        70458652691
+      ],
+      "sync_offset_ns": 305073082,
+      "conditioner_seed": 11206127001163424749,
+      "trace": "evaluation-zcash-devtool-baseline-3.trace.jsonl",
+      "trace_sha256": "7b0744014c9bf1c89272f65aa89ae3c966fee45a05983bbd7743f35eef9dca40",
+      "sender_address_sha256": "1b09fa9147ac5d3e1514cb9b057b708210f2e51cfabae3c8a1fa15d905258b66",
+      "sender_created_ns": 101490903522594,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 101520560447658,
+      "end_ns": 101616560447658,
+      "payments": [
+        {
+          "start_ns": 101543960310119,
+          "end_ns": 101546496364140,
+          "txid": "a0ed0c1b71fbf9bcd32c9f67447942fed8e456baa30e81ab33ccb8d2f33a233d",
+          "scheduled_start_ns": 101543957183032,
+          "confirmations": 32
+        },
+        {
+          "start_ns": 101566151183914,
+          "end_ns": 101568701591963,
+          "txid": "3a7240450528080565173e99d583db7186a0736332b6dfb75bb06e0c5a86eefd",
+          "scheduled_start_ns": 101566146005209,
+          "confirmations": 25
+        },
+        {
+          "start_ns": 101591023083307,
+          "end_ns": 101593542372009,
+          "txid": "2d557030849c2c272d3b3c7159f377889ca4830fa4062442e63595cced27fe5e",
+          "scheduled_start_ns": 101591019100349,
+          "confirmations": 18
+        }
+      ],
+      "sync_command_times_ns": [
+        101520867490383,
+        101526869236675,
+        101532868668052,
+        101538868568137,
+        101546496444348,
+        101550870815556,
+        101556869781975,
+        101562870482685,
+        101568870036979,
+        101574868426524,
+        101580867361818,
+        101586868582444,
+        101593543195717,
+        101598865796742,
+        101604870821323,
+        101610867878827
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 2850000,
+      "recipient_after": 3000000,
+      "funding_txid": "9bd7e389d3bb7ca0a648b3f4bb9eec7d50d0f6bd947343eda60d63705883ad2d",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zingolib-baseline-3",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 3,
+      "sender_state_id": "evaluation-zingolib-baseline-3",
+      "payment_offsets_ns": [
+        16527202957,
+        42114076385,
+        72284564455
+      ],
+      "sync_offset_ns": 1255996857,
+      "conditioner_seed": 4966095885349856989,
+      "trace": "evaluation-zingolib-baseline-3.trace.jsonl",
+      "trace_sha256": "4443299b31c22ad881be3dda2a1efbc7550c3f170dbfbb4cf39219c4c5db10bd",
+      "sender_address_sha256": "6341a123d60f4c9614943d86c49306aa54f0d9bf6be53375716562cc43805193",
+      "sender_created_ns": 101626189309315,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 101663312453678,
+      "end_ns": 101759312453678,
+      "payments": [
+        {
+          "start_ns": 101679841630184,
+          "end_ns": 101682307333114,
+          "txid": "71f61cf0eb391bdba753fa3424f468598af61f38cb22fa701f361fa7e12a6315",
+          "scheduled_start_ns": 101679839656635,
+          "confirmations": 35
+        },
+        {
+          "start_ns": 101705427567484,
+          "end_ns": 101707888357467,
+          "txid": "bd9a3eaaff64d06f8243d06b9336d738cf88fe3c23a23cd2aaea1d6aeb5b8048",
+          "scheduled_start_ns": 101705426530063,
+          "confirmations": 27
+        },
+        {
+          "start_ns": 101735602358259,
+          "end_ns": 101738091167473,
+          "txid": "3d7764bf9071ba69c0e208d5a22de83d8c9f8ec147a48487779dde6e45be7db0",
+          "scheduled_start_ns": 101735597018133,
+          "confirmations": 17
+        }
+      ],
+      "sync_command_times_ns": [
+        101664573690498,
+        101670573665637,
+        101676573759651,
+        101682568853134,
+        101688571828891,
+        101694573558943,
+        101700571425211,
+        101707888436800,
+        101712571778863,
+        101718569255549,
+        101724572707055,
+        101730573720525,
+        101738091245223,
+        101742569982352,
+        101748573641233,
+        101754572524291
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 3000000,
+      "recipient_after": 3150000,
+      "funding_txid": "3769a10d4663b4fd3de22941989bc6b4620823fcef0c3be5a0354f7256dba0f0",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zingolib-latency-3",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "latency",
+      "repeat": 3,
+      "sender_state_id": "evaluation-zingolib-latency-3",
+      "payment_offsets_ns": [
+        13398165635,
+        40999811559,
+        68178095306
+      ],
+      "sync_offset_ns": 4638549261,
+      "conditioner_seed": 10881098935347811387,
+      "trace": "evaluation-zingolib-latency-3.trace.jsonl",
+      "trace_sha256": "48691ef8f86eb799b68600cf2abf2203b1445ba05dc1c9925896f6bbb1c78f55",
+      "sender_address_sha256": "05dc01f2225333916f56b6f581fb79267af75e83da9bfbe05cb82b76270261ba",
+      "sender_created_ns": 101770154232716,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 101807816918505,
+      "end_ns": 101903816918505,
+      "payments": [
+        {
+          "start_ns": 101821220160164,
+          "end_ns": 101823724598733,
+          "txid": "65e00147d90a3dba476c24c9ad1b800825c9fff5a54575317b4cc0b862fe48d1",
+          "scheduled_start_ns": 101821215084140,
+          "confirmations": 36
+        },
+        {
+          "start_ns": 101848817754243,
+          "end_ns": 101851321429978,
+          "txid": "66a33030461fadb4bf454ca4755da4130e610ed6a210d56c259b6246f0ad6141",
+          "scheduled_start_ns": 101848816730064,
+          "confirmations": 27
+        },
+        {
+          "start_ns": 101875996050947,
+          "end_ns": 101878585397692,
+          "txid": "726b715739dfc1a407f038675fd3df6d97d4940ba0ce7034901dd1db32f5b113",
+          "scheduled_start_ns": 101875995013811,
+          "confirmations": 18
+        }
+      ],
+      "sync_command_times_ns": [
+        101812460961968,
+        101818456698442,
+        101824460912920,
+        101830458544769,
+        101836460112287,
+        101842456491969,
+        101848457639904,
+        101854456254546,
+        101860456424105,
+        101866456502914,
+        101872460418100,
+        101878585509650,
+        101884460647677,
+        101890457354567,
+        101896457318918,
+        101902459144084
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 3150000,
+      "recipient_after": 3300000,
+      "funding_txid": "135217d770d2d7206480bdbbb9beab4b36d56f1a3b0dea29575c40f6972aa186",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zcash-devtool-bandwidth-3",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "bandwidth",
+      "repeat": 3,
+      "sender_state_id": "evaluation-zcash-devtool-bandwidth-3",
+      "payment_offsets_ns": [
+        18168921930,
+        49231805362,
+        68814972441
+      ],
+      "sync_offset_ns": 740454015,
+      "conditioner_seed": 5647780333916027175,
+      "trace": "evaluation-zcash-devtool-bandwidth-3.trace.jsonl",
+      "trace_sha256": "fc2b760370a3c6e02bee73891bee8993b7d8e17a41c36f00a4236fb14020b622",
+      "sender_address_sha256": "059952b647b65746e70e6106a956fc9a06913ce2852db2e2af7f83ecc0932229",
+      "sender_created_ns": 101914427530174,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 101944447221695,
+      "end_ns": 102040447221695,
+      "payments": [
+        {
+          "start_ns": 101962618509574,
+          "end_ns": 101965445207556,
+          "txid": "de24d4e017fed1b1c1f45ddcf45f8330a842cc83f7b7691cb107f35dbf62f5d5",
+          "scheduled_start_ns": 101962616143625,
+          "confirmations": 34
+        },
+        {
+          "start_ns": 101993680377520,
+          "end_ns": 101996486685029,
+          "txid": "4ed5faec603ed28e809faf851af2380cc2882a01d66cca6f7a904a0da6f5542f",
+          "scheduled_start_ns": 101993679027057,
+          "confirmations": 24
+        },
+        {
+          "start_ns": 102013262997493,
+          "end_ns": 102016022090049,
+          "txid": "924345105f28b986ae4d1dc1715c7ccf296df482d58168e899230f725da279af",
+          "scheduled_start_ns": 102013262194136,
+          "confirmations": 18
+        }
+      ],
+      "sync_command_times_ns": [
+        101945191937584,
+        101951192863015,
+        101957193669364,
+        101965445304848,
+        101969189222472,
+        101975188798111,
+        101981192185336,
+        101987188229764,
+        101993191101155,
+        101999192692546,
+        102005192353226,
+        102011191386865,
+        102017192869213,
+        102023191223976,
+        102029192472128,
+        102035192659726
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 3300000,
+      "recipient_after": 3450000,
+      "funding_txid": "9767cde2f885b38db7b253567fed4c0744066df149bcdb786eb89fc79ecac16d",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zcash-devtool-latency-3",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "latency",
+      "repeat": 3,
+      "sender_state_id": "evaluation-zcash-devtool-latency-3",
+      "payment_offsets_ns": [
+        22313833492,
+        40154366430,
+        70841853270
+      ],
+      "sync_offset_ns": 5139321721,
+      "conditioner_seed": 9715837996542191701,
+      "trace": "evaluation-zcash-devtool-latency-3.trace.jsonl",
+      "trace_sha256": "833a79bca1450743662d80610bbf46ff595919d8305238626dd065e7cd2e9cd6",
+      "sender_address_sha256": "68daaa05dd7ad8ebf3e056d74014b251112184c1008ecddd3de14d548171b04e",
+      "sender_created_ns": 102050181025007,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 102080577747907,
+      "end_ns": 102176577747907,
+      "payments": [
+        {
+          "start_ns": 102102896547369,
+          "end_ns": 102105530105870,
+          "txid": "aae0f2c136cafc6e4f3a9e45c29be9776ca4eef967ba416253f86c5a75dbff14",
+          "scheduled_start_ns": 102102891581399,
+          "confirmations": 33
+        },
+        {
+          "start_ns": 102120736692573,
+          "end_ns": 102123432975314,
+          "txid": "1ad5e487f260ac046d519e9ccd7959854a6e83e179da28656a7b39dec9184828",
+          "scheduled_start_ns": 102120732114337,
+          "confirmations": 27
+        },
+        {
+          "start_ns": 102151423422285,
+          "end_ns": 102154128565406,
+          "txid": "b53811bbb9f22e89c45d7a53a8f86b796db4f86af94f3e3918f70027c09fc289",
+          "scheduled_start_ns": 102151419601177,
+          "confirmations": 17
+        }
+      ],
+      "sync_command_times_ns": [
+        102085718237156,
+        102091723133673,
+        102097718352204,
+        102105530186495,
+        102109721610327,
+        102115719236740,
+        102123433028606,
+        102127722131695,
+        102133722254943,
+        102139719217398,
+        102145721934314,
+        102154131204990,
+        102157721762291,
+        102163722247518,
+        102169721724079,
+        102175718245346
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 3450000,
+      "recipient_after": 3600000,
+      "funding_txid": "ff86596beafe7c5229bcd3786706a7a156f6601aeb5b66e9345a0222cf7eb0e2",
+      "funding_confirmations": 10
+    },
+    {
+      "id": "evaluation-zingolib-bandwidth-3",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "bandwidth",
+      "repeat": 3,
+      "sender_state_id": "evaluation-zingolib-bandwidth-3",
+      "payment_offsets_ns": [
+        19816593152,
+        42341827956,
+        76526958922
+      ],
+      "sync_offset_ns": 4527822058,
+      "conditioner_seed": 3246759188514641615,
+      "trace": "evaluation-zingolib-bandwidth-3.trace.jsonl",
+      "trace_sha256": "5604adfc49462d1e2e8d19dc02a5fbe885db3f6c06302eaba9a1a43f36fc7e26",
+      "sender_address_sha256": "bd61b3884e82800d42b8332034023037b522b807eb45a1f3739b1e378b944ff6",
+      "sender_created_ns": 102186016551040,
+      "sender_directory_was_absent": true,
+      "sender_initial_balance": 0,
+      "sender_funded_balance": 480000,
+      "start_ns": 102223570716550,
+      "end_ns": 102319570716550,
+      "payments": [
+        {
+          "start_ns": 102243389453676,
+          "end_ns": 102246390162498,
+          "txid": "436e6b93466b8a86629f7a875e5db1ae7b2375b969cf6c58bde44e2a58c97029",
+          "scheduled_start_ns": 102243387309702,
+          "confirmations": 32
+        },
+        {
+          "start_ns": 102265913558978,
+          "end_ns": 102268659301049,
+          "txid": "7940773b6726181d813514f27ff8f6bc46ae81b0dee08ba68baebf68c656518a",
+          "scheduled_start_ns": 102265912544506,
+          "confirmations": 25
+        },
+        {
+          "start_ns": 102300103165989,
+          "end_ns": 102302956834391,
+          "txid": "0208d897776925ce55a3782f7a6fbcddaaa502c35a4e7f87e45288d72b80ea40",
+          "scheduled_start_ns": 102300097675472,
+          "confirmations": 15
+        }
+      ],
+      "sync_command_times_ns": [
+        102228100704798,
+        102234101444650,
+        102240101624003,
+        102246390431707,
+        102252102781666,
+        102258102661477,
+        102264102591621,
+        102270101369472,
+        102276104687910,
+        102282099917718,
+        102288103763283,
+        102294103825410,
+        102302957991051,
+        102306101532576,
+        102312102031065,
+        102318100258765
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 3600000,
+      "recipient_after": 3750000,
+      "funding_txid": "7e1c0b4b5570283f673f39dd734927f2d0a5130f72583b468c4992468b0bd444",
+      "funding_confirmations": 10
+    }
+  ],
+  "binaries": {
+    "zingo-cli": "f4f1ca734d26a65b5920c1f3066cca05376873dd3e92878da5f875196ff46845",
+    "zcash-devtool": "3f0acfe3379f8f3e03a379ab2259c93302d8c85d8e6c0e333008382491f7700f",
+    "lightwalletd": "1e85e09b796e5fb212dc368047a7ba15843b5a6b0e283f097829f6c08f8e5770"
+  },
+  "detector_sha256": "23136fd90549a6a218dc67ae2c7ecebc5ee81099d438007f95181184b17a028f",
+  "frozen_time_ns": 99812871364590
+}
