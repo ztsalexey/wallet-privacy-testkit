@@ -16,6 +16,7 @@ from pathlib import Path
 import grpc
 
 from wallet_privacy_testkit.fault_relay import SendTransactionRelay
+from wallet_privacy_testkit.recovery import check_scenario, verify_recovery_report
 
 STATE = Path('/lab')
 ENDPOINT = 'https://localhost:9067'
@@ -98,28 +99,58 @@ def transaction_status(output, txid):
     return 'absent'
 
 
-@contextlib.contextmanager
-def indexer():
-    wait_node()
-    args = ['lightwalletd', '--grpc-bind-addr', '127.0.0.1:9067',
-            '--http-bind-addr', '127.0.0.1:9068', '--tls-cert', str(STATE / 'cert.pem'),
-            '--tls-key', str(STATE / 'key.pem'), '--data-dir', str(STATE / 'indexer'),
-            '--log-file', str(STATE / 'indexer.log'), '--rpcuser', 'regtest',
-            '--rpcpassword', 'regtest', '--rpchost', 'zebra', '--rpcport', '18232']
-    with (STATE / 'indexer-stderr.log').open('a') as log:
-        process = subprocess.Popen(args, stdout=log, stderr=log)
+class Indexer:
+    def __init__(self, port=9067):
+        self.port = port
+        self.process = None
+        self.log = None
+        self.state_dir = STATE / f'indexer-{port}'
+
+    @property
+    def endpoint(self):
+        return f'https://localhost:{self.port}'
+
+    def start(self):
+        if self.process is not None:
+            raise RuntimeError('indexer already started')
+        wait_node()
+        self.log = (STATE / f'indexer-{self.port}-stderr.log').open('a')
+        args = ['lightwalletd', '--grpc-bind-addr', f'127.0.0.1:{self.port}',
+                '--http-bind-addr', f'127.0.0.1:{self.port + 1}',
+                '--tls-cert', str(STATE / 'cert.pem'), '--tls-key', str(STATE / 'key.pem'),
+                '--data-dir', str(self.state_dir), '--log-file', str(STATE / f'indexer-{self.port}.log'),
+                '--rpcuser', 'regtest', '--rpcpassword', 'regtest', '--rpchost', 'zebra', '--rpcport', '18232']
+        self.process = subprocess.Popen(args, stdout=self.log, stderr=self.log)
         try:
-            with grpc.secure_channel('localhost:9067', grpc.ssl_channel_credentials(
+            with grpc.secure_channel(f'localhost:{self.port}', grpc.ssl_channel_credentials(
                     root_certificates=(STATE / 'cert.pem').read_bytes())) as channel:
                 grpc.channel_ready_future(channel).result(timeout=90)
-            yield
-        finally:
-            process.terminate()
+        except BaseException:
+            self.stop()
+            raise
+        return self.process.pid
+
+    def stop(self):
+        if self.process is not None:
+            self.process.terminate()
             try:
-                process.wait(timeout=15)
+                self.process.wait(timeout=15)
             except subprocess.TimeoutExpired:
-                process.kill()
-                process.wait()
+                self.process.kill()
+                self.process.wait()
+            self.process = None
+            self.log.close()
+            self.log = None
+
+
+@contextlib.contextmanager
+def indexer():
+    instance = Indexer()
+    instance.start()
+    try:
+        yield instance
+    finally:
+        instance.stop()
 
 
 def initialize():
@@ -186,98 +217,146 @@ def bootstrap():
         config.write_text(re.sub(r'miner_address = "[^"]+"', f'miner_address = "{miner}"', config.read_text()))
 
 
-def synchronize():
-    return {name: orchard_balance(wallet(name, 'balance', sync=True))
+def synchronize(server=ENDPOINT):
+    return {name: orchard_balance(wallet(name, 'balance', sync=True, server=server))
             for name in ('alice', 'bob')}
 
 
-def exercise(mode, recipient, amount):
+def exercise(name, recipient, amount, primary):
+    mode = 'after-hold' if name == 'after-hold' else 'after-once'
     balances = synchronize()
-    if rpc('getrawmempool'):
+    mempool_before = rpc('getrawmempool')
+    if mempool_before:
         raise RuntimeError('scenario must start with an empty mempool')
     relay = SendTransactionRelay('localhost:9067', mode,
                                  upstream_ca=STATE / 'cert.pem',
                                  certificate=STATE / 'cert.pem', private_key=STATE / 'key.pem')
     process = None
-    killed = False
+    intervention = {}
     try:
-        with (STATE / f'{mode}-send.log').open('w') as log:
+        with (STATE / f'{name}-send.log').open('w') as log:
             process = subprocess.Popen(wallet_args('alice', 'quicksend',
                 [json.dumps([{'address': recipient, 'amount': amount}])], server=relay.endpoint),
                 stdout=log, stderr=log)
             if mode == 'after-hold':
                 deadline = time.monotonic() + 240
                 while time.monotonic() < deadline:
-                    if any(e.get('response_held') and e.get('upstream_response', {}).get('error_code') == 0
-                           for e in list(relay.events)):
+                    accepted = [e for e in list(relay.events) if e.get('response_held')
+                                and e.get('upstream_response', {}).get('error_code') == 0]
+                    if accepted:
                         if process.poll() is not None:
                             raise RuntimeError('wallet exited before the crash boundary')
+                        intervention['accepted_time_ns'] = accepted[0]['upstream_response_time_ns']
+                        intervention['kill_time_ns'] = time.monotonic_ns()
                         process.kill()
-                        killed = True
                         break
                     if process.poll() is not None:
                         raise RuntimeError('wallet exited before an accepted submission was held')
                     time.sleep(0.02)
-                if not killed:
+                if 'kill_time_ns' not in intervention:
                     raise RuntimeError('accepted submission was not observed before timeout')
-            exit_code = process.wait(timeout=240)
-        events = relay.events
+            intervention['wallet_exit_code'] = process.wait(timeout=240)
     finally:
         if process is not None and process.poll() is None:
             process.kill()
             process.wait()
         relay.close()
-    accepted = [e['upstream_response']['message'] for e in events
-                if e.get('upstream_response', {}).get('error_code') == 0]
-    accepted = [json.loads(x) if x.startswith('"') else x for x in accepted]
+    attempts = []
+    for event in relay.events:
+        response = event.get('upstream_response', {})
+        txid = response.get('message') if response.get('error_code') == 0 else None
+        if txid is not None and txid.startswith('"'):
+            txid = json.loads(txid)
+        attempts.append({'attempt': event['attempt'], 'transaction_sha256': event['transaction_sha256'],
+                         'transaction_bytes': event['transaction_bytes'], 'forwarded': event['forwarded'],
+                         'upstream_code': response.get('error_code'), 'accepted_txid': txid,
+                         'response_lost': event.get('response_lost', False),
+                         'response_held': event.get('response_held', False)})
+    accepted = [a['accepted_txid'] for a in attempts if a['accepted_txid'] is not None]
     if len(accepted) != 1 or not re.fullmatch('[0-9a-f]{64}', accepted[0]):
         raise RuntimeError('expected exactly one node-accepted transaction')
     txid = accepted[0]
-    hashes = {e['transaction_sha256'] for e in events}
-    if len(hashes) != 1 or set(rpc('getrawmempool')) != {txid}:
-        raise RuntimeError('submission byte identity or mempool uniqueness failed')
+    mempool_after = rpc('getrawmempool')
     raw_hash = hashlib.sha256(bytes.fromhex(rpc('getrawtransaction', [txid, 0]))).hexdigest()
-    if hashes != {raw_hash}:
-        raise RuntimeError('node transaction differs from submitted bytes')
-    # Every CLI invocation is a new process using the same persisted wallet.
-    before_mining = transaction_status(wallet('alice', 'transactions'), txid)
-    rpc('generate', [3])
-    after = synchronize()
-    history = wallet('alice', 'transactions')
-    confirmations = rpc('getrawtransaction', [txid, 1]).get('confirmations', 0)
-    if confirmations < 3 or transaction_status(history, txid) != 'confirmed':
-        raise RuntimeError('node or reopened wallet failed to report confirmation')
-    if after['bob'] - balances['bob'] != amount or rpc('getrawmempool'):
-        raise RuntimeError('recipient balance delta or final mempool check failed')
-    return {'mode': mode, 'wallet_killed_before_ack': killed, 'wallet_exit_code': exit_code,
-            'attempt_count': len(events), 'transaction_sha256': raw_hash, 'txid': txid,
-            'same_signed_bytes': True, 'node_mempool_unique': True,
-            'wallet_status_after_reopen_before_mining': before_mining,
-            'wallet_status_after_sync': 'confirmed', 'confirmations': confirmations,
-            'recipient_balance_delta': amount, 'status': 'pass'}
+    recovery_endpoint = ENDPOINT
+    secondary = None
+    try:
+        if name in ('indexer-restart', 'outage', 'alternate-indexer'):
+            intervention['old_pid'] = primary.process.pid
+            primary.stop()
+            intervention['indexer_stopped'] = True
+            if name == 'outage':
+                started = time.monotonic_ns()
+                with grpc.secure_channel('localhost:9067', grpc.ssl_channel_credentials(
+                        root_certificates=(STATE / 'cert.pem').read_bytes())) as channel:
+                    try:
+                        grpc.channel_ready_future(channel).result(timeout=1)
+                        intervention['endpoint_unavailable'] = False
+                    except grpc.FutureTimeoutError:
+                        intervention['endpoint_unavailable'] = True
+                time.sleep(12)
+                intervention['outage_elapsed_ns'] = time.monotonic_ns() - started
+            if name == 'alternate-indexer':
+                secondary = Indexer(9077)
+                intervention.update(original_indexer_stopped=True, original_port=9067,
+                                    recovery_port=9077, fresh_indexer_state=not secondary.state_dir.exists())
+                secondary.start()
+                recovery_endpoint = secondary.endpoint
+            else:
+                intervention['new_pid'] = primary.start()
+        before_mining = transaction_status(wallet('alice', 'transactions', server=recovery_endpoint), txid)
+        if name != 'no-mining':
+            rpc('generate', [3])
+        after = synchronize(recovery_endpoint)
+        history = wallet('alice', 'transactions', server=recovery_endpoint)
+        node_tx = rpc('getrawtransaction', [txid, 1])
+        return {'name': name, 'intent': {'amount': amount}, 'attempts': attempts,
+                'recipient': {'before': balances['bob'], 'after': after['bob']},
+                'wallet': {'after_reopen': before_mining, 'after_sync': transaction_status(history, txid)},
+                'node': {'mempool_before': mempool_before, 'mempool_after_submit': mempool_after,
+                         'mempool_final': rpc('getrawmempool'),
+                         'transaction': {'txid': txid, 'sha256': raw_hash,
+                                         'confirmations': node_tx.get('confirmations', 0)}},
+                'intervention': intervention}
+    finally:
+        if secondary is not None:
+            secondary.stop()
+        if primary.process is None:
+            primary.start()
 
 
 def run_tests():
-    report = {'status': 'running', 'sources': SOURCES, 'architecture': platform.machine(),
+    report = {'schema_version': 2, 'status': 'running', 'sources': SOURCES,
+              'architecture': platform.machine(),
               'testkit_version': importlib.metadata.version('wallet-privacy-testkit'),
               'binaries': {name: hashlib.sha256(Path('/usr/local/bin', name).read_bytes()).hexdigest()
-                           for name in ('zingo-cli', 'lightwalletd')}, 'scenarios': []}
+                           for name in ('zingo-cli', 'lightwalletd')},
+              'scenarios': [], 'negative_controls': []}
     output = Path('/output/report.json')
     try:
-        with indexer():
+        with indexer() as primary:
             emit('mining disposable coinbase funds')
             rpc('generate', [102])
             synchronize()
             emit('shielding matured funds')
             wallet('alice', 'quickshield')
             rpc('generate', [3])
-            if synchronize()['alice'] <= 300_000:
+            if synchronize()['alice'] <= 2_000_000:
                 raise RuntimeError('wallet funding failed')
             recipient = json.loads((STATE / 'addresses.json').read_text())['bob']
-            for mode in ('after-once', 'after-hold'):
-                emit(mode)
-                report['scenarios'].append(exercise(mode, recipient, 100_000))
+            for name in ('after-once', 'after-hold', 'indexer-restart', 'outage', 'alternate-indexer', 'no-mining'):
+                emit(name)
+                row = exercise(name, recipient, 100_000, primary)
+                key = 'negative_controls' if name == 'no-mining' else 'scenarios'
+                report[key].append(row)
                 output.write_text(json.dumps(report, indent=2) + '\n')
+                if key == 'scenarios' and check_scenario(row):
+                    raise RuntimeError(f'{name}: {check_scenario(row)}')
+            report['verification'] = verify_recovery_report(report)
+            rpc('generate', [3])  # Settle the intentionally unconfirmed negative control.
+            synchronize()
+            from privacy_run import run_privacy
+            run_privacy(recipient)
         report['status'] = 'pass'
     except BaseException as error:
         report['status'] = 'fail'

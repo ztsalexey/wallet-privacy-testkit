@@ -46,7 +46,7 @@ REQUIRED_FILES = (
     "docs/RELEASE_NOTES.md",
     "docs/THREAT_MODEL.md",
 )
-TEXT_SUFFIXES = frozenset((".cff", ".json", ".md", ".py", ".toml", ".txt", ".yml"))
+TEXT_SUFFIXES = frozenset((".cff", ".json", ".jsonl", ".md", ".py", ".toml", ".txt", ".yaml", ".yml"))
 MAX_RELEASE_FILE_BYTES = 1_000_000
 
 

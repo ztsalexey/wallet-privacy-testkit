@@ -1,6 +1,6 @@
-# Disposable wallet recovery lab
+# Disposable wallet recovery and privacy lab
 
-This development example builds released Zingolib v5.0.0 and lightwalletd from checksum-pinned source archives, starts Zebra 6.2.3, creates two fresh wallets, mines and shields regtest funds, and tests two newly constructed payments. It uses Docker Compose without host networking, published ports, existing wallet directories, or OrbStack-specific services.
+This development example builds released Zingolib v5.0.0 and lightwalletd from checksum-pinned source archives, starts Zebra 6.2.3, creates two fresh wallets, mines and shields regtest funds, and runs five recovery scenarios, a live negative control, and two continuous-traffic sessions with six additional payments. It uses Docker Compose without host networking, published ports, existing wallet directories, or OrbStack-specific services.
 
 The first build downloads Rust/Go dependencies and compiles the wallet. Allow several GB of disk space, at least 8 GB available memory, and substantially more time for the first run than for a cached run. Build downloads require Internet access. Runtime services share an internally isolated Docker network.
 
@@ -16,7 +16,7 @@ To explicitly choose OrbStack on macOS:
 python3 examples/regtest/run.py --context orbstack --output /tmp/wpt-orbstack-run
 ```
 
-Every output directory must be new. The wrapper builds the image, uses a unique Compose project, and removes only that project's containers, network, and disposable volume afterward, including after a failed experiment. Wallet seeds, keys, chain data, and raw wallet/indexer logs stay in that volume. The host receives a build log and a sanitized `report.json`. A hard termination of the wrapper can interrupt cleanup; its first output prints the unique project name for targeted cleanup with the same Compose file and `WPT_OUTPUT` setting. Do not use engine-wide prune commands.
+Every output directory must be new. The wrapper builds the image, uses a unique Compose project, and removes only that project's containers, network, and disposable volume afterward, including after a failed experiment. Wallet seeds, keys, chain data, and raw wallet/indexer logs stay in that volume. The host receives a build log, a sanitized `report.json`, two metadata-only `*.trace.jsonl` files, `privacy-manifest.json`, and the recomputed `privacy-report.json`. A hard termination of the wrapper can interrupt cleanup; its first output prints the unique project name for targeted cleanup with the same Compose file and `WPT_OUTPUT` setting. Do not use engine-wide prune commands.
 
 `--skip-build` reuses the local `wallet-privacy-testkit-regtest:local` image; use it only when its source is known and unchanged. The default builds the current checkout. No prebuilt lab image is published.
 
@@ -27,9 +27,32 @@ For local diagnosis, `--keep-state-on-failure` retains the uniquely named projec
 1. **Lost first acknowledgement:** submit one Orchard payment through `after-once`. Observe one accepted transaction in the node mempool, require identical signed bytes across observed attempts, mine three blocks, and require confirmation in the reopened wallet.
 2. **Crash before acknowledgement:** submit a different payment through `after-hold`. Wait until the relay records successful upstream acceptance and is holding the response, verify the wallet process is still running, then kill that process. Reopen the same on-disk wallet without resubmitting the payment, mine three blocks, and require eventual wallet confirmation.
 
-Both scenarios start with an empty mempool. The node's serialized transaction hash must match the relay's observed hash. The recipient's confirmed Orchard balance must increase by exactly the intended amount, and the final mempool must be empty. Any failed assertion makes the runner exit nonzero. Reports record source revisions, binary hashes, architecture, attempt counts, process exit codes, and observed recovery states.
+3. **Indexer restart:** after losing the first acknowledgement, stop and restart the same indexer before reopening and synchronizing the wallet.
+4. **Outage:** after losing the acknowledgement, stop the indexer, observe its endpoint as unavailable, leave it down for at least 12 seconds, then restore it and recover the wallet.
+5. **Alternate indexer:** stop the original indexer, start a second instance on another port with fresh indexer state, and recover the wallet through that instance against the same node.
+
+All five scenarios start with an empty mempool. The node's serialized transaction hash must match the relay's observed hash. The recipient's confirmed Orchard balance must increase by exactly the intended amount, and the final mempool must be empty. Any failed assertion makes the runner exit nonzero. Reports record source revisions, binary hashes, architecture, per-attempt observations, process exit codes, actual before/after balances, node transaction confirmations and hashes, mempool snapshots, and wallet recovery states. `wpt verify-recovery report.json` recomputes assertions from these observations, ignoring any claimed verdict. A schema-2 report must contain all five scenarios.
+
+A sixth **no-mining negative control** deliberately leaves its accepted payment unconfirmed. The same verifier must detect missing node and wallet confirmation, no confirmed recipient balance increase, and a nonempty mempool, while the acceptance and transaction-identity checks still pass. The harness then mines and synchronizes that payment before starting the privacy experiment.
+
+These reports permit independent consistency checks; they are not signed node transcripts and cannot prove that an operator supplied authentic observations. Earlier dev0 summaries retain historical value but cannot be verified with the schema-2 command.
 
 The wallet can report a failed or missing transaction before chain synchronization; that initial state is recorded, not required to match a particular UI contract. Successful recovery means the reopened wallet reconciles the confirmed payment. The test does not resubmit a user's payment intent, prove general exactly-once delivery, emulate a power-loss filesystem failure, or establish an unfixed current Zingolib bug. It tests a pinned released wallet, not current development.
+
+## Continuous-traffic privacy experiment
+
+Each of two 72-second measurement sessions keeps the same sender wallet process open, including between sends. A six-second warmup and startup/shutdown remain in the trace outside the measurement interval. The harness mines a block every three seconds and issues a sync command every six seconds, independently of scheduled sends. This released CLI does not continually restart sync by itself. Calibration sends start at seconds 14, 34, and 54; evaluation sends at seconds 10, 38, and 58. Each sends 50,000 zatoshis. The experiment checks all receipts and at least three confirmations before accepting ground truth.
+
+The passive forwarder observes every connection during each session without decrypting traffic. The analyzer validates complete TLS accounting and trace checksums, then divides the measurement interval into 18 fixed four-second windows. Its one feature is the largest client application-data TLS record completed in each window, or zero if none completed. Payment labels never choose window boundaries or features. A window is positive if it overlaps a recorded send-command interval; all other windows are negative, including windows with synchronization traffic.
+
+A threshold is selected only from calibration data by balanced accuracy; ties select the higher cutoff. The evaluation report includes the confusion matrix, recall, false-positive rate, precision, balanced accuracy, and individual window observations. There is no required accuracy score: a poor detector is still a valid experimental result. The runner fails on missing or inconsistent observations, not on an unfavorable privacy result.
+
+```sh
+wpt verify-recovery /tmp/wpt-first-run/report.json
+wpt analyze-privacy /tmp/wpt-first-run/privacy-manifest.json
+```
+
+The sessions use one wallet, one local transport, a prescribed sync/mining schedule, and three sends per split. Neighboring windows are correlated. Command duration is operator-provided ground truth and may include work beyond network submission. The threshold is not evaluated on different wallets or networks, and these sample counts do not justify population accuracy estimates. Detection of a local send window does not identify a public transaction or a person. This is a reproducible local experiment, not a field study.
 
 ## Build and trust boundary
 

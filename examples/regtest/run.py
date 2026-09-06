@@ -6,7 +6,12 @@ import json
 import os
 import subprocess
 import uuid
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'src'))
+from wallet_privacy_testkit.recovery import verify_recovery_report
+from wallet_privacy_testkit.privacy import analyze_privacy
 
 
 def main():
@@ -40,9 +45,10 @@ def main():
         call('restart', 'zebra')
         call('run', '--rm', '--no-deps', 'lab', 'test')
         report = json.loads((output / 'report.json').read_text())
-        if report['status'] != 'pass' or len(report['scenarios']) != 2:
-            raise RuntimeError('lab did not produce a complete passing report')
-        print(json.dumps(report, indent=2))
+        print(json.dumps(verify_recovery_report(report), indent=2))
+        privacy = analyze_privacy(output / 'privacy-manifest.json')
+        print(json.dumps({'privacy': [{'split': s['split'], 'metrics': s['metrics']}
+                                     for s in privacy['sessions']]}, indent=2))
         passed = True
     finally:
         # The random project name belongs only to this invocation. Never prune
