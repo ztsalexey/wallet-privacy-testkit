@@ -33,7 +33,7 @@ def make_plan(seed):
         sessions.extend(sorted(block, key=lambda s: draw(f"order:{s['id']}")))
     return {"schema_version": 2, "seed": seed, "sessions": sessions,
             "window_ns": WINDOW_NS, "duration_ns": DURATION_NS,
-            "conditions": CONDITIONS, "payment_amount": 50_000,
+            "conditions": {name: dict(options) for name, options in CONDITIONS.items()}, "payment_amount": 50_000,
             "funding_outputs": 8, "funding_amount_per_output": 60_000,
             "sender_state": "new directory and OS-generated wallet keys for every session",
             "shared_state": "node, indexer, funder, recipient; chain grows across sessions",

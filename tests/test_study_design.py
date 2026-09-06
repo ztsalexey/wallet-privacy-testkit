@@ -122,3 +122,21 @@ class StudyDesignTests(unittest.TestCase):
             self.assertEqual([w['predicted_payment'] for w in before['sessions'][3]['observations']],
                              [w['predicted_payment'] for w in after['sessions'][3]['observations']])
             self.assertTrue(all(p['scheduling_delay_ns'] == 2_000_000_000 for p in after['sessions'][3]['payment_timing']))
+
+    def test_schema_downgrade_cannot_skip_fresh_sender_validation(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = randomized_fixture(Path(tmp)); data = json.loads(path.read_text())
+            data['schema_version'] = 1
+            data['sessions'][3]['sender_directory_was_absent'] = False
+            path.write_text(json.dumps(data))
+            with self.assertRaisesRegex(ValueError, 'schema'): analyze_study(path)
+
+    def test_editing_a_plan_does_not_change_later_plans(self):
+        plan = make_plan('1' * 64)
+        original = copy.deepcopy(plan)
+        try:
+            plan['conditions']['latency']['delay_ms'] = 9000
+            self.assertEqual(make_plan('1' * 64), original)
+        finally:
+            # Also keep this regression safe to run against older implementations.
+            plan['conditions']['latency']['delay_ms'] = 25
