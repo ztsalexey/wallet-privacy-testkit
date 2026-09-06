@@ -56,7 +56,7 @@ class StudyTests(unittest.TestCase):
                     path=study_fixture(Path(tmp)); data=json.loads(path.read_text())
                     if mutation=='late': data['frozen_time_ns']=101
                     elif mutation=='partial': data['sessions'].pop()
-                    elif mutation=='duration': data['sessions'][1]['end_ns'] -= 10
+                    elif mutation=='duration': data['sessions'][1]['start_ns'] += 10
                     elif mutation=='overlap': data['sessions'][1].update(start_ns=30,end_ns=70)
                     else:
                         model_path=Path(tmp)/'frozen-detector.json'
