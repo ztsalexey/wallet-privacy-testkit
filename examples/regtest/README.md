@@ -41,6 +41,8 @@ The wallet can report a failed or missing transaction before chain synchronizati
 
 ## Continuous-traffic privacy experiment
 
+Before capture, a confirmed self-transfer creates eight 60,000-zatoshi sender notes so scheduled payments need not wait for the preceding payment’s change to become spendable. This controlled funding arrangement is recorded in the manifest.
+
 Each of two 72-second measurement sessions keeps the same sender wallet process open, including between sends. A six-second warmup and startup/shutdown remain in the trace outside the measurement interval. The harness mines a block every three seconds and issues a sync command every six seconds, independently of scheduled sends. This released CLI does not continually restart sync by itself. Calibration sends start at seconds 14, 34, and 54; evaluation sends at seconds 10, 38, and 58. Each sends 50,000 zatoshis. The experiment checks all receipts and at least three confirmations before accepting ground truth.
 
 The passive forwarder observes every connection during each session without decrypting traffic. The analyzer validates complete TLS accounting and trace checksums, then divides the measurement interval into 18 fixed four-second windows. Its one feature is the largest client application-data TLS record completed in each window, or zero if none completed. Payment labels never choose window boundaries or features. A window is positive if it overlaps a recorded send-command interval; all other windows are negative, including windows with synchronization traffic.

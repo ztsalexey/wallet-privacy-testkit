@@ -11,7 +11,7 @@ import threading
 import time
 from pathlib import Path
 
-from lab import STATE, emit, rpc, synchronize, wallet_args
+from lab import STATE, emit, parsed, rpc, synchronize, wallet, wallet_args
 from wallet_privacy_testkit.capture import TLSForwarder, TraceRecorder
 from wallet_privacy_testkit.privacy import analyze_privacy
 
@@ -64,7 +64,8 @@ class InteractiveWallet:
         ended = time.monotonic_ns()
         match = re.search(r'"txids"\s*:\s*\[\s*"([0-9a-f]{64})"\s*\]', output)
         if not match:
-            raise RuntimeError('interactive payment did not return one transaction ID')
+            reason = 'insufficient balance' if 'Insufficient balance' in output else 'unexpected response'
+            raise RuntimeError(f'interactive payment did not return one transaction ID: {reason}')
         return {'start_ns': started, 'end_ns': ended, 'txid': match[1]}
 
     def sync(self):
@@ -95,8 +96,23 @@ class InteractiveWallet:
 
 def run_privacy(recipient):
     output = Path('/output')
+    # Give the scheduled sends independent confirmed notes. Otherwise a send
+    # can race scanning/confirmation of the previous payment's change, making
+    # the experiment a spend-readiness test instead of an activity measurement.
+    sender = json.loads((STATE / 'addresses.json').read_text())['alice']
+    funding = parsed(wallet('alice', 'quicksend', [json.dumps(
+        [{'address': sender, 'amount': 60_000} for _ in range(8)])]))['txids']
+    if len(funding) != 1:
+        raise RuntimeError('privacy funding did not produce one transaction')
+    rpc('generate', [3])
+    synchronize()
+    funding_confirmations = rpc('getrawtransaction', [funding[0], 1]).get('confirmations', 0)
+    if funding_confirmations < 3:
+        raise RuntimeError('privacy funding did not confirm')
     manifest = {'schema_version': 1, 'window_ns': 4_000_000_000,
                 'design': '72-second continuous sessions; persistent CLI; sync commands every 6 seconds; blocks every 3 seconds',
+                'sender_funding': {'txid': funding[0], 'confirmations': funding_confirmations,
+                                   'requested_outputs': 8, 'amount_per_output': 60_000},
                 'sessions': []}
     for split, payment_seconds in [('calibration', [14, 34, 54]), ('evaluation', [10, 38, 58])]:
         emit(f'continuous privacy {split}')
