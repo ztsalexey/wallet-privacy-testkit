@@ -1,6 +1,13 @@
 # Changelog
 
-## 0.2.0.dev1 - Unreleased
+## 0.2.0 - 2026-09-06
+
+- Adds a repeated privacy study with a detector frozen before evaluation, emulated network conditions, and an independent zcash-devtool wallet adapter.
+- Adds `wpt analyze-study`, which checks the complete declared session plan, trace and model checksums, freeze timing, payment receipts, and calibration-only threshold selection.
+- Includes the recovery verifier, live negative control, five recovery scenarios, continuous capture, held-response fault, and metadata forwarding developed since 0.1.0.
+- Keeps the toolkit a research preview; a stable version number does not certify wallet privacy or guarantee a stable wallet-adapter interface.
+
+## 0.2.0.dev1 - Development history
 
 - Added schema-v2 recovery observations and an independent offline verifier.
 - Added a live no-mining negative control and tampered-evidence regression tests.

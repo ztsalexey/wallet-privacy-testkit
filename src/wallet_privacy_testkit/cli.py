@@ -11,6 +11,7 @@ from .fault_relay import FAULT_MODES, SendTransactionRelay
 from .matching import evaluate_size_matching
 from .recovery import verify_recovery_report
 from .privacy import analyze_privacy
+from .study import analyze_study
 
 
 def _port(value, *, allow_zero=False):
@@ -133,6 +134,10 @@ def parser():
     privacy = commands.add_parser('analyze-privacy', help='evaluate held-out continuous-traffic send detection')
     privacy.add_argument('manifest', type=Path)
     privacy.set_defaults(handler=lambda args: print(json.dumps(analyze_privacy(args.manifest), indent=2)))
+
+    study = commands.add_parser('analyze-study', help='verify a frozen-detector repeated privacy study')
+    study.add_argument('manifest', type=Path)
+    study.set_defaults(handler=lambda args: print(json.dumps(analyze_study(args.manifest), indent=2)))
 
     relay = commands.add_parser(
         "fault-relay", help="inject SendTransaction delivery uncertainty"

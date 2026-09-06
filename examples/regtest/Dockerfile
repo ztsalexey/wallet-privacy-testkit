@@ -16,10 +16,21 @@ RUN curl -fLsS https://codeload.github.com/zcash/lightwalletd/tar.gz/d79cd110057
     tar -xzf /tmp/indexer.tar.gz --strip-components=1 && rm /tmp/indexer.tar.gz
 RUN GOTOOLCHAIN=local CGO_ENABLED=0 go build -mod=readonly -o /lightwalletd .
 
+FROM wallet AS devtool
+RUN apt-get update && apt-get install -y --no-install-recommends clang cmake protobuf-compiler python3 pkg-config libssl-dev && rm -rf /var/lib/apt/lists/*
+ENV RUSTUP_TOOLCHAIN=1.93.1 CARGO_BUILD_JOBS=4
+WORKDIR /devtool
+RUN curl -fLsS https://codeload.github.com/zcash/zcash-devtool/tar.gz/5a26ee854e634a4e88d1d79dab13f8fbb1eac6b8 -o /tmp/devtool.tar.gz && \
+    echo '02ab2929c2d5bf6707411e583b16645cba14a86b2e2b6ec3acd3e0c3f13aefb3  /tmp/devtool.tar.gz' | sha256sum -c - && \
+    tar -xzf /tmp/devtool.tar.gz --strip-components=1 && rm /tmp/devtool.tar.gz
+COPY examples/regtest/patch_devtool.py /tmp/patch_devtool.py
+RUN python3 /tmp/patch_devtool.py && cargo build --locked --release --features regtest_support
+
 FROM python:3.12-slim-bookworm@sha256:782412e85d0f0984994c290652577d4018aff08145c85b262bb63dc0c7522254
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates openssl libssl3 libstdc++6 && rm -rf /var/lib/apt/lists/*
 COPY --from=wallet /wallet/target/release/zingo-cli /usr/local/bin/zingo-cli
 COPY --from=indexer /lightwalletd /usr/local/bin/lightwalletd
+COPY --from=devtool /devtool/target/release/zcash-devtool /usr/local/bin/zcash-devtool
 WORKDIR /opt/testkit
 COPY requirements-dev.txt ./
 RUN pip install --no-cache-dir -r requirements-dev.txt

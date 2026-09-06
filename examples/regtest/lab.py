@@ -355,8 +355,12 @@ def run_tests():
             report['verification'] = verify_recovery_report(report)
             rpc('generate', [3])  # Settle the intentionally unconfirmed negative control.
             synchronize()
-            from privacy_run import run_privacy
-            run_privacy(recipient)
+            if os.environ.get('WPT_STUDY') == '1':
+                from study_run import run_study
+                run_study(recipient)
+            else:
+                from privacy_run import run_privacy
+                run_privacy(recipient)
         report['status'] = 'pass'
     except BaseException as error:
         report['status'] = 'fail'

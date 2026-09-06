@@ -1,6 +1,6 @@
 # Disposable wallet recovery and privacy lab
 
-This development example builds released Zingolib v5.0.0 and lightwalletd from checksum-pinned source archives, starts Zebra 6.2.3, creates two fresh wallets, mines and shields regtest funds, and runs five recovery scenarios, a live negative control, and two continuous-traffic sessions with six additional payments. It uses Docker Compose without host networking, published ports, existing wallet directories, or OrbStack-specific services.
+This example builds released Zingolib v5.0.0, the independent zcash-devtool development wallet, and lightwalletd from checksum-pinned source archives, starts Zebra 6.2.3, creates two fresh wallets, mines and shields regtest funds, and runs five recovery scenarios, a live negative control, and two continuous-traffic sessions with six additional payments. It uses Docker Compose without host networking, published ports, existing wallet directories, or OrbStack-specific services.
 
 The first build downloads Rust/Go dependencies and compiles the wallet. Allow several GB of disk space, at least 8 GB available memory, and substantially more time for the first run than for a cached run. Build downloads require Internet access. Runtime services share an internally isolated Docker network.
 
@@ -63,3 +63,13 @@ Base images use immutable manifest digests; wallet and indexer archives use revi
 OS packages are installed from the base distribution's repositories, so builds are source-pinned experiments, not byte-for-byte reproducible images. Downloaded dependencies retain their own licenses; the testkit's MIT-or-Apache license does not relicense them.
 
 The recipe targets Docker Engine, OrbStack, and Docker Desktop. Only environments with recorded successful executions should be described as verified. The regular Python CI does not itself establish that the full wallet experiment passed; the separate `regtest` workflow runs it on Linux.
+
+
+## Repeated two-wallet study
+
+Add `--study` to run the [predeclared repeated study](../../docs/PRIVACY_STUDY.md) after the recovery scenarios. It replaces the two-session privacy example with three calibration sessions and twelve evaluation sessions using a frozen detector, emulated latency/bandwidth, and a second wallet implementation. The host receives `study-plan.json`, `frozen-detector.json`, `study-manifest.json`, `study-report.json`, and one metadata trace per session.
+
+```sh
+python3 examples/regtest/run.py --context orbstack --study --output /tmp/wpt-study
+wpt analyze-study /tmp/wpt-study/study-manifest.json
+```
