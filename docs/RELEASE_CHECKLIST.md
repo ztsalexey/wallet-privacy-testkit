@@ -54,4 +54,15 @@ PyPI publishing is gated by the repository variable `PYPI_PUBLISH_ENABLED=true`.
 - [x] Independently recomputed both recovery and privacy reports with the installed CLI.
 - [x] Retained [observations, metadata traces, provenance, results, and limitations](../evidence/zingolib-v5-continuous/README.md).
 
-These additions are available from the source checkout. The published PyPI release remains 0.1.0.
+These development additions are included in version 0.2.0.
+
+
+## 0.2.0 validation
+
+- [x] Forty tests pass on Python 3.11–3.13 across Linux and macOS.
+- [x] The complete OrbStack study confirmed all 45 payments across 15 sessions, using a detector frozen before evaluation.
+- [x] Retained metadata, frozen model, observations, and checksums allow independent recomputation of the [study](../evidence/privacy-study-020/README.md).
+- [x] The frozen cutoff failed to transfer to the independent development wallet; results and timing, lifecycle, and sampling limitations are explicit.
+- [x] Native Linux Docker passed the five recovery scenarios, live negative control, and continuous-traffic regression.
+
+Publication requires auditing the final wheel and source archive, testing a clean wheel installation, committing their exact SHA-256 checksums, and publishing through Trusted Publishing. After publication, verify PyPI file hashes and attestations and test a fresh PyPI installation. The tagged [release page](https://github.com/ztsalexey/wallet-privacy-testkit/releases/tag/v0.2.0) and publishing workflow record the publication outcome.

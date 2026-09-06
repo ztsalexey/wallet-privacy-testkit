@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "feature": "largest_client_record",
+  "window_ns": 4000000000,
+  "threshold_bytes": 9207,
+  "calibration_trace_sha256": [
+    "3f6a0f768be3b1b95dddb1c3ce278fd1824e051853bb8b2cef8673f35f991b85",
+    "3c3b54676bd608afe77fa69bc4c370bc3977e40909553a45873db413cd8d2d98",
+    "65b58a3607b63c31e472eb8f3f0f8705e257357af182f8aac4e6df5b57b451c8"
+  ]
+}

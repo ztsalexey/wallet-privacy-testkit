@@ -1,0 +1,900 @@
+{
+  "schema_version": 1,
+  "window_ns": 4000000000,
+  "plan_sha256": "ffc3d4d9953fa5d61f44f5e8b11740babc367e2d0ac0627953fcba669323a595",
+  "architecture": "aarch64",
+  "sessions": [
+    {
+      "id": "calibration-zingolib-baseline-1",
+      "split": "calibration",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 1,
+      "payment_seconds": [
+        16,
+        44,
+        72
+      ],
+      "trace": "calibration-zingolib-baseline-1.trace.jsonl",
+      "trace_sha256": "3f6a0f768be3b1b95dddb1c3ce278fd1824e051853bb8b2cef8673f35f991b85",
+      "start_ns": 89574610517571,
+      "end_ns": 89670610517571,
+      "payments": [
+        {
+          "start_ns": 89590611508370,
+          "end_ns": 89593092703583,
+          "txid": "0203fac053337f8f7bdf41661896e07d8badaadc475b80e74bb9a5ae0de62297",
+          "confirmations": 35
+        },
+        {
+          "start_ns": 89618614504902,
+          "end_ns": 89621060484785,
+          "txid": "df3f927582810ecdb00cec5738e1d1fd30b6ab4234a460263aa0bd211d1ab59f",
+          "confirmations": 26
+        },
+        {
+          "start_ns": 89646614644260,
+          "end_ns": 89649126804136,
+          "txid": "fc4c4914e031dab51dfe333ae27c5072e2b4f6f21cac3e29ccc668b96bc39ce0",
+          "confirmations": 17
+        }
+      ],
+      "sync_command_times_ns": [
+        89574610549071,
+        89580611860556,
+        89586611597244,
+        89593092916167,
+        89598614142754,
+        89604614708119,
+        89610614531055,
+        89616613259430,
+        89622611470541,
+        89628611370823,
+        89634612684733,
+        89640614651145,
+        89649126858095,
+        89652615508628,
+        89658615372159,
+        89664614484981
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 600000,
+      "recipient_after": 750000,
+      "funding_txid": "b56bbb80151dba648f1da5180a1687e3640e4d3ce263c27404b1f1c7a6c4deef",
+      "funding_confirmations": 52
+    },
+    {
+      "id": "calibration-zingolib-baseline-2",
+      "split": "calibration",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 2,
+      "payment_seconds": [
+        20,
+        48,
+        76
+      ],
+      "trace": "calibration-zingolib-baseline-2.trace.jsonl",
+      "trace_sha256": "3c3b54676bd608afe77fa69bc4c370bc3977e40909553a45873db413cd8d2d98",
+      "start_ns": 89718103246530,
+      "end_ns": 89814103246530,
+      "payments": [
+        {
+          "start_ns": 89738107754119,
+          "end_ns": 89740931451222,
+          "txid": "dc62862795e3b6dd40b8228f80bb31537c2085d99a87e1b9b6c6920d917731e6",
+          "confirmations": 32
+        },
+        {
+          "start_ns": 89766108635538,
+          "end_ns": 89770555528095,
+          "txid": "3a4b498d8404a9d62662bf0f55e125861bc9dbd70eaaa6f9d75bb866c2facc18",
+          "confirmations": 23
+        },
+        {
+          "start_ns": 89794107092733,
+          "end_ns": 89796613969535,
+          "txid": "7737f40f80d0bbac69e10db9053c65d7222a6b19372f11408c268a169db1b8c6",
+          "confirmations": 15
+        }
+      ],
+      "sync_command_times_ns": [
+        89718103289447,
+        89724104114731,
+        89730103959846,
+        89736108563849,
+        89742106988906,
+        89748107471908,
+        89754104209048,
+        89760104401759,
+        89770555657534,
+        89772108511671,
+        89778107796934,
+        89784108508068,
+        89790107686263,
+        89796613985200,
+        89802106855407,
+        89808108559168
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 750000,
+      "recipient_after": 900000,
+      "funding_txid": "3e0c2bc67fae8dc42545175da2b72b8c7c22548716de1c355bf692c23c772e38",
+      "funding_confirmations": 51
+    },
+    {
+      "id": "calibration-zingolib-baseline-3",
+      "split": "calibration",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 3,
+      "payment_seconds": [
+        12,
+        40,
+        68
+      ],
+      "trace": "calibration-zingolib-baseline-3.trace.jsonl",
+      "trace_sha256": "65b58a3607b63c31e472eb8f3f0f8705e257357af182f8aac4e6df5b57b451c8",
+      "start_ns": 89855039171842,
+      "end_ns": 89951039171842,
+      "payments": [
+        {
+          "start_ns": 89867040160334,
+          "end_ns": 89869814200428,
+          "txid": "e63646589c269bfd1b39556a9166b3f345efebc2edfe3eed3b8f2777fe553446",
+          "confirmations": 36
+        },
+        {
+          "start_ns": 89895040567048,
+          "end_ns": 89897691574336,
+          "txid": "68104ab9c51198ac84fa37ae541d8a2bd3478c843c3522c695a984181af9092e",
+          "confirmations": 27
+        },
+        {
+          "start_ns": 89923043180775,
+          "end_ns": 89925931104954,
+          "txid": "1308edb77005c4fba1bd4085ded7409f4b893a5500275fa429f3ffc74d6f2c7c",
+          "confirmations": 18
+        }
+      ],
+      "sync_command_times_ns": [
+        89855039195258,
+        89861042040796,
+        89869814234549,
+        89873039897489,
+        89879040289823,
+        89885039511034,
+        89891044324683,
+        89897691599583,
+        89903040541303,
+        89909040235672,
+        89915042142593,
+        89921040811280,
+        89927039622285,
+        89933039978790,
+        89939045083282,
+        89945042987135
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 900000,
+      "recipient_after": 1050000,
+      "funding_txid": "6dc86ece70f119c66308b10bb1c2a2d18b69a91e88b7e7fde42f6cf159d679c4",
+      "funding_confirmations": 52
+    },
+    {
+      "id": "evaluation-zingolib-baseline-1",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 1,
+      "payment_seconds": [
+        16,
+        44,
+        72
+      ],
+      "trace": "evaluation-zingolib-baseline-1.trace.jsonl",
+      "trace_sha256": "4456a0092804f79d135edaeca4caaabc952ca54325a342b94c25d7c6b2e2e894",
+      "start_ns": 89990847482437,
+      "end_ns": 90086847482437,
+      "payments": [
+        {
+          "start_ns": 90006848458957,
+          "end_ns": 90009370192408,
+          "txid": "e80243bd629ed155356e6c0a62a903a082fe815acb32d903121ac080c0bc2675",
+          "confirmations": 35
+        },
+        {
+          "start_ns": 90034849068263,
+          "end_ns": 90037439814385,
+          "txid": "c51063987172b66f6436c7017fec06ee55e105efa7d92eb3f40db275fd5224f7",
+          "confirmations": 26
+        },
+        {
+          "start_ns": 90062850566043,
+          "end_ns": 90065503585486,
+          "txid": "ac2b82db0c289aa757eba1fc2257503976743c267b2698b283122017a349f273",
+          "confirmations": 17
+        }
+      ],
+      "sync_command_times_ns": [
+        89990847506853,
+        89996851214823,
+        90002849372076,
+        90009370214699,
+        90014853427278,
+        90020849456590,
+        90026851452067,
+        90032849384451,
+        90038849156574,
+        90044852620426,
+        90050848488993,
+        90056852488247,
+        90065503660776,
+        90068852762098,
+        90074852721424,
+        90080852654335
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 1050000,
+      "recipient_after": 1200000,
+      "funding_txid": "1c4ab1d27b86d70d9c4a93028c1ebe372b4a16a366061ef4871d355e2569aa9f",
+      "funding_confirmations": 52
+    },
+    {
+      "id": "evaluation-zingolib-baseline-2",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 2,
+      "payment_seconds": [
+        20,
+        48,
+        76
+      ],
+      "trace": "evaluation-zingolib-baseline-2.trace.jsonl",
+      "trace_sha256": "8ca0dc03950bff3148d62fbc4abeeba8b3b99c4ec59de74d6ba93947c508a0e1",
+      "start_ns": 90126501236147,
+      "end_ns": 90222501236147,
+      "payments": [
+        {
+          "start_ns": 90146502682082,
+          "end_ns": 90149335813194,
+          "txid": "6607ceb0517a9ef6935af6399c69d10dfd27b24e6df2ad2f6b26447a27569b60",
+          "confirmations": 32
+        },
+        {
+          "start_ns": 90174505321537,
+          "end_ns": 90183258685261,
+          "txid": "c093d4e4a5ad54cbd15ef93f3d9be1d24c9f403c4653832c3024cf0e735e51f4",
+          "confirmations": 22
+        },
+        {
+          "start_ns": 90202503375012,
+          "end_ns": 90205144740622,
+          "txid": "066b8739062273314183e1c01d5c8f49b26d211e4b3de8a4a5c545c948561289",
+          "confirmations": 15
+        }
+      ],
+      "sync_command_times_ns": [
+        90126501259356,
+        90132504859588,
+        90138501640018,
+        90144502705221,
+        90150502139430,
+        90156502476844,
+        90162505309872,
+        90168504513083,
+        90183258959051,
+        90183994124457,
+        90186502915087,
+        90192505287242,
+        90198506502943,
+        90205144761581,
+        90210505377780,
+        90216502098502
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 1200000,
+      "recipient_after": 1350000,
+      "funding_txid": "573fe2eed68c6d80e0d3b09cb3753f2ce0312e2ff40a03c5b2ee9e55bdb296a3",
+      "funding_confirmations": 51
+    },
+    {
+      "id": "evaluation-zingolib-baseline-3",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 3,
+      "payment_seconds": [
+        12,
+        40,
+        68
+      ],
+      "trace": "evaluation-zingolib-baseline-3.trace.jsonl",
+      "trace_sha256": "fa254855333bd521fdd83fa745e8f55a93740e90c0b537f97afeda5a4c71024b",
+      "start_ns": 90262437706680,
+      "end_ns": 90358437706680,
+      "payments": [
+        {
+          "start_ns": 90274438583941,
+          "end_ns": 90277101019012,
+          "txid": "4afc68c20bfebabea0e227835c971ef6d170d78da8e111e051a6a435b8d6993a",
+          "confirmations": 36
+        },
+        {
+          "start_ns": 90302440984881,
+          "end_ns": 90304995171160,
+          "txid": "8127edf6f994a1647f76265db038c14e17ec1bb33435b0e29602fdb96011594b",
+          "confirmations": 27
+        },
+        {
+          "start_ns": 90330442574991,
+          "end_ns": 90333022795565,
+          "txid": "815666ed408c690bf9f66a311897d994f14cfbe5de3f55034fb5040a0a8362ad",
+          "confirmations": 18
+        }
+      ],
+      "sync_command_times_ns": [
+        90262437741638,
+        90268439742410,
+        90277101045429,
+        90280440978961,
+        90286443483064,
+        90292440477767,
+        90298440924544,
+        90304995223368,
+        90310438566773,
+        90316440477961,
+        90322442203150,
+        90328440973473,
+        90334438810674,
+        90340440727820,
+        90346443095632,
+        90352442809327
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 1350000,
+      "recipient_after": 1500000,
+      "funding_txid": "378d1acca3563593005914f1e2d9ad770bdbb5944768ed6fcf76a8628e1c96e5",
+      "funding_confirmations": 52
+    },
+    {
+      "id": "evaluation-zingolib-latency-1",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "latency",
+      "repeat": 1,
+      "payment_seconds": [
+        16,
+        44,
+        72
+      ],
+      "trace": "evaluation-zingolib-latency-1.trace.jsonl",
+      "trace_sha256": "d8e83799664ad5fc27ea8dd4b1e73e2da226fd69abe858297e2bf7bd3ec7009a",
+      "start_ns": 90398368120097,
+      "end_ns": 90494368120097,
+      "payments": [
+        {
+          "start_ns": 90414369393310,
+          "end_ns": 90417006723922,
+          "txid": "52e1e8bc70215b47dbde1b166402a64657f12db0fd4f9d2aa77a5a766c952263",
+          "confirmations": 35
+        },
+        {
+          "start_ns": 90442372690677,
+          "end_ns": 90445018392165,
+          "txid": "7d1a30c5753f8b57cd66cb7cff14301eccbfb761b761ff532fabfd07c532cf38",
+          "confirmations": 26
+        },
+        {
+          "start_ns": 90470373668482,
+          "end_ns": 90473003907587,
+          "txid": "3247345f9bb2857fe82a4d13f11eae5a767a5e9157990c4ea06c2713cc44ed99",
+          "confirmations": 17
+        }
+      ],
+      "sync_command_times_ns": [
+        90398368173474,
+        90404369353784,
+        90410369339315,
+        90417006782674,
+        90422368912451,
+        90428371652717,
+        90434368214121,
+        90440369964488,
+        90446372197866,
+        90452369453483,
+        90458373358905,
+        90464369412101,
+        90473003977504,
+        90476370259304,
+        90482371223678,
+        90488369690962
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 1500000,
+      "recipient_after": 1650000,
+      "funding_txid": "9340232f0f395b49b92042e262b44ab82727824eb6eba85574ff5e9a9e2c2ab6",
+      "funding_confirmations": 52
+    },
+    {
+      "id": "evaluation-zingolib-latency-2",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "latency",
+      "repeat": 2,
+      "payment_seconds": [
+        20,
+        48,
+        76
+      ],
+      "trace": "evaluation-zingolib-latency-2.trace.jsonl",
+      "trace_sha256": "f4b8a29dafcf622da06044171efaf02637093c7b3a34d0fdaaf656322bb256e8",
+      "start_ns": 90534352918437,
+      "end_ns": 90630352918437,
+      "payments": [
+        {
+          "start_ns": 90554357470130,
+          "end_ns": 90557031356314,
+          "txid": "bd98b9af5e1fd8907b20a5dfff17261af364a082400f16453322035806525843",
+          "confirmations": 33
+        },
+        {
+          "start_ns": 90582357138463,
+          "end_ns": 90584945243878,
+          "txid": "6eb3b064b4d48391b914c02f30651482c8d7813957900959558d090022b3eced",
+          "confirmations": 25
+        },
+        {
+          "start_ns": 90610355436132,
+          "end_ns": 90612996443414,
+          "txid": "fcd76b40001b44b6c0a6571a591ff78844513f32fcef77894f15dcf6e7ab8173",
+          "confirmations": 16
+        }
+      ],
+      "sync_command_times_ns": [
+        90534352940562,
+        90540357331631,
+        90546355279670,
+        90552353380167,
+        90558355565407,
+        90564355341777,
+        90570355152062,
+        90576355187931,
+        90584945259420,
+        90588356170500,
+        90594355070454,
+        90600356725987,
+        90606358207562,
+        90612996519122,
+        90618358170133,
+        90624356396005
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 1650000,
+      "recipient_after": 1800000,
+      "funding_txid": "0860fe16ce0b644eca9e66185ee5951369ff6a90c12c7fb5505533ffbb89f0fc",
+      "funding_confirmations": 52
+    },
+    {
+      "id": "evaluation-zingolib-latency-3",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "latency",
+      "repeat": 3,
+      "payment_seconds": [
+        12,
+        40,
+        68
+      ],
+      "trace": "evaluation-zingolib-latency-3.trace.jsonl",
+      "trace_sha256": "cdf22f13c2a7a221c91f924336507c01d55134ff09a23b8cb3c22d8a0b160b5a",
+      "start_ns": 90669233195000,
+      "end_ns": 90765233195000,
+      "payments": [
+        {
+          "start_ns": 90681238231670,
+          "end_ns": 90683968697387,
+          "txid": "1c0ec40bd655391a5a5f29bc5791d3eb2bc5fe8a81ab863525cc3e3f804aa559",
+          "confirmations": 36
+        },
+        {
+          "start_ns": 90709237808808,
+          "end_ns": 90711947721769,
+          "txid": "bb5ecadcb60b138e30391872d2958d2c46dc465a235e26a0822a84a299b07e36",
+          "confirmations": 27
+        },
+        {
+          "start_ns": 90737234187661,
+          "end_ns": 90739914938171,
+          "txid": "4533645c1fde48047b1b354ba5d451bf585292e855f38d32b796a97be1e31e75",
+          "confirmations": 18
+        }
+      ],
+      "sync_command_times_ns": [
+        90669233216542,
+        90675236186168,
+        90683968733636,
+        90687238449842,
+        90693239275679,
+        90699237383813,
+        90705236292863,
+        90711947930852,
+        90717236170083,
+        90723236590046,
+        90729234891513,
+        90735233681979,
+        90741235137191,
+        90747238522107,
+        90753235749243,
+        90759234291463
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 1800000,
+      "recipient_after": 1950000,
+      "funding_txid": "1794955c785aca319d75e93fe8e3e826656c2594355b02d0b65ebe824307bcda",
+      "funding_confirmations": 52
+    },
+    {
+      "id": "evaluation-zingolib-bandwidth-1",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "bandwidth",
+      "repeat": 1,
+      "payment_seconds": [
+        16,
+        44,
+        72
+      ],
+      "trace": "evaluation-zingolib-bandwidth-1.trace.jsonl",
+      "trace_sha256": "4c18686ec759bab3eecf5e6797d0a4816fe131ba2003e86ca2a81ad26935718f",
+      "start_ns": 90805176616447,
+      "end_ns": 90901176616447,
+      "payments": [
+        {
+          "start_ns": 90821177546671,
+          "end_ns": 90824037040938,
+          "txid": "34ea65d17e7c954809ae04e76ff65c1e4bf9fb432a746817562fd098dd35d4e7",
+          "confirmations": 35
+        },
+        {
+          "start_ns": 90849182176836,
+          "end_ns": 90852027064642,
+          "txid": "f55ebbf1f66fff7ee05dcb02d526b02af9abaa95598436bd1224117b291abf81",
+          "confirmations": 26
+        },
+        {
+          "start_ns": 90877179119800,
+          "end_ns": 90879969450158,
+          "txid": "7245686d2a8ffe5fc1b6400853dbaff00d1afe13a189be43606a22cd13e3c1c0",
+          "confirmations": 17
+        }
+      ],
+      "sync_command_times_ns": [
+        90805176636158,
+        90811180459678,
+        90817180267498,
+        90824037265176,
+        90829181907031,
+        90835177477036,
+        90841181773870,
+        90847181749753,
+        90853177262910,
+        90859178927360,
+        90865178502729,
+        90871179809721,
+        90879969519783,
+        90883178849878,
+        90889178337432,
+        90895179764645
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 1950000,
+      "recipient_after": 2100000,
+      "funding_txid": "f4adfd4edccd4cda97146b29a4e963a44ddece417f80516924481ea0fe5af94c",
+      "funding_confirmations": 52
+    },
+    {
+      "id": "evaluation-zingolib-bandwidth-2",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "bandwidth",
+      "repeat": 2,
+      "payment_seconds": [
+        20,
+        48,
+        76
+      ],
+      "trace": "evaluation-zingolib-bandwidth-2.trace.jsonl",
+      "trace_sha256": "8522f90acc65f0b164b64937a3efcc0812966162dcfda87788eac7f3eabc5980",
+      "start_ns": 90941251800344,
+      "end_ns": 91037251800344,
+      "payments": [
+        {
+          "start_ns": 90961253906138,
+          "end_ns": 90964038853964,
+          "txid": "a6cb9fe28d4789d36e97e6353d5e2ff9010cfa5cd2a440f5c5b06b64738624ff",
+          "confirmations": 33
+        },
+        {
+          "start_ns": 90989256682410,
+          "end_ns": 90992051999060,
+          "txid": "a0b5387c99933be09eebbd17d2f8798ec356930c823b0ce3c4c3e6e06d49aa4d",
+          "confirmations": 24
+        },
+        {
+          "start_ns": 91017255816242,
+          "end_ns": 91020056745791,
+          "txid": "a5d1fcf0b2ea9e245418e7cddad9a038cdc78aae13948c6ead5ddd02d88f0b38",
+          "confirmations": 16
+        }
+      ],
+      "sync_command_times_ns": [
+        90941251833472,
+        90947255764884,
+        90953252458055,
+        90959254337513,
+        90965254991999,
+        90971256546348,
+        90977253354278,
+        90983254101230,
+        90992052068815,
+        90995252931129,
+        91001252955918,
+        91007255754533,
+        91013252407575,
+        91020056825128,
+        91025255553943,
+        91031254170288
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 2100000,
+      "recipient_after": 2250000,
+      "funding_txid": "ebc060d4ce97d575fec519bbb8fd6372a83697ec85400f4738b917f58c2b75de",
+      "funding_confirmations": 52
+    },
+    {
+      "id": "evaluation-zingolib-bandwidth-3",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "bandwidth",
+      "repeat": 3,
+      "payment_seconds": [
+        12,
+        40,
+        68
+      ],
+      "trace": "evaluation-zingolib-bandwidth-3.trace.jsonl",
+      "trace_sha256": "839bce7715f331a20137f3ded26c5dacfe359877fbe947fe695d32fec3a00384",
+      "start_ns": 91077495576271,
+      "end_ns": 91173495576271,
+      "payments": [
+        {
+          "start_ns": 91089500863604,
+          "end_ns": 91092301615521,
+          "txid": "e8ac2d6249f9abea7010a399bb78ef18a987f3892454947dbba5163365264f84",
+          "confirmations": 36
+        },
+        {
+          "start_ns": 91117500681566,
+          "end_ns": 91120280464553,
+          "txid": "a0b630a84facdf4c9aa89dc4ab0fb372bb61fc477347a47550109e1c10025245",
+          "confirmations": 27
+        },
+        {
+          "start_ns": 91145498956826,
+          "end_ns": 91148239350539,
+          "txid": "8c775b4d7e958ea32a22b01c46275769b1854fa186329329ffca62c60ef5e41e",
+          "confirmations": 18
+        }
+      ],
+      "sync_command_times_ns": [
+        91077495606647,
+        91083501194385,
+        91092301721900,
+        91095499759168,
+        91101496755534,
+        91107498528000,
+        91113496731871,
+        91120280544764,
+        91125498229517,
+        91131495986621,
+        91137500842997,
+        91143500354606,
+        91149500608868,
+        91155497283164,
+        91161500873347,
+        91167498231360
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 2250000,
+      "recipient_after": 2400000,
+      "funding_txid": "38403fa61204332a649083db8da3542a0a38bfe51bf52e47cc881e67d428e455",
+      "funding_confirmations": 52
+    },
+    {
+      "id": "evaluation-zcash-devtool-baseline-1",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "baseline",
+      "repeat": 1,
+      "payment_seconds": [
+        16,
+        44,
+        72
+      ],
+      "trace": "evaluation-zcash-devtool-baseline-1.trace.jsonl",
+      "trace_sha256": "26c83a56719a8d5643e8552be47b2a789645d2331644c8e02ca17f13d3789484",
+      "start_ns": 91212847966860,
+      "end_ns": 91308847966860,
+      "payments": [
+        {
+          "start_ns": 91228852019243,
+          "end_ns": 91231521044399,
+          "txid": "8123796c651047797e94cbd494bfd08489bf73b4eac9990b90345646a3a7fcba",
+          "confirmations": 35
+        },
+        {
+          "start_ns": 91256853240813,
+          "end_ns": 91259409046841,
+          "txid": "6aacd53558b5ba606bcc0f450b0233698b24088e5e79040666fed05496b4aece",
+          "confirmations": 26
+        },
+        {
+          "start_ns": 91284850458462,
+          "end_ns": 91287376729535,
+          "txid": "bf93bd3f577611f381ffccce773f5431a849c155bcb65d56e8a3e9126b9db297",
+          "confirmations": 17
+        }
+      ],
+      "sync_command_times_ns": [
+        91212848160904,
+        91218853337025,
+        91224851341673,
+        91231521127150,
+        91236849814377,
+        91242851540450,
+        91248851150828,
+        91254851432340,
+        91260850515045,
+        91266850380801,
+        91272848237830,
+        91278852850107,
+        91287377095327,
+        91290849842735,
+        91296851990676,
+        91302852294908
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 2400000,
+      "recipient_after": 2550000,
+      "funding_txid": "7d5f7fe20a004678aa812b41aa4c5d4f1d3f83ed277cdcab96f141e0f108a62d",
+      "funding_confirmations": 52
+    },
+    {
+      "id": "evaluation-zcash-devtool-baseline-2",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "baseline",
+      "repeat": 2,
+      "payment_seconds": [
+        20,
+        48,
+        76
+      ],
+      "trace": "evaluation-zcash-devtool-baseline-2.trace.jsonl",
+      "trace_sha256": "5b202d5bfcee30fef7505faf7246e837ba746ebf9e405a16d627a28e99b7fe7d",
+      "start_ns": 91347631907532,
+      "end_ns": 91443631907532,
+      "payments": [
+        {
+          "start_ns": 91367634996223,
+          "end_ns": 91370221982839,
+          "txid": "4fa233e93db877eb3dee9049bced1618147390fbb664b3ad108c8f324e010f1e",
+          "confirmations": 33
+        },
+        {
+          "start_ns": 91395633162220,
+          "end_ns": 91398276386283,
+          "txid": "f78a75996def4c70825889bb5c2c5ca42fae8890916aa3a6d76a182d7cb2c888",
+          "confirmations": 25
+        },
+        {
+          "start_ns": 91423632375325,
+          "end_ns": 91426238580062,
+          "txid": "52cd18f12c19f36960fc089fc2a3f3cec9a5482e20331b669dc33567c51acf76",
+          "confirmations": 16
+        }
+      ],
+      "sync_command_times_ns": [
+        91347632035990,
+        91353632165056,
+        91359633541163,
+        91365637094772,
+        91371633064918,
+        91377636791944,
+        91383636049467,
+        91389634664364,
+        91398276464342,
+        91401636059629,
+        91407633286362,
+        91413633237010,
+        91419632856574,
+        91426238659187,
+        91431632747826,
+        91437637093135
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 2550000,
+      "recipient_after": 2700000,
+      "funding_txid": "a04312f1a08cef824fced8cbfb5c74bbf0a771e6aaf606ef51defce9e2c9004f",
+      "funding_confirmations": 52
+    },
+    {
+      "id": "evaluation-zcash-devtool-baseline-3",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "baseline",
+      "repeat": 3,
+      "payment_seconds": [
+        12,
+        40,
+        68
+      ],
+      "trace": "evaluation-zcash-devtool-baseline-3.trace.jsonl",
+      "trace_sha256": "f105f46f38a4b131340f5d4c3cc0bd889203181d32259347696401109a0e21b8",
+      "start_ns": 91490108584100,
+      "end_ns": 91586108584100,
+      "payments": [
+        {
+          "start_ns": 91502109333602,
+          "end_ns": 91509245722685,
+          "txid": "3665baa1fb62a4899e446a083294ec9cb831a03993f3c56c239ba89a4ba7fc97",
+          "confirmations": 34
+        },
+        {
+          "start_ns": 91530109786543,
+          "end_ns": 91534097071367,
+          "txid": "54d9aa64096156d428d6421912167ded01fd3d672d89666f6fb584f4a4998ddc",
+          "confirmations": 26
+        },
+        {
+          "start_ns": 91558109121513,
+          "end_ns": 91562977245268,
+          "txid": "67bf7e0f64eb48a50d0813331ce5ad13076d1531b74f1c43d10147288efb82ac",
+          "confirmations": 17
+        }
+      ],
+      "sync_command_times_ns": [
+        91490108778267,
+        91496111584036,
+        91509245893977,
+        91509604490687,
+        91514108802521,
+        91520110424167,
+        91526111327773,
+        91534097159575,
+        91538113744315,
+        91544111212734,
+        91550111111547,
+        91556109918106,
+        91562977337143,
+        91568111209236,
+        91574114207474,
+        91580112494698
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 2700000,
+      "recipient_after": 2850000,
+      "funding_txid": "f48740a393e1cca8bf8f1ac67e03211646bed12fcd407ec8b1b122949f5e9c09",
+      "funding_confirmations": 51
+    }
+  ],
+  "binaries": {
+    "zingo-cli": "f4f1ca734d26a65b5920c1f3066cca05376873dd3e92878da5f875196ff46845",
+    "zcash-devtool": "3f0acfe3379f8f3e03a379ab2259c93302d8c85d8e6c0e333008382491f7700f",
+    "lightwalletd": "1e85e09b796e5fb212dc368047a7ba15843b5a6b0e283f097829f6c08f8e5770"
+  },
+  "detector_sha256": "de9e0000841e6d999cbc5f449e925fee8181e39a69c9df895c403b1b24c2c6a4",
+  "frozen_time_ns": 89961793641290
+}

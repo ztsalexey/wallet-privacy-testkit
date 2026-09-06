@@ -1,0 +1,3985 @@
+{
+  "schema_version": 1,
+  "threshold_bytes": 9207,
+  "window_ns": 4000000000,
+  "groups": [
+    {
+      "split": "calibration",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "metrics": {
+        "tp": 9,
+        "fp": 0,
+        "fn": 1,
+        "tn": 62,
+        "recall": 0.9,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "balanced_accuracy": 0.95
+      }
+    },
+    {
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "metrics": {
+        "tp": 9,
+        "fp": 0,
+        "fn": 2,
+        "tn": 61,
+        "recall": 0.8181818181818182,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "balanced_accuracy": 0.9090909090909092
+      }
+    },
+    {
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "latency",
+      "metrics": {
+        "tp": 9,
+        "fp": 0,
+        "fn": 0,
+        "tn": 63,
+        "recall": 1.0,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "balanced_accuracy": 1.0
+      }
+    },
+    {
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "bandwidth",
+      "metrics": {
+        "tp": 9,
+        "fp": 0,
+        "fn": 0,
+        "tn": 63,
+        "recall": 1.0,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "balanced_accuracy": 1.0
+      }
+    },
+    {
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "baseline",
+      "metrics": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 11,
+        "tn": 61,
+        "recall": 0.0,
+        "false_positive_rate": 0.0,
+        "precision": null,
+        "balanced_accuracy": 0.5
+      }
+    }
+  ],
+  "sessions": [
+    {
+      "id": "calibration-zingolib-baseline-1",
+      "split": "calibration",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "payment_operations": 3,
+      "metrics": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "tn": 21,
+        "recall": 1.0,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "balanced_accuracy": 1.0
+      },
+      "negative_windows_with_traffic": 18,
+      "observations": [
+        {
+          "index": 0,
+          "start_ns": 89574610517571,
+          "end_ns": 89578610517571,
+          "client_bytes": 2094,
+          "server_bytes": 29711,
+          "largest_client_record": 93,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 1,
+          "start_ns": 89578610517571,
+          "end_ns": 89582610517571,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 2,
+          "start_ns": 89582610517571,
+          "end_ns": 89586610517571,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 3,
+          "start_ns": 89586610517571,
+          "end_ns": 89590610517571,
+          "client_bytes": 2688,
+          "server_bytes": 31324,
+          "largest_client_record": 93,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 4,
+          "start_ns": 89590610517571,
+          "end_ns": 89594610517571,
+          "client_bytes": 9558,
+          "server_bytes": 265,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 5,
+          "start_ns": 89594610517571,
+          "end_ns": 89598610517571,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 6,
+          "start_ns": 89598610517571,
+          "end_ns": 89602610517571,
+          "client_bytes": 2886,
+          "server_bytes": 40884,
+          "largest_client_record": 93,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 7,
+          "start_ns": 89602610517571,
+          "end_ns": 89606610517571,
+          "client_bytes": 2162,
+          "server_bytes": 30115,
+          "largest_client_record": 93,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 8,
+          "start_ns": 89606610517571,
+          "end_ns": 89610610517571,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 9,
+          "start_ns": 89610610517571,
+          "end_ns": 89614610517571,
+          "client_bytes": 2331,
+          "server_bytes": 30258,
+          "largest_client_record": 93,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 10,
+          "start_ns": 89614610517571,
+          "end_ns": 89618610517571,
+          "client_bytes": 2201,
+          "server_bytes": 30153,
+          "largest_client_record": 93,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 11,
+          "start_ns": 89618610517571,
+          "end_ns": 89622610517571,
+          "client_bytes": 9558,
+          "server_bytes": 9480,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 12,
+          "start_ns": 89622610517571,
+          "end_ns": 89626610517571,
+          "client_bytes": 2399,
+          "server_bytes": 49094,
+          "largest_client_record": 93,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 13,
+          "start_ns": 89626610517571,
+          "end_ns": 89630610517571,
+          "client_bytes": 1885,
+          "server_bytes": 29658,
+          "largest_client_record": 139,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 14,
+          "start_ns": 89630610517571,
+          "end_ns": 89634610517571,
+          "client_bytes": 330,
+          "server_bytes": 174,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 15,
+          "start_ns": 89634610517571,
+          "end_ns": 89638610517571,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 16,
+          "start_ns": 89638610517571,
+          "end_ns": 89642610517571,
+          "client_bytes": 2523,
+          "server_bytes": 31249,
+          "largest_client_record": 93,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 17,
+          "start_ns": 89642610517571,
+          "end_ns": 89646610517571,
+          "client_bytes": 330,
+          "server_bytes": 174,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 18,
+          "start_ns": 89646610517571,
+          "end_ns": 89650610517571,
+          "client_bytes": 11796,
+          "server_bytes": 40239,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 19,
+          "start_ns": 89650610517571,
+          "end_ns": 89654610517571,
+          "client_bytes": 200,
+          "server_bytes": 85,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 20,
+          "start_ns": 89654610517571,
+          "end_ns": 89658610517571,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 21,
+          "start_ns": 89658610517571,
+          "end_ns": 89662610517571,
+          "client_bytes": 2688,
+          "server_bytes": 40495,
+          "largest_client_record": 93,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 22,
+          "start_ns": 89662610517571,
+          "end_ns": 89666610517571,
+          "client_bytes": 2140,
+          "server_bytes": 30239,
+          "largest_client_record": 104,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 23,
+          "start_ns": 89666610517571,
+          "end_ns": 89670610517571,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        }
+      ]
+    },
+    {
+      "id": "calibration-zingolib-baseline-2",
+      "split": "calibration",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "payment_operations": 3,
+      "metrics": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 1,
+        "tn": 20,
+        "recall": 0.75,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "balanced_accuracy": 0.875
+      },
+      "negative_windows_with_traffic": 16,
+      "observations": [
+        {
+          "index": 0,
+          "start_ns": 89718103246530,
+          "end_ns": 89722103246530,
+          "client_bytes": 2094,
+          "server_bytes": 29771,
+          "largest_client_record": 93,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 1,
+          "start_ns": 89722103246530,
+          "end_ns": 89726103246530,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 2,
+          "start_ns": 89726103246530,
+          "end_ns": 89730103246530,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 3,
+          "start_ns": 89730103246530,
+          "end_ns": 89734103246530,
+          "client_bytes": 2666,
+          "server_bytes": 31450,
+          "largest_client_record": 141,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 4,
+          "start_ns": 89734103246530,
+          "end_ns": 89738103246530,
+          "client_bytes": 2201,
+          "server_bytes": 30327,
+          "largest_client_record": 93,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 5,
+          "start_ns": 89738103246530,
+          "end_ns": 89742103246530,
+          "client_bytes": 9558,
+          "server_bytes": 265,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 6,
+          "start_ns": 89742103246530,
+          "end_ns": 89746103246530,
+          "client_bytes": 2201,
+          "server_bytes": 39546,
+          "largest_client_record": 93,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 7,
+          "start_ns": 89746103246530,
+          "end_ns": 89750103246530,
+          "client_bytes": 2303,
+          "server_bytes": 39985,
+          "largest_client_record": 152,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 8,
+          "start_ns": 89750103246530,
+          "end_ns": 89754103246530,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 9,
+          "start_ns": 89754103246530,
+          "end_ns": 89758103246530,
+          "client_bytes": 2111,
+          "server_bytes": 29931,
+          "largest_client_record": 98,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 10,
+          "start_ns": 89758103246530,
+          "end_ns": 89762103246530,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 11,
+          "start_ns": 89762103246530,
+          "end_ns": 89766103246530,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 12,
+          "start_ns": 89766103246530,
+          "end_ns": 89770103246530,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": true,
+          "predicted_payment": false
+        },
+        {
+          "index": 13,
+          "start_ns": 89770103246530,
+          "end_ns": 89774103246530,
+          "client_bytes": 12351,
+          "server_bytes": 42012,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 14,
+          "start_ns": 89774103246530,
+          "end_ns": 89778103246530,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 15,
+          "start_ns": 89778103246530,
+          "end_ns": 89782103246530,
+          "client_bytes": 2529,
+          "server_bytes": 30407,
+          "largest_client_record": 93,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 16,
+          "start_ns": 89782103246530,
+          "end_ns": 89786103246530,
+          "client_bytes": 2201,
+          "server_bytes": 20686,
+          "largest_client_record": 93,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 17,
+          "start_ns": 89786103246530,
+          "end_ns": 89790103246530,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 18,
+          "start_ns": 89790103246530,
+          "end_ns": 89794103246530,
+          "client_bytes": 2348,
+          "server_bytes": 20851,
+          "largest_client_record": 98,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 19,
+          "start_ns": 89794103246530,
+          "end_ns": 89798103246530,
+          "client_bytes": 11576,
+          "server_bytes": 30161,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 20,
+          "start_ns": 89798103246530,
+          "end_ns": 89802103246530,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 21,
+          "start_ns": 89802103246530,
+          "end_ns": 89806103246530,
+          "client_bytes": 2331,
+          "server_bytes": 29972,
+          "largest_client_record": 93,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 22,
+          "start_ns": 89806103246530,
+          "end_ns": 89810103246530,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 23,
+          "start_ns": 89810103246530,
+          "end_ns": 89814103246530,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        }
+      ]
+    },
+    {
+      "id": "calibration-zingolib-baseline-3",
+      "split": "calibration",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "payment_operations": 3,
+      "metrics": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "tn": 21,
+        "recall": 1.0,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "balanced_accuracy": 1.0
+      },
+      "negative_windows_with_traffic": 18,
+      "observations": [
+        {
+          "index": 0,
+          "start_ns": 89855039171842,
+          "end_ns": 89859039171842,
+          "client_bytes": 2114,
+          "server_bytes": 20280,
+          "largest_client_record": 139,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 1,
+          "start_ns": 89859039171842,
+          "end_ns": 89863039171842,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 2,
+          "start_ns": 89863039171842,
+          "end_ns": 89867039171842,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 3,
+          "start_ns": 89867039171842,
+          "end_ns": 89871039171842,
+          "client_bytes": 12082,
+          "server_bytes": 31704,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 4,
+          "start_ns": 89871039171842,
+          "end_ns": 89875039171842,
+          "client_bytes": 200,
+          "server_bytes": 85,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 5,
+          "start_ns": 89875039171842,
+          "end_ns": 89879039171842,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 6,
+          "start_ns": 89879039171842,
+          "end_ns": 89883039171842,
+          "client_bytes": 2730,
+          "server_bytes": 31056,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 7,
+          "start_ns": 89883039171842,
+          "end_ns": 89887039171842,
+          "client_bytes": 2204,
+          "server_bytes": 20772,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 8,
+          "start_ns": 89887039171842,
+          "end_ns": 89891039171842,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 9,
+          "start_ns": 89891039171842,
+          "end_ns": 89895039171842,
+          "client_bytes": 2204,
+          "server_bytes": 20816,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 10,
+          "start_ns": 89895039171842,
+          "end_ns": 89899039171842,
+          "client_bytes": 11505,
+          "server_bytes": 30231,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 11,
+          "start_ns": 89899039171842,
+          "end_ns": 89903039171842,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 12,
+          "start_ns": 89903039171842,
+          "end_ns": 89907039171842,
+          "client_bytes": 2373,
+          "server_bytes": 29992,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 13,
+          "start_ns": 89907039171842,
+          "end_ns": 89911039171842,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 14,
+          "start_ns": 89911039171842,
+          "end_ns": 89915039171842,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 15,
+          "start_ns": 89915039171842,
+          "end_ns": 89919039171842,
+          "client_bytes": 2691,
+          "server_bytes": 21861,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 16,
+          "start_ns": 89919039171842,
+          "end_ns": 89923039171842,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 17,
+          "start_ns": 89923039171842,
+          "end_ns": 89927039171842,
+          "client_bytes": 9358,
+          "server_bytes": 178,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 18,
+          "start_ns": 89927039171842,
+          "end_ns": 89931039171842,
+          "client_bytes": 2730,
+          "server_bytes": 31104,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 19,
+          "start_ns": 89931039171842,
+          "end_ns": 89935039171842,
+          "client_bytes": 2363,
+          "server_bytes": 30402,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 20,
+          "start_ns": 89935039171842,
+          "end_ns": 89939039171842,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 21,
+          "start_ns": 89939039171842,
+          "end_ns": 89943039171842,
+          "client_bytes": 2334,
+          "server_bytes": 20925,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 22,
+          "start_ns": 89943039171842,
+          "end_ns": 89947039171842,
+          "client_bytes": 2204,
+          "server_bytes": 20816,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 23,
+          "start_ns": 89947039171842,
+          "end_ns": 89951039171842,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        }
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-baseline-1",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "payment_operations": 3,
+      "metrics": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "tn": 21,
+        "recall": 1.0,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "balanced_accuracy": 1.0
+      },
+      "negative_windows_with_traffic": 18,
+      "observations": [
+        {
+          "index": 0,
+          "start_ns": 89990847482437,
+          "end_ns": 89994847482437,
+          "client_bytes": 2075,
+          "server_bytes": 20228,
+          "largest_client_record": 104,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 1,
+          "start_ns": 89994847482437,
+          "end_ns": 89998847482437,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 2,
+          "start_ns": 89998847482437,
+          "end_ns": 90002847482437,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 3,
+          "start_ns": 90002847482437,
+          "end_ns": 90006847482437,
+          "client_bytes": 2730,
+          "server_bytes": 21913,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 4,
+          "start_ns": 90006847482437,
+          "end_ns": 90010847482437,
+          "client_bytes": 9558,
+          "server_bytes": 265,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 5,
+          "start_ns": 90010847482437,
+          "end_ns": 90014847482437,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 6,
+          "start_ns": 90014847482437,
+          "end_ns": 90018847482437,
+          "client_bytes": 2928,
+          "server_bytes": 31551,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 7,
+          "start_ns": 90018847482437,
+          "end_ns": 90022847482437,
+          "client_bytes": 2143,
+          "server_bytes": 20700,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 8,
+          "start_ns": 90022847482437,
+          "end_ns": 90026847482437,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 9,
+          "start_ns": 90026847482437,
+          "end_ns": 90030847482437,
+          "client_bytes": 2334,
+          "server_bytes": 20839,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 10,
+          "start_ns": 90030847482437,
+          "end_ns": 90034847482437,
+          "client_bytes": 2204,
+          "server_bytes": 20774,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 11,
+          "start_ns": 90034847482437,
+          "end_ns": 90038847482437,
+          "client_bytes": 9558,
+          "server_bytes": 9480,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 12,
+          "start_ns": 90038847482437,
+          "end_ns": 90042847482437,
+          "client_bytes": 2441,
+          "server_bytes": 39697,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 13,
+          "start_ns": 90042847482437,
+          "end_ns": 90046847482437,
+          "client_bytes": 1971,
+          "server_bytes": 20279,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 14,
+          "start_ns": 90046847482437,
+          "end_ns": 90050847482437,
+          "client_bytes": 330,
+          "server_bytes": 174,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 15,
+          "start_ns": 90050847482437,
+          "end_ns": 90054847482437,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 16,
+          "start_ns": 90054847482437,
+          "end_ns": 90058847482437,
+          "client_bytes": 2504,
+          "server_bytes": 21860,
+          "largest_client_record": 141,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 17,
+          "start_ns": 90058847482437,
+          "end_ns": 90062847482437,
+          "client_bytes": 330,
+          "server_bytes": 174,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 18,
+          "start_ns": 90062847482437,
+          "end_ns": 90066847482437,
+          "client_bytes": 11738,
+          "server_bytes": 30768,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 19,
+          "start_ns": 90066847482437,
+          "end_ns": 90070847482437,
+          "client_bytes": 200,
+          "server_bytes": 85,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 20,
+          "start_ns": 90070847482437,
+          "end_ns": 90074847482437,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 21,
+          "start_ns": 90074847482437,
+          "end_ns": 90078847482437,
+          "client_bytes": 2669,
+          "server_bytes": 30940,
+          "largest_client_record": 104,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 22,
+          "start_ns": 90078847482437,
+          "end_ns": 90082847482437,
+          "client_bytes": 2165,
+          "server_bytes": 20700,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 23,
+          "start_ns": 90082847482437,
+          "end_ns": 90086847482437,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        }
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-baseline-2",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "payment_operations": 3,
+      "metrics": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 2,
+        "tn": 19,
+        "recall": 0.6,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "balanced_accuracy": 0.8
+      },
+      "negative_windows_with_traffic": 17,
+      "observations": [
+        {
+          "index": 0,
+          "start_ns": 90126501236147,
+          "end_ns": 90130501236147,
+          "client_bytes": 2097,
+          "server_bytes": 20250,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 1,
+          "start_ns": 90130501236147,
+          "end_ns": 90134501236147,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 2,
+          "start_ns": 90134501236147,
+          "end_ns": 90138501236147,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 3,
+          "start_ns": 90138501236147,
+          "end_ns": 90142501236147,
+          "client_bytes": 2691,
+          "server_bytes": 21861,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 4,
+          "start_ns": 90142501236147,
+          "end_ns": 90146501236147,
+          "client_bytes": 2165,
+          "server_bytes": 20700,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 5,
+          "start_ns": 90146501236147,
+          "end_ns": 90150501236147,
+          "client_bytes": 9558,
+          "server_bytes": 265,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 6,
+          "start_ns": 90150501236147,
+          "end_ns": 90154501236147,
+          "client_bytes": 2182,
+          "server_bytes": 29945,
+          "largest_client_record": 104,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 7,
+          "start_ns": 90154501236147,
+          "end_ns": 90158501236147,
+          "client_bytes": 2306,
+          "server_bytes": 30316,
+          "largest_client_record": 153,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 8,
+          "start_ns": 90158501236147,
+          "end_ns": 90162501236147,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 9,
+          "start_ns": 90162501236147,
+          "end_ns": 90166501236147,
+          "client_bytes": 2182,
+          "server_bytes": 20708,
+          "largest_client_record": 98,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 10,
+          "start_ns": 90166501236147,
+          "end_ns": 90170501236147,
+          "client_bytes": 2125,
+          "server_bytes": 20752,
+          "largest_client_record": 139,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 11,
+          "start_ns": 90170501236147,
+          "end_ns": 90174501236147,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 12,
+          "start_ns": 90174501236147,
+          "end_ns": 90178501236147,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": true,
+          "predicted_payment": false
+        },
+        {
+          "index": 13,
+          "start_ns": 90178501236147,
+          "end_ns": 90182501236147,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": true,
+          "predicted_payment": false
+        },
+        {
+          "index": 14,
+          "start_ns": 90182501236147,
+          "end_ns": 90186501236147,
+          "client_bytes": 12049,
+          "server_bytes": 31252,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 15,
+          "start_ns": 90186501236147,
+          "end_ns": 90190501236147,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 16,
+          "start_ns": 90190501236147,
+          "end_ns": 90194501236147,
+          "client_bytes": 2504,
+          "server_bytes": 30939,
+          "largest_client_record": 104,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 17,
+          "start_ns": 90194501236147,
+          "end_ns": 90198501236147,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 18,
+          "start_ns": 90198501236147,
+          "end_ns": 90202501236147,
+          "client_bytes": 2204,
+          "server_bytes": 20838,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 19,
+          "start_ns": 90202501236147,
+          "end_ns": 90206501236147,
+          "client_bytes": 11566,
+          "server_bytes": 30261,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 20,
+          "start_ns": 90206501236147,
+          "end_ns": 90210501236147,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 21,
+          "start_ns": 90210501236147,
+          "end_ns": 90214501236147,
+          "client_bytes": 2334,
+          "server_bytes": 29940,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 22,
+          "start_ns": 90214501236147,
+          "end_ns": 90218501236147,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 23,
+          "start_ns": 90218501236147,
+          "end_ns": 90222501236147,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        }
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-baseline-3",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "payment_operations": 3,
+      "metrics": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "tn": 21,
+        "recall": 1.0,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "balanced_accuracy": 1.0
+      },
+      "negative_windows_with_traffic": 19,
+      "observations": [
+        {
+          "index": 0,
+          "start_ns": 90262437706680,
+          "end_ns": 90266437706680,
+          "client_bytes": 2053,
+          "server_bytes": 20250,
+          "largest_client_record": 117,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 1,
+          "start_ns": 90266437706680,
+          "end_ns": 90270437706680,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 2,
+          "start_ns": 90270437706680,
+          "end_ns": 90274437706680,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 3,
+          "start_ns": 90274437706680,
+          "end_ns": 90278437706680,
+          "client_bytes": 12121,
+          "server_bytes": 31734,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 4,
+          "start_ns": 90278437706680,
+          "end_ns": 90282437706680,
+          "client_bytes": 200,
+          "server_bytes": 85,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 5,
+          "start_ns": 90282437706680,
+          "end_ns": 90286437706680,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 6,
+          "start_ns": 90286437706680,
+          "end_ns": 90290437706680,
+          "client_bytes": 2669,
+          "server_bytes": 31026,
+          "largest_client_record": 153,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 7,
+          "start_ns": 90290437706680,
+          "end_ns": 90294437706680,
+          "client_bytes": 2165,
+          "server_bytes": 20764,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 8,
+          "start_ns": 90294437706680,
+          "end_ns": 90298437706680,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 9,
+          "start_ns": 90298437706680,
+          "end_ns": 90302437706680,
+          "client_bytes": 2334,
+          "server_bytes": 20881,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 10,
+          "start_ns": 90302437706680,
+          "end_ns": 90306437706680,
+          "client_bytes": 11562,
+          "server_bytes": 30231,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 11,
+          "start_ns": 90306437706680,
+          "end_ns": 90310437706680,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 12,
+          "start_ns": 90310437706680,
+          "end_ns": 90314437706680,
+          "client_bytes": 2402,
+          "server_bytes": 30476,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 13,
+          "start_ns": 90314437706680,
+          "end_ns": 90318437706680,
+          "client_bytes": 1971,
+          "server_bytes": 20257,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 14,
+          "start_ns": 90318437706680,
+          "end_ns": 90322437706680,
+          "client_bytes": 330,
+          "server_bytes": 174,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 15,
+          "start_ns": 90322437706680,
+          "end_ns": 90326437706680,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 16,
+          "start_ns": 90326437706680,
+          "end_ns": 90330437706680,
+          "client_bytes": 2526,
+          "server_bytes": 21816,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 17,
+          "start_ns": 90330437706680,
+          "end_ns": 90334437706680,
+          "client_bytes": 9688,
+          "server_bytes": 352,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 18,
+          "start_ns": 90334437706680,
+          "end_ns": 90338437706680,
+          "client_bytes": 35,
+          "server_bytes": 9215,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 19,
+          "start_ns": 90338437706680,
+          "end_ns": 90342437706680,
+          "client_bytes": 2802,
+          "server_bytes": 31644,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 20,
+          "start_ns": 90342437706680,
+          "end_ns": 90346437706680,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 21,
+          "start_ns": 90346437706680,
+          "end_ns": 90350437706680,
+          "client_bytes": 2334,
+          "server_bytes": 20967,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 22,
+          "start_ns": 90350437706680,
+          "end_ns": 90354437706680,
+          "client_bytes": 2204,
+          "server_bytes": 20858,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 23,
+          "start_ns": 90354437706680,
+          "end_ns": 90358437706680,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        }
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-latency-1",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "latency",
+      "payment_operations": 3,
+      "metrics": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "tn": 21,
+        "recall": 1.0,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "balanced_accuracy": 1.0
+      },
+      "negative_windows_with_traffic": 17,
+      "observations": [
+        {
+          "index": 0,
+          "start_ns": 90398368120097,
+          "end_ns": 90402368120097,
+          "client_bytes": 2075,
+          "server_bytes": 20228,
+          "largest_client_record": 141,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 1,
+          "start_ns": 90402368120097,
+          "end_ns": 90406368120097,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 2,
+          "start_ns": 90406368120097,
+          "end_ns": 90410368120097,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 3,
+          "start_ns": 90410368120097,
+          "end_ns": 90414368120097,
+          "client_bytes": 2691,
+          "server_bytes": 21861,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 4,
+          "start_ns": 90414368120097,
+          "end_ns": 90418368120097,
+          "client_bytes": 9558,
+          "server_bytes": 265,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 5,
+          "start_ns": 90418368120097,
+          "end_ns": 90422368120097,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 6,
+          "start_ns": 90422368120097,
+          "end_ns": 90426368120097,
+          "client_bytes": 2867,
+          "server_bytes": 31563,
+          "largest_client_record": 117,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 7,
+          "start_ns": 90426368120097,
+          "end_ns": 90430368120097,
+          "client_bytes": 2165,
+          "server_bytes": 20786,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 8,
+          "start_ns": 90430368120097,
+          "end_ns": 90434368120097,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 9,
+          "start_ns": 90434368120097,
+          "end_ns": 90438368120097,
+          "client_bytes": 2295,
+          "server_bytes": 20851,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 10,
+          "start_ns": 90438368120097,
+          "end_ns": 90442368120097,
+          "client_bytes": 2204,
+          "server_bytes": 20838,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 11,
+          "start_ns": 90442368120097,
+          "end_ns": 90446368120097,
+          "client_bytes": 9523,
+          "server_bytes": 9480,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 12,
+          "start_ns": 90446368120097,
+          "end_ns": 90450368120097,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 13,
+          "start_ns": 90450368120097,
+          "end_ns": 90454368120097,
+          "client_bytes": 2652,
+          "server_bytes": 30974,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 14,
+          "start_ns": 90454368120097,
+          "end_ns": 90458368120097,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 15,
+          "start_ns": 90458368120097,
+          "end_ns": 90462368120097,
+          "client_bytes": 2273,
+          "server_bytes": 20829,
+          "largest_client_record": 105,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 16,
+          "start_ns": 90462368120097,
+          "end_ns": 90466368120097,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 17,
+          "start_ns": 90466368120097,
+          "end_ns": 90470368120097,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 18,
+          "start_ns": 90470368120097,
+          "end_ns": 90474368120097,
+          "client_bytes": 12043,
+          "server_bytes": 31510,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 19,
+          "start_ns": 90474368120097,
+          "end_ns": 90478368120097,
+          "client_bytes": 239,
+          "server_bytes": 343,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 20,
+          "start_ns": 90478368120097,
+          "end_ns": 90482368120097,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 21,
+          "start_ns": 90482368120097,
+          "end_ns": 90486368120097,
+          "client_bytes": 2691,
+          "server_bytes": 31090,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 22,
+          "start_ns": 90486368120097,
+          "end_ns": 90490368120097,
+          "client_bytes": 2165,
+          "server_bytes": 20828,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 23,
+          "start_ns": 90490368120097,
+          "end_ns": 90494368120097,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        }
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-latency-2",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "latency",
+      "payment_operations": 3,
+      "metrics": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "tn": 21,
+        "recall": 1.0,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "balanced_accuracy": 1.0
+      },
+      "negative_windows_with_traffic": 17,
+      "observations": [
+        {
+          "index": 0,
+          "start_ns": 90534352918437,
+          "end_ns": 90538352918437,
+          "client_bytes": 2097,
+          "server_bytes": 20529,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 1,
+          "start_ns": 90538352918437,
+          "end_ns": 90542352918437,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 2,
+          "start_ns": 90542352918437,
+          "end_ns": 90546352918437,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 3,
+          "start_ns": 90546352918437,
+          "end_ns": 90550352918437,
+          "client_bytes": 2691,
+          "server_bytes": 22099,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 4,
+          "start_ns": 90550352918437,
+          "end_ns": 90554352918437,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 5,
+          "start_ns": 90554352918437,
+          "end_ns": 90558352918437,
+          "client_bytes": 9358,
+          "server_bytes": 178,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 6,
+          "start_ns": 90558352918437,
+          "end_ns": 90562352918437,
+          "client_bytes": 2691,
+          "server_bytes": 31356,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 7,
+          "start_ns": 90562352918437,
+          "end_ns": 90566352918437,
+          "client_bytes": 2363,
+          "server_bytes": 30276,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 8,
+          "start_ns": 90566352918437,
+          "end_ns": 90570352918437,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 9,
+          "start_ns": 90570352918437,
+          "end_ns": 90574352918437,
+          "client_bytes": 2295,
+          "server_bytes": 20725,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 10,
+          "start_ns": 90574352918437,
+          "end_ns": 90578352918437,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 11,
+          "start_ns": 90578352918437,
+          "end_ns": 90582352918437,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 12,
+          "start_ns": 90582352918437,
+          "end_ns": 90586352918437,
+          "client_bytes": 11884,
+          "server_bytes": 31129,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 13,
+          "start_ns": 90586352918437,
+          "end_ns": 90590352918437,
+          "client_bytes": 330,
+          "server_bytes": 172,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 14,
+          "start_ns": 90590352918437,
+          "end_ns": 90594352918437,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 15,
+          "start_ns": 90594352918437,
+          "end_ns": 90598352918437,
+          "client_bytes": 2691,
+          "server_bytes": 30965,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 16,
+          "start_ns": 90598352918437,
+          "end_ns": 90602352918437,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 17,
+          "start_ns": 90602352918437,
+          "end_ns": 90606352918437,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 18,
+          "start_ns": 90606352918437,
+          "end_ns": 90610352918437,
+          "client_bytes": 2691,
+          "server_bytes": 21821,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 19,
+          "start_ns": 90610352918437,
+          "end_ns": 90614352918437,
+          "client_bytes": 9558,
+          "server_bytes": 265,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 20,
+          "start_ns": 90614352918437,
+          "end_ns": 90618352918437,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 21,
+          "start_ns": 90618352918437,
+          "end_ns": 90622352918437,
+          "client_bytes": 2889,
+          "server_bytes": 31503,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 22,
+          "start_ns": 90622352918437,
+          "end_ns": 90626352918437,
+          "client_bytes": 2165,
+          "server_bytes": 20702,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 23,
+          "start_ns": 90626352918437,
+          "end_ns": 90630352918437,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        }
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-latency-3",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "latency",
+      "payment_operations": 3,
+      "metrics": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "tn": 21,
+        "recall": 1.0,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "balanced_accuracy": 1.0
+      },
+      "negative_windows_with_traffic": 18,
+      "observations": [
+        {
+          "index": 0,
+          "start_ns": 90669233195000,
+          "end_ns": 90673233195000,
+          "client_bytes": 2075,
+          "server_bytes": 20315,
+          "largest_client_record": 153,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 1,
+          "start_ns": 90673233195000,
+          "end_ns": 90677233195000,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 2,
+          "start_ns": 90677233195000,
+          "end_ns": 90681233195000,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 3,
+          "start_ns": 90681233195000,
+          "end_ns": 90685233195000,
+          "client_bytes": 11845,
+          "server_bytes": 31257,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 4,
+          "start_ns": 90685233195000,
+          "end_ns": 90689233195000,
+          "client_bytes": 437,
+          "server_bytes": 601,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 5,
+          "start_ns": 90689233195000,
+          "end_ns": 90693233195000,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 6,
+          "start_ns": 90693233195000,
+          "end_ns": 90697233195000,
+          "client_bytes": 2647,
+          "server_bytes": 30901,
+          "largest_client_record": 141,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 7,
+          "start_ns": 90697233195000,
+          "end_ns": 90701233195000,
+          "client_bytes": 2165,
+          "server_bytes": 20638,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 8,
+          "start_ns": 90701233195000,
+          "end_ns": 90705233195000,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 9,
+          "start_ns": 90705233195000,
+          "end_ns": 90709233195000,
+          "client_bytes": 2295,
+          "server_bytes": 20703,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 10,
+          "start_ns": 90709233195000,
+          "end_ns": 90713233195000,
+          "client_bytes": 11523,
+          "server_bytes": 30031,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 11,
+          "start_ns": 90713233195000,
+          "end_ns": 90717233195000,
+          "client_bytes": 35,
+          "server_bytes": 33,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 12,
+          "start_ns": 90717233195000,
+          "end_ns": 90721233195000,
+          "client_bytes": 2319,
+          "server_bytes": 30340,
+          "largest_client_record": 141,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 13,
+          "start_ns": 90721233195000,
+          "end_ns": 90725233195000,
+          "client_bytes": 2058,
+          "server_bytes": 20199,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 14,
+          "start_ns": 90725233195000,
+          "end_ns": 90729233195000,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 15,
+          "start_ns": 90729233195000,
+          "end_ns": 90733233195000,
+          "client_bytes": 2295,
+          "server_bytes": 20789,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 16,
+          "start_ns": 90733233195000,
+          "end_ns": 90737233195000,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 17,
+          "start_ns": 90737233195000,
+          "end_ns": 90741233195000,
+          "client_bytes": 9358,
+          "server_bytes": 178,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 18,
+          "start_ns": 90741233195000,
+          "end_ns": 90745233195000,
+          "client_bytes": 2691,
+          "server_bytes": 31078,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 19,
+          "start_ns": 90745233195000,
+          "end_ns": 90749233195000,
+          "client_bytes": 2363,
+          "server_bytes": 30340,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 20,
+          "start_ns": 90749233195000,
+          "end_ns": 90753233195000,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 21,
+          "start_ns": 90753233195000,
+          "end_ns": 90757233195000,
+          "client_bytes": 2295,
+          "server_bytes": 20789,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 22,
+          "start_ns": 90757233195000,
+          "end_ns": 90761233195000,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 23,
+          "start_ns": 90761233195000,
+          "end_ns": 90765233195000,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        }
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-bandwidth-1",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "bandwidth",
+      "payment_operations": 3,
+      "metrics": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "tn": 21,
+        "recall": 1.0,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "balanced_accuracy": 1.0
+      },
+      "negative_windows_with_traffic": 18,
+      "observations": [
+        {
+          "index": 0,
+          "start_ns": 90805176616447,
+          "end_ns": 90809176616447,
+          "client_bytes": 2097,
+          "server_bytes": 20379,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 1,
+          "start_ns": 90809176616447,
+          "end_ns": 90813176616447,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 2,
+          "start_ns": 90813176616447,
+          "end_ns": 90817176616447,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 3,
+          "start_ns": 90817176616447,
+          "end_ns": 90821176616447,
+          "client_bytes": 2691,
+          "server_bytes": 21993,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 4,
+          "start_ns": 90821176616447,
+          "end_ns": 90825176616447,
+          "client_bytes": 9558,
+          "server_bytes": 265,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 5,
+          "start_ns": 90825176616447,
+          "end_ns": 90829176616447,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 6,
+          "start_ns": 90829176616447,
+          "end_ns": 90833176616447,
+          "client_bytes": 2889,
+          "server_bytes": 31695,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 7,
+          "start_ns": 90833176616447,
+          "end_ns": 90837176616447,
+          "client_bytes": 2165,
+          "server_bytes": 20894,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 8,
+          "start_ns": 90837176616447,
+          "end_ns": 90841176616447,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 9,
+          "start_ns": 90841176616447,
+          "end_ns": 90845176616447,
+          "client_bytes": 2295,
+          "server_bytes": 20959,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 10,
+          "start_ns": 90845176616447,
+          "end_ns": 90849176616447,
+          "client_bytes": 2204,
+          "server_bytes": 20946,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 11,
+          "start_ns": 90849176616447,
+          "end_ns": 90853176616447,
+          "client_bytes": 9523,
+          "server_bytes": 9480,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 12,
+          "start_ns": 90853176616447,
+          "end_ns": 90857176616447,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 13,
+          "start_ns": 90857176616447,
+          "end_ns": 90861176616447,
+          "client_bytes": 2482,
+          "server_bytes": 30878,
+          "largest_client_record": 141,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 14,
+          "start_ns": 90861176616447,
+          "end_ns": 90865176616447,
+          "client_bytes": 330,
+          "server_bytes": 174,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 15,
+          "start_ns": 90865176616447,
+          "end_ns": 90869176616447,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 16,
+          "start_ns": 90869176616447,
+          "end_ns": 90873176616447,
+          "client_bytes": 2526,
+          "server_bytes": 21778,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 17,
+          "start_ns": 90873176616447,
+          "end_ns": 90877176616447,
+          "client_bytes": 330,
+          "server_bytes": 174,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 18,
+          "start_ns": 90877176616447,
+          "end_ns": 90881176616447,
+          "client_bytes": 11721,
+          "server_bytes": 30633,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 19,
+          "start_ns": 90881176616447,
+          "end_ns": 90885176616447,
+          "client_bytes": 200,
+          "server_bytes": 85,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 20,
+          "start_ns": 90885176616447,
+          "end_ns": 90889176616447,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 21,
+          "start_ns": 90889176616447,
+          "end_ns": 90893176616447,
+          "client_bytes": 2691,
+          "server_bytes": 31029,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 22,
+          "start_ns": 90893176616447,
+          "end_ns": 90897176616447,
+          "client_bytes": 2165,
+          "server_bytes": 20766,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 23,
+          "start_ns": 90897176616447,
+          "end_ns": 90901176616447,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        }
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-bandwidth-2",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "bandwidth",
+      "payment_operations": 3,
+      "metrics": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "tn": 21,
+        "recall": 1.0,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "balanced_accuracy": 1.0
+      },
+      "negative_windows_with_traffic": 19,
+      "observations": [
+        {
+          "index": 0,
+          "start_ns": 90941251800344,
+          "end_ns": 90945251800344,
+          "client_bytes": 2097,
+          "server_bytes": 20315,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 1,
+          "start_ns": 90945251800344,
+          "end_ns": 90949251800344,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 2,
+          "start_ns": 90949251800344,
+          "end_ns": 90953251800344,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 3,
+          "start_ns": 90953251800344,
+          "end_ns": 90957251800344,
+          "client_bytes": 2691,
+          "server_bytes": 21907,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 4,
+          "start_ns": 90957251800344,
+          "end_ns": 90961251800344,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 5,
+          "start_ns": 90961251800344,
+          "end_ns": 90965251800344,
+          "client_bytes": 9358,
+          "server_bytes": 178,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 6,
+          "start_ns": 90965251800344,
+          "end_ns": 90969251800344,
+          "client_bytes": 2691,
+          "server_bytes": 31142,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 7,
+          "start_ns": 90969251800344,
+          "end_ns": 90973251800344,
+          "client_bytes": 2341,
+          "server_bytes": 30468,
+          "largest_client_record": 139,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 8,
+          "start_ns": 90973251800344,
+          "end_ns": 90977251800344,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 9,
+          "start_ns": 90977251800344,
+          "end_ns": 90981251800344,
+          "client_bytes": 2295,
+          "server_bytes": 20939,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 10,
+          "start_ns": 90981251800344,
+          "end_ns": 90985251800344,
+          "client_bytes": 2165,
+          "server_bytes": 20852,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 11,
+          "start_ns": 90985251800344,
+          "end_ns": 90989251800344,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 12,
+          "start_ns": 90989251800344,
+          "end_ns": 90993251800344,
+          "client_bytes": 11653,
+          "server_bytes": 30288,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 13,
+          "start_ns": 90993251800344,
+          "end_ns": 90997251800344,
+          "client_bytes": 2006,
+          "server_bytes": 29557,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 14,
+          "start_ns": 90997251800344,
+          "end_ns": 91001251800344,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 15,
+          "start_ns": 91001251800344,
+          "end_ns": 91005251800344,
+          "client_bytes": 2493,
+          "server_bytes": 30427,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 16,
+          "start_ns": 91005251800344,
+          "end_ns": 91009251800344,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 17,
+          "start_ns": 91009251800344,
+          "end_ns": 91013251800344,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 18,
+          "start_ns": 91013251800344,
+          "end_ns": 91017251800344,
+          "client_bytes": 2691,
+          "server_bytes": 21887,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 19,
+          "start_ns": 91017251800344,
+          "end_ns": 91021251800344,
+          "client_bytes": 11523,
+          "server_bytes": 30095,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 20,
+          "start_ns": 91021251800344,
+          "end_ns": 91025251800344,
+          "client_bytes": 330,
+          "server_bytes": 172,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 21,
+          "start_ns": 91025251800344,
+          "end_ns": 91029251800344,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 22,
+          "start_ns": 91029251800344,
+          "end_ns": 91033251800344,
+          "client_bytes": 2724,
+          "server_bytes": 31480,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 23,
+          "start_ns": 91033251800344,
+          "end_ns": 91037251800344,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        }
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-bandwidth-3",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "bandwidth",
+      "payment_operations": 3,
+      "metrics": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "tn": 21,
+        "recall": 1.0,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "balanced_accuracy": 1.0
+      },
+      "negative_windows_with_traffic": 18,
+      "observations": [
+        {
+          "index": 0,
+          "start_ns": 91077495576271,
+          "end_ns": 91081495576271,
+          "client_bytes": 2097,
+          "server_bytes": 20443,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 1,
+          "start_ns": 91081495576271,
+          "end_ns": 91085495576271,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 2,
+          "start_ns": 91085495576271,
+          "end_ns": 91089495576271,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 3,
+          "start_ns": 91089495576271,
+          "end_ns": 91093495576271,
+          "client_bytes": 12082,
+          "server_bytes": 31879,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 4,
+          "start_ns": 91093495576271,
+          "end_ns": 91097495576271,
+          "client_bytes": 200,
+          "server_bytes": 85,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 5,
+          "start_ns": 91097495576271,
+          "end_ns": 91101495576271,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 6,
+          "start_ns": 91101495576271,
+          "end_ns": 91105495576271,
+          "client_bytes": 2691,
+          "server_bytes": 31157,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 7,
+          "start_ns": 91105495576271,
+          "end_ns": 91109495576271,
+          "client_bytes": 2165,
+          "server_bytes": 20894,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 8,
+          "start_ns": 91109495576271,
+          "end_ns": 91113495576271,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 9,
+          "start_ns": 91113495576271,
+          "end_ns": 91117495576271,
+          "client_bytes": 2295,
+          "server_bytes": 20959,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 10,
+          "start_ns": 91117495576271,
+          "end_ns": 91121495576271,
+          "client_bytes": 11523,
+          "server_bytes": 30287,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 11,
+          "start_ns": 91121495576271,
+          "end_ns": 91125495576271,
+          "client_bytes": 200,
+          "server_bytes": 85,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 12,
+          "start_ns": 91125495576271,
+          "end_ns": 91129495576271,
+          "client_bytes": 2532,
+          "server_bytes": 30735,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 13,
+          "start_ns": 91129495576271,
+          "end_ns": 91133495576271,
+          "client_bytes": 35,
+          "server_bytes": 0,
+          "largest_client_record": 35,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 14,
+          "start_ns": 91133495576271,
+          "end_ns": 91137495576271,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 15,
+          "start_ns": 91137495576271,
+          "end_ns": 91141495576271,
+          "client_bytes": 2493,
+          "server_bytes": 21561,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 16,
+          "start_ns": 91141495576271,
+          "end_ns": 91145495576271,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 17,
+          "start_ns": 91145495576271,
+          "end_ns": 91149495576271,
+          "client_bytes": 9358,
+          "server_bytes": 178,
+          "largest_client_record": 9207,
+          "payment_active": true,
+          "predicted_payment": true
+        },
+        {
+          "index": 18,
+          "start_ns": 91149495576271,
+          "end_ns": 91153495576271,
+          "client_bytes": 2691,
+          "server_bytes": 31334,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 19,
+          "start_ns": 91153495576271,
+          "end_ns": 91157495576271,
+          "client_bytes": 2363,
+          "server_bytes": 30340,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 20,
+          "start_ns": 91157495576271,
+          "end_ns": 91161495576271,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 21,
+          "start_ns": 91161495576271,
+          "end_ns": 91165495576271,
+          "client_bytes": 2295,
+          "server_bytes": 20767,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 22,
+          "start_ns": 91165495576271,
+          "end_ns": 91169495576271,
+          "client_bytes": 2204,
+          "server_bytes": 20754,
+          "largest_client_record": 94,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 23,
+          "start_ns": 91169495576271,
+          "end_ns": 91173495576271,
+          "client_bytes": 200,
+          "server_bytes": 87,
+          "largest_client_record": 81,
+          "payment_active": false,
+          "predicted_payment": false
+        }
+      ]
+    },
+    {
+      "id": "evaluation-zcash-devtool-baseline-1",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "baseline",
+      "payment_operations": 3,
+      "metrics": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 3,
+        "tn": 21,
+        "recall": 0.0,
+        "false_positive_rate": 0.0,
+        "precision": null,
+        "balanced_accuracy": 0.5
+      },
+      "negative_windows_with_traffic": 14,
+      "observations": [
+        {
+          "index": 0,
+          "start_ns": 91212847966860,
+          "end_ns": 91216847966860,
+          "client_bytes": 2358,
+          "server_bytes": 2900,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 1,
+          "start_ns": 91216847966860,
+          "end_ns": 91220847966860,
+          "client_bytes": 2358,
+          "server_bytes": 2974,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 2,
+          "start_ns": 91220847966860,
+          "end_ns": 91224847966860,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 3,
+          "start_ns": 91224847966860,
+          "end_ns": 91228847966860,
+          "client_bytes": 2358,
+          "server_bytes": 2952,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 4,
+          "start_ns": 91228847966860,
+          "end_ns": 91232847966860,
+          "client_bytes": 12255,
+          "server_bytes": 4775,
+          "largest_client_record": 9204,
+          "payment_active": true,
+          "predicted_payment": false
+        },
+        {
+          "index": 5,
+          "start_ns": 91232847966860,
+          "end_ns": 91236847966860,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 6,
+          "start_ns": 91236847966860,
+          "end_ns": 91240847966860,
+          "client_bytes": 2358,
+          "server_bytes": 3331,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 7,
+          "start_ns": 91240847966860,
+          "end_ns": 91244847966860,
+          "client_bytes": 2358,
+          "server_bytes": 2974,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 8,
+          "start_ns": 91244847966860,
+          "end_ns": 91248847966860,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 9,
+          "start_ns": 91248847966860,
+          "end_ns": 91252847966860,
+          "client_bytes": 2336,
+          "server_bytes": 2974,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 10,
+          "start_ns": 91252847966860,
+          "end_ns": 91256847966860,
+          "client_bytes": 2295,
+          "server_bytes": 3018,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 11,
+          "start_ns": 91256847966860,
+          "end_ns": 91260847966860,
+          "client_bytes": 9834,
+          "server_bytes": 1801,
+          "largest_client_record": 9204,
+          "payment_active": true,
+          "predicted_payment": false
+        },
+        {
+          "index": 12,
+          "start_ns": 91260847966860,
+          "end_ns": 91264847966860,
+          "client_bytes": 2358,
+          "server_bytes": 3353,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 13,
+          "start_ns": 91264847966860,
+          "end_ns": 91268847966860,
+          "client_bytes": 2336,
+          "server_bytes": 3038,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 14,
+          "start_ns": 91268847966860,
+          "end_ns": 91272847966860,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 15,
+          "start_ns": 91272847966860,
+          "end_ns": 91276847966860,
+          "client_bytes": 2358,
+          "server_bytes": 2942,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 16,
+          "start_ns": 91276847966860,
+          "end_ns": 91280847966860,
+          "client_bytes": 2358,
+          "server_bytes": 3038,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 17,
+          "start_ns": 91280847966860,
+          "end_ns": 91284847966860,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 18,
+          "start_ns": 91284847966860,
+          "end_ns": 91288847966860,
+          "client_bytes": 12255,
+          "server_bytes": 4957,
+          "largest_client_record": 9204,
+          "payment_active": true,
+          "predicted_payment": false
+        },
+        {
+          "index": 19,
+          "start_ns": 91288847966860,
+          "end_ns": 91292847966860,
+          "client_bytes": 2336,
+          "server_bytes": 3277,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 20,
+          "start_ns": 91292847966860,
+          "end_ns": 91296847966860,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 21,
+          "start_ns": 91296847966860,
+          "end_ns": 91300847966860,
+          "client_bytes": 2358,
+          "server_bytes": 2932,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 22,
+          "start_ns": 91300847966860,
+          "end_ns": 91304847966860,
+          "client_bytes": 2358,
+          "server_bytes": 2954,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 23,
+          "start_ns": 91304847966860,
+          "end_ns": 91308847966860,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        }
+      ]
+    },
+    {
+      "id": "evaluation-zcash-devtool-baseline-2",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "baseline",
+      "payment_operations": 3,
+      "metrics": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 3,
+        "tn": 21,
+        "recall": 0.0,
+        "false_positive_rate": 0.0,
+        "precision": null,
+        "balanced_accuracy": 0.5
+      },
+      "negative_windows_with_traffic": 14,
+      "observations": [
+        {
+          "index": 0,
+          "start_ns": 91347631907532,
+          "end_ns": 91351631907532,
+          "client_bytes": 2358,
+          "server_bytes": 2964,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 1,
+          "start_ns": 91351631907532,
+          "end_ns": 91355631907532,
+          "client_bytes": 2295,
+          "server_bytes": 3060,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 2,
+          "start_ns": 91355631907532,
+          "end_ns": 91359631907532,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 3,
+          "start_ns": 91359631907532,
+          "end_ns": 91363631907532,
+          "client_bytes": 2358,
+          "server_bytes": 3016,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 4,
+          "start_ns": 91363631907532,
+          "end_ns": 91367631907532,
+          "client_bytes": 2336,
+          "server_bytes": 3016,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 5,
+          "start_ns": 91367631907532,
+          "end_ns": 91371631907532,
+          "client_bytes": 9897,
+          "server_bytes": 1801,
+          "largest_client_record": 9204,
+          "payment_active": true,
+          "predicted_payment": false
+        },
+        {
+          "index": 6,
+          "start_ns": 91371631907532,
+          "end_ns": 91375631907532,
+          "client_bytes": 2358,
+          "server_bytes": 3038,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 7,
+          "start_ns": 91375631907532,
+          "end_ns": 91379631907532,
+          "client_bytes": 2358,
+          "server_bytes": 3395,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 8,
+          "start_ns": 91379631907532,
+          "end_ns": 91383631907532,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 9,
+          "start_ns": 91383631907532,
+          "end_ns": 91387631907532,
+          "client_bytes": 2336,
+          "server_bytes": 3080,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 10,
+          "start_ns": 91387631907532,
+          "end_ns": 91391631907532,
+          "client_bytes": 2358,
+          "server_bytes": 3124,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 11,
+          "start_ns": 91391631907532,
+          "end_ns": 91395631907532,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 12,
+          "start_ns": 91395631907532,
+          "end_ns": 91399631907532,
+          "client_bytes": 12233,
+          "server_bytes": 4925,
+          "largest_client_record": 9204,
+          "payment_active": true,
+          "predicted_payment": false
+        },
+        {
+          "index": 13,
+          "start_ns": 91399631907532,
+          "end_ns": 91403631907532,
+          "client_bytes": 2358,
+          "server_bytes": 3385,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 14,
+          "start_ns": 91403631907532,
+          "end_ns": 91407631907532,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 15,
+          "start_ns": 91407631907532,
+          "end_ns": 91411631907532,
+          "client_bytes": 2358,
+          "server_bytes": 3080,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 16,
+          "start_ns": 91411631907532,
+          "end_ns": 91415631907532,
+          "client_bytes": 2336,
+          "server_bytes": 3102,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 17,
+          "start_ns": 91415631907532,
+          "end_ns": 91419631907532,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 18,
+          "start_ns": 91419631907532,
+          "end_ns": 91423631907532,
+          "client_bytes": 2358,
+          "server_bytes": 3102,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 19,
+          "start_ns": 91423631907532,
+          "end_ns": 91427631907532,
+          "client_bytes": 12148,
+          "server_bytes": 4881,
+          "largest_client_record": 9204,
+          "payment_active": true,
+          "predicted_payment": false
+        },
+        {
+          "index": 20,
+          "start_ns": 91427631907532,
+          "end_ns": 91431631907532,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 21,
+          "start_ns": 91431631907532,
+          "end_ns": 91435631907532,
+          "client_bytes": 2358,
+          "server_bytes": 3481,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 22,
+          "start_ns": 91435631907532,
+          "end_ns": 91439631907532,
+          "client_bytes": 2336,
+          "server_bytes": 3166,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 23,
+          "start_ns": 91439631907532,
+          "end_ns": 91443631907532,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        }
+      ]
+    },
+    {
+      "id": "evaluation-zcash-devtool-baseline-3",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "baseline",
+      "payment_operations": 3,
+      "metrics": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 5,
+        "tn": 19,
+        "recall": 0.0,
+        "false_positive_rate": 0.0,
+        "precision": null,
+        "balanced_accuracy": 0.5
+      },
+      "negative_windows_with_traffic": 13,
+      "observations": [
+        {
+          "index": 0,
+          "start_ns": 91490108584100,
+          "end_ns": 91494108584100,
+          "client_bytes": 2358,
+          "server_bytes": 2900,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 1,
+          "start_ns": 91494108584100,
+          "end_ns": 91498108584100,
+          "client_bytes": 2336,
+          "server_bytes": 2974,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 2,
+          "start_ns": 91498108584100,
+          "end_ns": 91502108584100,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 3,
+          "start_ns": 91502108584100,
+          "end_ns": 91506108584100,
+          "client_bytes": 436,
+          "server_bytes": 1589,
+          "largest_client_record": 68,
+          "payment_active": true,
+          "predicted_payment": false
+        },
+        {
+          "index": 4,
+          "start_ns": 91506108584100,
+          "end_ns": 91510108584100,
+          "client_bytes": 13818,
+          "server_bytes": 5496,
+          "largest_client_record": 9204,
+          "payment_active": true,
+          "predicted_payment": false
+        },
+        {
+          "index": 5,
+          "start_ns": 91510108584100,
+          "end_ns": 91514108584100,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 6,
+          "start_ns": 91514108584100,
+          "end_ns": 91518108584100,
+          "client_bytes": 2358,
+          "server_bytes": 3257,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 7,
+          "start_ns": 91518108584100,
+          "end_ns": 91522108584100,
+          "client_bytes": 2358,
+          "server_bytes": 3038,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 8,
+          "start_ns": 91522108584100,
+          "end_ns": 91526108584100,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 9,
+          "start_ns": 91526108584100,
+          "end_ns": 91530108584100,
+          "client_bytes": 2358,
+          "server_bytes": 3038,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 10,
+          "start_ns": 91530108584100,
+          "end_ns": 91534108584100,
+          "client_bytes": 10541,
+          "server_bytes": 3442,
+          "largest_client_record": 9204,
+          "payment_active": true,
+          "predicted_payment": false
+        },
+        {
+          "index": 11,
+          "start_ns": 91534108584100,
+          "end_ns": 91538108584100,
+          "client_bytes": 1651,
+          "server_bytes": 1515,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 12,
+          "start_ns": 91538108584100,
+          "end_ns": 91542108584100,
+          "client_bytes": 2336,
+          "server_bytes": 3321,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 13,
+          "start_ns": 91542108584100,
+          "end_ns": 91546108584100,
+          "client_bytes": 2358,
+          "server_bytes": 3060,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 14,
+          "start_ns": 91546108584100,
+          "end_ns": 91550108584100,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 15,
+          "start_ns": 91550108584100,
+          "end_ns": 91554108584100,
+          "client_bytes": 2336,
+          "server_bytes": 3060,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 16,
+          "start_ns": 91554108584100,
+          "end_ns": 91558108584100,
+          "client_bytes": 2358,
+          "server_bytes": 3082,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 17,
+          "start_ns": 91558108584100,
+          "end_ns": 91562108584100,
+          "client_bytes": 436,
+          "server_bytes": 1589,
+          "largest_client_record": 68,
+          "payment_active": true,
+          "predicted_payment": false
+        },
+        {
+          "index": 18,
+          "start_ns": 91562108584100,
+          "end_ns": 91566108584100,
+          "client_bytes": 11819,
+          "server_bytes": 3272,
+          "largest_client_record": 9204,
+          "payment_active": true,
+          "predicted_payment": false
+        },
+        {
+          "index": 19,
+          "start_ns": 91566108584100,
+          "end_ns": 91570108584100,
+          "client_bytes": 2358,
+          "server_bytes": 3277,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 20,
+          "start_ns": 91570108584100,
+          "end_ns": 91574108584100,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 21,
+          "start_ns": 91574108584100,
+          "end_ns": 91578108584100,
+          "client_bytes": 2358,
+          "server_bytes": 3102,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 22,
+          "start_ns": 91578108584100,
+          "end_ns": 91582108584100,
+          "client_bytes": 2295,
+          "server_bytes": 3124,
+          "largest_client_record": 665,
+          "payment_active": false,
+          "predicted_payment": false
+        },
+        {
+          "index": 23,
+          "start_ns": 91582108584100,
+          "end_ns": 91586108584100,
+          "client_bytes": 0,
+          "server_bytes": 0,
+          "largest_client_record": 0,
+          "payment_active": false,
+          "predicted_payment": false
+        }
+      ]
+    }
+  ],
+  "scope": "descriptive local send-window detection; correlated windows; not wallet ranking or identity linkage"
+}

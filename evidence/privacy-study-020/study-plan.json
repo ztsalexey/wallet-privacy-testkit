@@ -1,0 +1,203 @@
+{
+  "sessions": [
+    {
+      "id": "calibration-zingolib-baseline-1",
+      "split": "calibration",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 1,
+      "payment_seconds": [
+        16,
+        44,
+        72
+      ]
+    },
+    {
+      "id": "calibration-zingolib-baseline-2",
+      "split": "calibration",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 2,
+      "payment_seconds": [
+        20,
+        48,
+        76
+      ]
+    },
+    {
+      "id": "calibration-zingolib-baseline-3",
+      "split": "calibration",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 3,
+      "payment_seconds": [
+        12,
+        40,
+        68
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-baseline-1",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 1,
+      "payment_seconds": [
+        16,
+        44,
+        72
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-baseline-2",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 2,
+      "payment_seconds": [
+        20,
+        48,
+        76
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-baseline-3",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "baseline",
+      "repeat": 3,
+      "payment_seconds": [
+        12,
+        40,
+        68
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-latency-1",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "latency",
+      "repeat": 1,
+      "payment_seconds": [
+        16,
+        44,
+        72
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-latency-2",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "latency",
+      "repeat": 2,
+      "payment_seconds": [
+        20,
+        48,
+        76
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-latency-3",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "latency",
+      "repeat": 3,
+      "payment_seconds": [
+        12,
+        40,
+        68
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-bandwidth-1",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "bandwidth",
+      "repeat": 1,
+      "payment_seconds": [
+        16,
+        44,
+        72
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-bandwidth-2",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "bandwidth",
+      "repeat": 2,
+      "payment_seconds": [
+        20,
+        48,
+        76
+      ]
+    },
+    {
+      "id": "evaluation-zingolib-bandwidth-3",
+      "split": "evaluation",
+      "wallet": "zingolib",
+      "condition": "bandwidth",
+      "repeat": 3,
+      "payment_seconds": [
+        12,
+        40,
+        68
+      ]
+    },
+    {
+      "id": "evaluation-zcash-devtool-baseline-1",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "baseline",
+      "repeat": 1,
+      "payment_seconds": [
+        16,
+        44,
+        72
+      ]
+    },
+    {
+      "id": "evaluation-zcash-devtool-baseline-2",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "baseline",
+      "repeat": 2,
+      "payment_seconds": [
+        20,
+        48,
+        76
+      ]
+    },
+    {
+      "id": "evaluation-zcash-devtool-baseline-3",
+      "split": "evaluation",
+      "wallet": "zcash-devtool",
+      "condition": "baseline",
+      "repeat": 3,
+      "payment_seconds": [
+        12,
+        40,
+        68
+      ]
+    }
+  ],
+  "window_ns": 4000000000,
+  "duration_ns": 96000000000,
+  "conditions": {
+    "baseline": {},
+    "latency": {
+      "delay_ms": 25,
+      "jitter_ms": 10
+    },
+    "bandwidth": {
+      "delay_ms": 5,
+      "bytes_per_second": 65536
+    }
+  },
+  "conditioner": "independent TCP directions; delay/jitter and pacing per read of at most 16384 bytes; not packet-level emulation",
+  "client_lifecycle": {
+    "zingolib": "persistent interactive process",
+    "zcash-devtool": "process per command; continuous capture"
+  },
+  "devtool_revision": "5a26ee854e634a4e88d1d79dab13f8fbb1eac6b8"
+}
