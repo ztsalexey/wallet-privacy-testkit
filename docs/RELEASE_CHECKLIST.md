@@ -66,3 +66,16 @@ These development additions are included in version 0.2.0.
 - [x] Native Linux Docker passed the five recovery scenarios, live negative control, and continuous-traffic regression.
 
 Publication requires auditing the final wheel and source archive, testing a clean wheel installation, committing their exact SHA-256 checksums, and publishing through Trusted Publishing. After publication, verify PyPI file hashes and attestations and test a fresh PyPI installation. The tagged [release page](https://github.com/ztsalexey/wallet-privacy-testkit/releases/tag/v0.2.0) and publishing workflow record the publication outcome.
+
+
+## Development 0.3.0.dev0
+
+- [x] Forty-seven tests pass across Python 3.11–3.13 on Linux/macOS and against a clean development wheel.
+- [x] Source and built wheel/source-archive audits pass; historical schema 1 evidence still reproduces exactly.
+- [x] The plan was committed before full collection; a separate local check recorded the frozen model hash before evaluation results.
+- [x] The complete OrbStack study confirmed 63 payments with 21 distinct fresh senders, identical funding, randomized phases, and shuffled condition blocks.
+- [x] Native Linux Docker passed the recovery scenarios, live negative control, and smaller continuous-traffic regression.
+- [x] Retained [traces, observations, provenance, results, and limitations](../evidence/randomized-study/README.md) reproduce with the installed analyzer.
+- [x] A post-hoc per-payment overlap diagnostic is explicitly separate from the predeclared window scores.
+
+This work is available from the source checkout. PyPI 0.2.0 remains the published release and does not read study schema 2.

@@ -1,0 +1,38 @@
+{
+  "analysis_role": "post-hoc descriptive diagnostic; not a predeclared primary endpoint",
+  "manifest_sha256": "d2b3ddaa1ecf3ac9df29588ec16473a9548a7f802d186896e233f5065688c6a1",
+  "threshold_bytes": 9207,
+  "wallets": {
+    "zcash-devtool": {
+      "payments": 27,
+      "payments_overlapping_a_flagged_window": 0,
+      "largest_client_record_per_session": [
+        9204,
+        9204,
+        9204,
+        9204,
+        9204,
+        9204,
+        9204,
+        9204,
+        9204
+      ]
+    },
+    "zingolib": {
+      "payments": 27,
+      "payments_overlapping_a_flagged_window": 27,
+      "largest_client_record_per_session": [
+        9207,
+        9207,
+        9207,
+        9207,
+        9207,
+        9207,
+        9207,
+        9207,
+        9207
+      ]
+    }
+  },
+  "scope": "Temporal overlap only; does not penalize false alarms outside commands. Read alongside the full window confusion matrices; not transaction linkage."
+}

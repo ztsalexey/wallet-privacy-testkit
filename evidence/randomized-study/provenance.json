@@ -1,0 +1,60 @@
+{
+  "testkit_version": "0.3.0.dev0",
+  "collector_source_commit": "d450c2432a2a80eabe217d9d0e7190e41dd531a1",
+  "plan_precollection_commit": "d450c2432a2a80eabe217d9d0e7190e41dd531a1",
+  "verification_source_commit": "ad0373d507a4e5ce220ff19b1b789ac34b1b2fb5",
+  "environment": "Linux ARM64 containers on OrbStack",
+  "runtime": {
+    "docker_context": "orbstack",
+    "engine_version": "29.4.0",
+    "engine_os": "linux",
+    "engine_arch": "arm64",
+    "lab_image_id": "sha256:733b093e93eda6a4618a403e42db35d4784e267b6258772eb94e93eb46670e4c"
+  },
+  "separate_linux_regression_run": "https://github.com/ztsalexey/wallet-privacy-testkit/actions/runs/34015912957",
+  "execution_date_utc": "2026-09-06",
+  "verified_at_utc": "2026-09-06T07:06:33.021331+00:00",
+  "freeze_observation": {
+    "observed_at_utc": "2026-09-06T06:23:50.014885+00:00",
+    "frozen_detector_sha256": "23136fd90549a6a218dc67ae2c7ecebc5ee81099d438007f95181184b17a028f",
+    "completed_sessions_at_observation": [
+      "calibration-zingolib-baseline-1",
+      "calibration-zingolib-baseline-2",
+      "calibration-zingolib-baseline-3"
+    ]
+  },
+  "files_sha256": {
+    "calibration-zingolib-baseline-1.trace.jsonl": "7cec499689eb34f6f2312932dd34c5350ae7179d641af95579523120fa0e00f7",
+    "calibration-zingolib-baseline-2.trace.jsonl": "f82be27265fa4df18bb1aa1ae21bbcc7d77736e83542927378211a7e481d5174",
+    "calibration-zingolib-baseline-3.trace.jsonl": "24ab433d5bedc33fbfb1ae7588d29f08435617eef00c90a767d0992f6421f0db",
+    "evaluation-zcash-devtool-bandwidth-1.trace.jsonl": "b2a11709cb5f91c5a51bfd0cb40227a86d89db8d1424039ee17772a472773e92",
+    "evaluation-zcash-devtool-bandwidth-2.trace.jsonl": "95d69841c003fff623c735e0dc1b66504c6a3732597f5fef21de46bd9e6b610b",
+    "evaluation-zcash-devtool-bandwidth-3.trace.jsonl": "fc2b760370a3c6e02bee73891bee8993b7d8e17a41c36f00a4236fb14020b622",
+    "evaluation-zcash-devtool-baseline-1.trace.jsonl": "2d398a6bbb33b54d52ef707ba5e743d6edce6396d903c4446e9d39f65dbbd8ae",
+    "evaluation-zcash-devtool-baseline-2.trace.jsonl": "49d707ccd10d470f45163601f8389f332029cf03ac4af1c0c918802c8f6e5603",
+    "evaluation-zcash-devtool-baseline-3.trace.jsonl": "7b0744014c9bf1c89272f65aa89ae3c966fee45a05983bbd7743f35eef9dca40",
+    "evaluation-zcash-devtool-latency-1.trace.jsonl": "41cbe143b03f5902f4a9da59501cdad2e84bf7447ffeacb0a1b6f5dec70c0c06",
+    "evaluation-zcash-devtool-latency-2.trace.jsonl": "463faa35dd557b4f31461e98c31616cb2a6638505d60b90a3b41d5175e3bbbf6",
+    "evaluation-zcash-devtool-latency-3.trace.jsonl": "833a79bca1450743662d80610bbf46ff595919d8305238626dd065e7cd2e9cd6",
+    "evaluation-zingolib-bandwidth-1.trace.jsonl": "edae1a278491722b0d834dfe2820c7734f1947ff5bedbbb69c04dc997030b81e",
+    "evaluation-zingolib-bandwidth-2.trace.jsonl": "7d999ae0b9a26e0c33931eaa42c87d129350b3e26f9a640ee480232e042b2350",
+    "evaluation-zingolib-bandwidth-3.trace.jsonl": "5604adfc49462d1e2e8d19dc02a5fbe885db3f6c06302eaba9a1a43f36fc7e26",
+    "evaluation-zingolib-baseline-1.trace.jsonl": "44b0c559d34d1517cc5ab5e1639a87805d5609fb2c2856fbc288b1f040aca4aa",
+    "evaluation-zingolib-baseline-2.trace.jsonl": "0a994f509635b30ec0b08b4a237e8241e93fa442273f12e955a719eef787ad0b",
+    "evaluation-zingolib-baseline-3.trace.jsonl": "4443299b31c22ad881be3dda2a1efbc7550c3f170dbfbb4cf39219c4c5db10bd",
+    "evaluation-zingolib-latency-1.trace.jsonl": "4fa7287f49b5570a514da38cb17fc75c1b8640a85dfb0f90f9e5238992df7c4f",
+    "evaluation-zingolib-latency-2.trace.jsonl": "d35e596cf245fa9cfb5d53b26eb3251116a3e4c855756d9031ddd821429700a0",
+    "evaluation-zingolib-latency-3.trace.jsonl": "48691ef8f86eb799b68600cf2abf2203b1445ba05dc1c9925896f6bbb1c78f55",
+    "frozen-detector.json": "23136fd90549a6a218dc67ae2c7ecebc5ee81099d438007f95181184b17a028f",
+    "linux-regression/calibration.trace.jsonl": "530f758ddf8e0bc231dd135ee0ae8da43abcb8acd45154998f219963a329a25d",
+    "linux-regression/evaluation.trace.jsonl": "8774752ae76a6b9dd2989ddb236a35e04ae37ee411d72d6379bead8130258b0d",
+    "linux-regression/privacy-manifest.json": "c1527cc05986d445763dcfdb685aab92bf85d98cdb7490d695389bf01b559951",
+    "linux-regression/privacy-report.json": "5ff475d6c305b11e14412328eae7ceb81c0cc185f6f096447eba4f6dab02b8c2",
+    "linux-regression/report.json": "cd3d8caa605d75cab61334508161cb78ae4b92c4779cc0c30c231e91d434f9a3",
+    "report.json": "e48ded7cfb2e867b626ea8b115abd77a5fba38f8d5b9ab19e1f2418cc10609a7",
+    "study-manifest.json": "d2b3ddaa1ecf3ac9df29588ec16473a9548a7f802d186896e233f5065688c6a1",
+    "study-plan.json": "ba10f792344006da68c8db2c97a24de0fb7a94f5c4c66b5ca11f2ea98e969319",
+    "study-report.json": "f619083e5baab8759805440cfab916ac2110c4de0d47adc4ef8566c670c8e923",
+    "coverage-diagnostic.json": "47d46824039b618877a4c3565ea3174ac451611da64d8631c7e5939ae72fbb0d"
+  }
+}

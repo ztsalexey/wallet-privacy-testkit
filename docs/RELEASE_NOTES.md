@@ -2,7 +2,7 @@
 
 ## 0.3.0.dev0 (source development)
 
-The study now uses fresh sender wallets, randomized timing, and three shuffled complete evaluation blocks. Schema 2 analysis checks the seed-derived plan and retained sender/funding/schedule observations, and reports timing adherence and session variation. The detector rule is unchanged, with fresh calibration preceding fresh evaluation. Existing schema 1 reports remain supported. This development work is not included in the published 0.2.0 package.
+The study now uses fresh sender wallets, randomized timing, and three shuffled complete evaluation blocks. Schema 2 analysis checks the seed-derived plan and retained sender/funding/schedule observations, and reports timing adherence and session variation. The detector rule is unchanged, with fresh calibration preceding fresh evaluation. The [complete retained run](../evidence/randomized-study/README.md) confirmed all 63 payments across 21 sessions. The frozen detector missed all independent-wallet send windows under every condition; timing adherence, session variation, and a separately labeled post-hoc overlap diagnostic explain the result. Existing schema 1 reports remain supported. This development work is not included in the published 0.2.0 package.
 
 ## 0.2.0
 

@@ -47,3 +47,7 @@ wpt analyze-study /tmp/wpt-study/study-manifest.json
 The first build compiles both wallet implementations. Allow at least 8 GB available memory, several GB of disk, and roughly an hour for recovery checks and the study after compilation, depending on hardware. All runtime funds and keys are disposable and remain in the isolated project volume. The usual wrapper cleanup and failure-retention options apply.
 
 The 63 scheduled payments may produce more than 63 labeled windows because command intervals can overlap multiple windows. Neighboring windows are correlated. Fresh sender wallets remove sender-history reuse across sessions, but the shared node, indexer, recipient, funding source, growing chain, and wallet lifecycle differences remain confounders. Three observations per wallet/condition are a small local sample, not population evidence or independent-sample confidence intervals. A cross-condition detector does not identify a public transaction or a user.
+
+## Retained run
+
+The [complete randomized study](../evidence/randomized-study/README.md) retains all 21 traces, observations, frozen model, timing adherence, results, and provenance. All 63 payments confirmed. The unchanged cutoff failed to transfer to the independent wallet under every condition. The report labels a later per-payment coverage diagnostic separately from the predeclared window metrics; neither is an estimate of field privacy.
