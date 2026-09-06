@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "window_ns": 4000000000,
+  "design": "72-second continuous sessions; persistent CLI; sync commands every 6 seconds; blocks every 3 seconds",
+  "sender_funding": {
+    "txid": "f8507304ad0f1092b37f347f6e9f187dccbc6e9d8e97a3b46ccecf744495ccb9",
+    "confirmations": 3,
+    "requested_outputs": 8,
+    "amount_per_output": 60000
+  },
+  "sessions": [
+    {
+      "split": "calibration",
+      "trace": "calibration.trace.jsonl",
+      "trace_sha256": "5a1b9f59cf5931c2cafa6be808f959e8f187eaa00b2c1c272f97c2b642e30071",
+      "start_ns": 976613571861,
+      "end_ns": 1048613571861,
+      "payments": [
+        {
+          "start_ns": 990613772358,
+          "end_ns": 997129870062,
+          "txid": "cde43490494cca1072296c6f3094227c932dcd0d8219178bd7784a32a1d57f86",
+          "confirmations": 18
+        },
+        {
+          "start_ns": 1010613779062,
+          "end_ns": 1017145714778,
+          "txid": "2d0192ce9e6a760008b1ad9692a74ea1cd84e406a563207de73fdc37f9c651c9",
+          "confirmations": 12
+        },
+        {
+          "start_ns": 1030613761865,
+          "end_ns": 1037052816679,
+          "txid": "f2fae88dd8dd25e4102eb53e17352d0a15300fbb642196ae835aee5da6e0e69c",
+          "confirmations": 6
+        }
+      ],
+      "sync_command_times_ns": [
+        976613593233,
+        982613737451,
+        988613830897,
+        997130088556,
+        1000613853728,
+        1006613757985,
+        1017145735038,
+        1018613827126,
+        1024613851438,
+        1037052836368,
+        1037156050124,
+        1042613704249
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 600000,
+      "recipient_after": 750000
+    },
+    {
+      "split": "evaluation",
+      "trace": "evaluation.trace.jsonl",
+      "trace_sha256": "491534bb693c27689aa3622085d425b89d32f2e1915a40bf41422fd1eecef0a0",
+      "start_ns": 1071966722304,
+      "end_ns": 1143966722304,
+      "payments": [
+        {
+          "start_ns": 1081967062104,
+          "end_ns": 1088312904402,
+          "txid": "5754676142cb5984fa29d7169b33c62fd7b57ee24406713d99e6495a151cb7ad",
+          "confirmations": 20
+        },
+        {
+          "start_ns": 1109966918113,
+          "end_ns": 1116373395481,
+          "txid": "51cc5d819ee50b6a3550ffe9930d4bef0cf3a40e8cb0dd348183eda0b9d72344",
+          "confirmations": 12
+        },
+        {
+          "start_ns": 1129966931311,
+          "end_ns": 1136426748104,
+          "txid": "af4b52623ef3ff3c6ac3964daa5f95c261176668ba09e9fdb17637d21e4387ff",
+          "confirmations": 6
+        }
+      ],
+      "sync_command_times_ns": [
+        1071966741402,
+        1077966917390,
+        1088312924522,
+        1089966960458,
+        1095967036846,
+        1101966908579,
+        1107966906942,
+        1116373416522,
+        1119966905206,
+        1125966911457,
+        1136426768354,
+        1137966857898
+      ],
+      "payment_amount": 50000,
+      "recipient_before": 750000,
+      "recipient_after": 900000
+    }
+  ]
+}

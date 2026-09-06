@@ -6,6 +6,8 @@ This release makes the verified recovery and continuous-traffic tools available 
 
 The release includes `after-hold`, `verify-recovery`, `analyze-privacy`, and `analyze-study`, application metadata/trailer forwarding, and the disposable Docker Compose lab. Forty tests cover transport, failure controls, metadata, scoring, frozen-model integrity, and byte-preserving network conditioning. The optional study uses source-pinned zcash-devtool with an opt-in lab trust anchor; it does not represent Zashi or another consumer wallet UI.
 
+The [retained study](../evidence/privacy-study-020/README.md) confirmed all 45 payments. Its frozen cutoff missed every send-active window from the independent wallet, whose largest client records fell three bytes below the cutoff. This is a detector transfer failure, not evidence of wallet privacy.
+
 The package remains a research preview. Privacy results describe local send-window detection, not public-transaction linkage, identity inference, or a wallet ranking. Recompute retained reports or run the [lab](../examples/regtest/README.md) with fresh disposable wallets.
 
 ## 0.2.0.dev1 (development history)
