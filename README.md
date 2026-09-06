@@ -135,7 +135,9 @@ The included [Zingolib v5 regtest report](evidence/zingolib-v5-regtest/REPORT.md
 
 The case study also found that encrypted lengths distinguished 1-, 2-, and 4-recipient transaction structures in a favorable observer model. Equal-structure payments tied at chance. The result does not estimate deanonymization in normal wallet traffic.
 
-Development's [fresh Compose recovery experiments](evidence/zingolib-v5-compose/README.md) passed on OrbStack ARM64 and native Linux Docker x86-64. They construct new payments and verify recovery after a lost acknowledgement and after killing the wallet before acknowledgement. Both runs confirmed the payments and the exact recipient balance increases. Docker Desktop has not been separately tested.
+Earlier development's [fresh Compose recovery experiments](evidence/zingolib-v5-compose/README.md) passed on OrbStack ARM64 and native Linux Docker x86-64. They construct new payments and verify recovery after a lost acknowledgement and after killing the wallet before acknowledgement. Both runs confirmed the payments and the exact recipient balance increases. Docker Desktop has not been separately tested.
+
+The [expanded dev1 evidence](evidence/zingolib-v5-continuous/README.md) retains independently checkable reports and full metadata traces from successful OrbStack and native Linux runs. Both passed five recovery scenarios and detected the unmined-payment control. The held-out send-window detector recorded misses on both platforms and a false positive on OrbStack; the report includes every window and explains the small sample’s limits.
 
 ## Project status
 
