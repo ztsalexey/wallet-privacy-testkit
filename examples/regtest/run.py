@@ -12,6 +12,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'src'))
 from wallet_privacy_testkit.recovery import verify_recovery_report
 from wallet_privacy_testkit.privacy import analyze_privacy
+from wallet_privacy_testkit.study import analyze_study
 
 
 def main():
@@ -19,6 +20,7 @@ def main():
     parser.add_argument('--output', type=Path, required=True, help='new directory for the sanitized report')
     parser.add_argument('--context', help='Docker context; defaults to the active Docker context')
     parser.add_argument('--skip-build', action='store_true', help='reuse the previously built local lab image')
+    parser.add_argument('--study', action='store_true', help='run the repeated two-wallet frozen-detector study')
     parser.add_argument('--keep-state-on-failure', action='store_true',
                         help='retain this disposable project for local debugging if a step fails')
     args = parser.parse_args()
@@ -43,10 +45,10 @@ def main():
         call('up', '-d', 'zebra')
         call('run', '--rm', '--no-deps', 'lab', 'bootstrap')
         call('restart', 'zebra')
-        call('run', '--rm', '--no-deps', 'lab', 'test')
+        call('run', '--rm', '--no-deps', '-e', f'WPT_STUDY={int(args.study)}', 'lab', 'test')
         report = json.loads((output / 'report.json').read_text())
         print(json.dumps(verify_recovery_report(report), indent=2))
-        privacy = analyze_privacy(output / 'privacy-manifest.json')
+        privacy = analyze_study(output / 'study-manifest.json') if args.study else analyze_privacy(output / 'privacy-manifest.json')
         print(json.dumps({'privacy': [{'split': s['split'], 'metrics': s['metrics']}
                                      for s in privacy['sessions']]}, indent=2))
         passed = True

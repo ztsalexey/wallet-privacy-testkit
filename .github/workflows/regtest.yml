@@ -2,6 +2,11 @@ name: regtest
 
 on:
   workflow_dispatch:
+    inputs:
+      study:
+        description: Run the repeated two-wallet study
+        type: boolean
+        default: false
   pull_request:
     paths:
       - 'examples/regtest/**'
@@ -17,11 +22,16 @@ permissions:
 jobs:
   wallet-recovery:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 70
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
       - name: Run fresh-wallet recovery scenarios
-        run: python3 examples/regtest/run.py --output "$RUNNER_TEMP/wpt-regtest"
+        env:
+          WPT_RUN_STUDY: ${{ inputs.study }}
+        run: |
+          args=()
+          if [ "$WPT_RUN_STUDY" = "true" ]; then args+=(--study); fi
+          python3 examples/regtest/run.py "${args[@]}" --output "$RUNNER_TEMP/wpt-regtest"
       - name: Retain sanitized report and build diagnostics
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -31,5 +41,7 @@ jobs:
             ${{ runner.temp }}/wpt-regtest/report.json
             ${{ runner.temp }}/wpt-regtest/build.log
             ${{ runner.temp }}/wpt-regtest/privacy-*.json
+            ${{ runner.temp }}/wpt-regtest/study-*.json
+            ${{ runner.temp }}/wpt-regtest/frozen-detector.json
             ${{ runner.temp }}/wpt-regtest/*.trace.jsonl
           retention-days: 14

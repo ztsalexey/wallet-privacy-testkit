@@ -1,6 +1,14 @@
 # Wallet Privacy Testkit for Zcash
 
-## 0.2.0.dev1 (unreleased)
+## 0.2.0
+
+This release makes the verified recovery and continuous-traffic tools available as an installable package. It adds a repeated study with a detector fitted only on calibration sessions and frozen before evaluation under other network conditions and with an independent development wallet. Results include misses and false positives, with per-session observations and explicit limits.
+
+The release includes `after-hold`, `verify-recovery`, `analyze-privacy`, and `analyze-study`, application metadata/trailer forwarding, and the disposable Docker Compose lab. Forty tests cover transport, failure controls, metadata, scoring, frozen-model integrity, and byte-preserving network conditioning. The optional study uses source-pinned zcash-devtool with an opt-in lab trust anchor; it does not represent Zashi or another consumer wallet UI.
+
+The package remains a research preview. Privacy results describe local send-window detection, not public-transaction linkage, identity inference, or a wallet ranking. Recompute retained reports or run the [lab](../examples/regtest/README.md) with fresh disposable wallets.
+
+## 0.2.0.dev1 (development history)
 
 Adds independently checkable recovery observations, a live unconfirmed-payment control, indexer restart/outage/switch scenarios, continuous-traffic privacy evaluation, and application metadata forwarding. These additions require a source checkout and are not part of PyPI 0.1.0.
 
