@@ -60,3 +60,10 @@ The testkit does not prescribe user-facing terminology. The wallet team defines 
 Version 0.1.0 provides level 1 in its test suite and one retained level-2 Zingolib case study. It has not reached levels 3 or 4.
 
 Development version 0.2.0.dev0 adds a fresh-state Compose recipe and executed recovery reports on OrbStack ARM64 and native Linux Docker x86-64. The [recovery evidence](../evidence/zingolib-v5-compose/README.md) records what was asserted live and what the sanitized reports cannot independently establish offline. This project's Linux CI runs the example; that is not yet adoption into a wallet repository's own release regression suite.
+
+
+## Continuous send-activity detection (0.2.0.dev1)
+
+The new experiment observes a persistent wallet across separate calibration and evaluation sessions, each containing both scheduled sends and periodic synchronization. Unlike the size matcher, it does not assume that the observer already knows send boundaries. Windows are fixed before labels are read. A single record-size threshold is fit on calibration data and frozen for evaluation. The full confusion matrix and individual windows are retained, including false positives during non-send activity and missed send windows.
+
+The [lab instructions](../examples/regtest/README.md) specify timing, labels, receipts, checksums, and limitations. Raw metadata permits recomputation with `wpt analyze-privacy`; schema-2 recovery observations permit `wpt verify-recovery`. Neither command authenticates the operator's observations. The live unmined-payment control and mutation tests establish that the verifier can reject declared failure conditions. They do not prove it detects every possible wallet failure.

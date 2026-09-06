@@ -100,14 +100,28 @@ class SendTransactionRelay(grpc.GenericRpcHandler):
         )
 
     def _forward_stream(self, method, request, context):
-        call = self.channel.unary_stream(method)(request, timeout=self._timeout(context))
+        call = self.channel.unary_stream(method)(request, timeout=self._timeout(context),
+                                                 metadata=self._metadata(context.invocation_metadata()))
         self._cancel_with_context(call, context)
         try:
+            context.send_initial_metadata(self._metadata(call.initial_metadata()))
             yield from call
+            context.set_trailing_metadata(self._metadata(call.trailing_metadata()))
         except grpc.RpcError as error:
+            context.set_trailing_metadata(self._metadata(error.trailing_metadata()))
             context.abort(error.code(), error.details())
         finally:
             call.cancel()
+
+    @staticmethod
+    def _metadata(metadata):
+        # Preserve application metadata, including repeated and binary values.
+        # Transport headers belong to each gRPC connection. Status details are
+        # application error data despite their standardized grpc- prefix.
+        return tuple((key, value) for key, value in (metadata or ())
+                     if key == 'grpc-status-details-bin' or
+                     (not key.startswith(('grpc-', ':')) and
+                      key not in ('user-agent', 'content-type', 'te')))
 
     @staticmethod
     def _timeout(context):
@@ -120,13 +134,18 @@ class SendTransactionRelay(grpc.GenericRpcHandler):
             call.cancel()
 
     def _forward_client_stream(self, method, requests, context):
-        call = self.channel.stream_unary(method).future(requests, timeout=self._timeout(context))
+        call = self.channel.stream_unary(method).future(requests, timeout=self._timeout(context),
+                                                       metadata=self._metadata(context.invocation_metadata()))
         self._cancel_with_context(call, context)
         try:
-            return call.result()
+            context.send_initial_metadata(self._metadata(call.initial_metadata()))
+            response = call.result()
+            context.set_trailing_metadata(self._metadata(call.trailing_metadata()))
+            return response
         except grpc.FutureCancelledError:
             context.abort(grpc.StatusCode.CANCELLED, "downstream call cancelled")
         except grpc.RpcError as error:
+            context.set_trailing_metadata(self._metadata(error.trailing_metadata()))
             context.abort(error.code(), error.details())
 
     def _forward_unary(self, method, request, context):
@@ -149,18 +168,27 @@ class SendTransactionRelay(grpc.GenericRpcHandler):
                     "privacy-testkit: connection lost before upstream submission",
                 )
             event["forwarded"] = True
+        suppress_response = event is not None and (self.mode in ('after-all', 'after-hold') or
+                            self.mode == 'after-once' and event['attempt'] == 1)
         try:
-            call = self.channel.unary_unary(method).future(request, timeout=self._timeout(context))
+            call = self.channel.unary_unary(method).future(request, timeout=self._timeout(context),
+                                                          metadata=self._metadata(context.invocation_metadata()))
             self._cancel_with_context(call, context)
+            if not suppress_response:
+                context.send_initial_metadata(self._metadata(call.initial_metadata()))
             response = call.result()
         except grpc.FutureCancelledError:
             context.abort(grpc.StatusCode.CANCELLED, "downstream call cancelled")
         except grpc.RpcError as error:
+            if suppress_response:
+                context.send_initial_metadata(self._metadata(error.initial_metadata()))
+            context.set_trailing_metadata(self._metadata(error.trailing_metadata()))
             if event is not None:
                 event["upstream_grpc_error"] = error.code().name
             context.abort(error.code(), error.details())
         if event is not None:
             decoded = SendResponse.FromString(response)
+            event['upstream_response_time_ns'] = time.monotonic_ns()
             event["upstream_response"] = {
                 "error_code": decoded.errorCode,
                 "message": decoded.errorMessage,
@@ -184,6 +212,7 @@ class SendTransactionRelay(grpc.GenericRpcHandler):
                     grpc.StatusCode.UNAVAILABLE,
                     "privacy-testkit: response lost after upstream submission",
                 )
+        context.set_trailing_metadata(self._metadata(call.trailing_metadata()))
         return response
 
     def close(self, grace=0):

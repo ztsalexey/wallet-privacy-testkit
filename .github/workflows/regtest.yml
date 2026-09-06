@@ -30,4 +30,6 @@ jobs:
           path: |
             ${{ runner.temp }}/wpt-regtest/report.json
             ${{ runner.temp }}/wpt-regtest/build.log
+            ${{ runner.temp }}/wpt-regtest/privacy-*.json
+            ${{ runner.temp }}/wpt-regtest/*.trace.jsonl
           retention-days: 14

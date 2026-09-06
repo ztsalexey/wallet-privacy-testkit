@@ -1,5 +1,9 @@
 # Wallet Privacy Testkit for Zcash
 
+## 0.2.0.dev1 (unreleased)
+
+Adds independently checkable recovery observations, a live unconfirmed-payment control, indexer restart/outage/switch scenarios, continuous-traffic privacy evaluation, and application metadata forwarding. These additions require a source checkout and are not part of PyPI 0.1.0.
+
 ## 0.2.0.dev0 (unreleased)
 
 Development adds a disposable Compose regtest lab, a held-response fault for wallet crash tests, and broader relay transport coverage. See the [regtest instructions](../examples/regtest/README.md) for requirements, assertions, and limits. These additions are not in the published 0.1.0 package.

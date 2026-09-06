@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0.dev1 - Unreleased
+
+- Added schema-v2 recovery observations and an independent offline verifier.
+- Added a live no-mining negative control and tampered-evidence regression tests.
+- Added indexer restart, bounded outage, and fresh alternate-indexer recovery experiments.
+- Added continuous TLS capture around persistent wallets with background sync, fixed-window detection, separate calibration/evaluation sessions, and false-positive reporting.
+- Forward application gRPC metadata and trailers, while suppressing acknowledgement metadata for response-loss faults.
+
 ## 0.2.0.dev0 - Unreleased
 
 - Added `after-hold` to hold submission responses until client cancellation for process-restart tests.

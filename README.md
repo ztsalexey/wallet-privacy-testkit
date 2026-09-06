@@ -66,7 +66,7 @@ The forwarder copies bytes unchanged. Its trace contains connection numbers, mon
 
 ## Transaction delivery faults
 
-The checkout includes development features for 0.2.0.dev0; the PyPI instructions above install the existing 0.1.0 release. The `after-hold` mode and [disposable Compose lab](examples/regtest/README.md) require this checkout.
+The checkout includes development features for 0.2.0.dev1; the PyPI instructions above install the existing 0.1.0 release. The `after-hold` mode, report verification, continuous-traffic analysis, and [disposable Compose lab](examples/regtest/README.md) require this checkout.
 
 The semantic relay terminates a test TLS connection and forwards the real gRPC service. It understands only enough of the lightwalletd protocol to identify and hash `RawTransaction.data`; it never writes signed transaction bytes. All other known RPCs are forwarded as opaque bytes using their required streaming cardinality.
 
@@ -99,7 +99,20 @@ An insecure local upstream or client can omit the certificate options. The relay
 
 The printed endpoint uses `127.0.0.1`. When the wallet-facing side uses TLS, the server certificate must therefore contain the IP address `127.0.0.1` in its Subject Alternative Name. The upstream CA file is required for a TLS upstream; omitting it selects an insecure upstream channel.
 
-Development forwarding respects shorter client deadlines, caps each upstream RPC at 120 seconds, and cancels upstream calls when the downstream RPC ends. The relay does not preserve application metadata or trailers and remains a controlled test instrument.
+Development forwarding respects shorter client deadlines, caps each upstream RPC at 120 seconds, and cancels upstream calls when the downstream RPC ends. It forwards repeated and binary application request metadata, response headers, and trailers, including upstream error details. Transport-owned fields are filtered. Deliberately lost or held responses suppress upstream headers and trailers too. Credentials are forwarded but not recorded in relay events. It remains a controlled test instrument.
+
+## Recovery evidence and continuous traffic (development)
+
+The lab tests lost acknowledgements, a wallet crash, an indexer restart, a measured outage, and recovery through a fresh second indexer. Each report retains actual recipient balances, node confirmations and mempools, wallet states, and submission hashes. A live payment left unmined must fail the recovery assertions. Recompute the assertions yourself:
+
+```sh
+wpt verify-recovery /tmp/wpt-first-run/report.json
+wpt analyze-privacy /tmp/wpt-first-run/privacy-manifest.json
+```
+
+The privacy experiment keeps the wallet running during two continuous sessions, with periodic sync and block production. It fits a TLS-record-size threshold on calibration windows, then reports true positives, false positives, misses, and true negatives on a separate evaluation session. Features use fixed windows without payment labels; command intervals supply ground truth only for calibration and scoring. Metadata traces and their checksums let others recompute the result.
+
+These checks establish consistency of supplied observations, not their authenticity. The small, scheduled local experiment measures send activity under its stated conditions; it does not establish transaction linkage, user identification, or real-world privacy. Historical development summaries lack the new observations and cannot pass the new verifier.
 
 ## Size-only matching
 
