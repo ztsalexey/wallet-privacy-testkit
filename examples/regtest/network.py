@@ -11,8 +11,11 @@ class StreamConditioner(socketserver.ThreadingTCPServer):
     allow_reuse_address = True
     daemon_threads = False
 
-    def __init__(self, target, *, delay_ms=0, jitter_ms=0, bytes_per_second=0):
+    def __init__(self, target, *, delay_ms=0, jitter_ms=0, bytes_per_second=0, seed=0):
         self.target = target
+        self.seed = seed
+        self.connections = 0
+        self.connection_lock = threading.Lock()
         self.delay_ms, self.jitter_ms, self.bytes_per_second = delay_ms, jitter_ms, bytes_per_second
         self.stopping = threading.Event()
         self.errors = []
@@ -30,6 +33,9 @@ class StreamConditioner(socketserver.ThreadingTCPServer):
 class Handler(socketserver.BaseRequestHandler):
     def handle(self):
         server = self.server
+        with server.connection_lock:
+            connection = server.connections
+            server.connections += 1
         try:
             with socket.create_connection(server.target, timeout=5) as upstream:
                 def copy(source, destination, seed):
@@ -57,8 +63,8 @@ class Handler(socketserver.BaseRequestHandler):
                     except OSError as error:
                         if not server.stopping.is_set() and not isinstance(error, (BrokenPipeError, ConnectionResetError)):
                             server.errors.append(f'{type(error).__name__}:{error.errno}')
-                first = threading.Thread(target=copy, args=(self.request, upstream, 1))
-                second = threading.Thread(target=copy, args=(upstream, self.request, 2))
+                first = threading.Thread(target=copy, args=(self.request, upstream, server.seed + connection * 2 + 1))
+                second = threading.Thread(target=copy, args=(upstream, self.request, server.seed + connection * 2 + 2))
                 first.start(); second.start()
                 first.join(); second.join()
         except OSError as error:

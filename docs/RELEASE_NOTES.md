@@ -1,5 +1,9 @@
 # Wallet Privacy Testkit for Zcash
 
+## 0.3.0.dev0 (source development)
+
+The study now uses fresh sender wallets, randomized timing, and three shuffled complete evaluation blocks. Schema 2 analysis checks the seed-derived plan and retained sender/funding/schedule observations, and reports timing adherence and session variation. The detector rule is unchanged, with fresh calibration preceding fresh evaluation. Existing schema 1 reports remain supported. This development work is not included in the published 0.2.0 package.
+
 ## 0.2.0
 
 This release makes the verified recovery and continuous-traffic tools available as an installable package. It adds a repeated study with a detector fitted only on calibration sessions and frozen before evaluation under other network conditions and with an independent development wallet. Results include misses and false positives, with per-session observations and explicit limits.

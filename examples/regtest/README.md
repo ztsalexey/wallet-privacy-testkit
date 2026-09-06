@@ -73,3 +73,5 @@ Add `--study` to run the [predeclared repeated study](../../docs/PRIVACY_STUDY.m
 python3 examples/regtest/run.py --context orbstack --study --output /tmp/wpt-study
 wpt analyze-study /tmp/wpt-study/study-manifest.json
 ```
+
+The current source study uses schema 2, with fresh senders and shuffled complete blocks. A scheduling seed is generated and the plan saved before lab setup; use `--study-seed` with 64 lowercase hexadecimal characters to reproduce the schedule, never wallet keys. The installed analyzer must be built from this source (0.3.0.dev0); published 0.2.0 reads the earlier schema 1. See the [study design](../../docs/PRIVACY_STUDY.md).

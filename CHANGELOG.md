@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0.dev0 - Unreleased
+
+- Replaces the source lab's study with 21 sessions: fresh sender state per session, randomized sub-window payment/sync timing, and three shuffled complete evaluation blocks covering both wallets under all three conditions.
+- Saves a public scheduling seed and complete plan before any lab activity; wallet keys use their normal random generation independently of that seed.
+- Adds study schema 2 validation of the regenerated design, distinct sender/funding/payment observations, funding balances, payment count, and intended scheduling. Schema 1 evidence remains readable.
+- Reports actual payment phases and scheduling delays, plus per-session rate means/ranges alongside pooled window counts. The detector feature and fitting rule are unchanged.
+
 ## 0.2.0 - 2026-09-06
 
 - Adds a repeated privacy study with a detector frozen before evaluation, emulated network conditions, and an independent zcash-devtool wallet adapter.

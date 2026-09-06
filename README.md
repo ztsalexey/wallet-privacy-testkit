@@ -114,7 +114,7 @@ The privacy experiment keeps the wallet running during two continuous sessions, 
 
 These checks establish consistency of supplied observations, not their authenticity. The small, scheduled local experiment measures send activity under its stated conditions; it does not establish transaction linkage, user identification, or real-world privacy. Historical development summaries lack the new observations and cannot pass the new verifier.
 
-For a larger study with a frozen detector, repeated sessions, emulated latency/bandwidth, and the independent zcash-devtool wallet:
+The source development version (0.3.0.dev0) expands the study to 21 sessions with fresh sender wallets, randomized timing, shuffled condition blocks, and the independent zcash-devtool wallet. Install the source checkout first; PyPI 0.2.0 contains the earlier study design:
 
 ```sh
 python3 examples/regtest/run.py --context orbstack --study --output /tmp/wpt-study
