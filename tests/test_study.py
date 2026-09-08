@@ -32,6 +32,19 @@ def study_fixture(root):
 
 
 class StudyTests(unittest.TestCase):
+    def test_checksummed_non_object_plan_is_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = study_fixture(Path(tmp))
+            data = json.loads(path.read_text())
+            plan_path = Path(tmp) / 'study-plan.json'
+            for invalid in ([], None, True, 'not a plan'):
+                with self.subTest(plan=invalid):
+                    plan_path.write_text(json.dumps(invalid))
+                    data['plan_sha256'] = hashlib.sha256(plan_path.read_bytes()).hexdigest()
+                    path.write_text(json.dumps(data))
+                    with self.assertRaisesRegex(ValueError, 'plan must be a JSON object'):
+                        analyze_study(path)
+
     def test_frozen_model_reports_false_positives_and_misses(self):
         with tempfile.TemporaryDirectory() as tmp:
             result = analyze_study(study_fixture(Path(tmp)))

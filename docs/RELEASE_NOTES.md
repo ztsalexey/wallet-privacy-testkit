@@ -1,5 +1,20 @@
 # Wallet Privacy Testkit for Zcash
 
+## 0.3.0
+
+A wallet team can now install the package and get a readable verification result without compiling a wallet or setting up Docker:
+
+```sh
+python -m pip install wallet-privacy-testkit==0.3.0
+wpt verify-run --example
+```
+
+The example contains retained real observations. It checks five recovery scenarios, the live unmined-payment control, and a two-session privacy experiment; it runs no new wallets. `wpt verify-run RUN_DIR` applies the same entry point to fresh lab output or the larger retained study. Text, JSON, and JUnit output distinguish recovery assertions from privacy evidence consistency, with exit codes suitable for CI. The Compose runner automatically saves both structured verification reports. The [quickstart](QUICKSTART.md) covers installation, interpretation, report export, and collecting fresh observations.
+
+This release includes the [21-session randomized study](../evidence/randomized-study/README.md), previously available from source development. All 63 payments confirmed, while the frozen detector missed every independent-wallet send window. A passing verification means the supplied observations satisfy the checks. It does not require a favorable detector score or certify wallet privacy. The study's timing, shared-state, sampling, and wallet-lifecycle limitations remain explicit.
+
+Publishing now checks that exactly the two reviewed artifacts are present, that their names agree with the package version and release tag, and that their hashes match the committed checksum file. Extra, missing, or changed artifacts prevent publication.
+
 ## 0.3.0.dev0 (source development)
 
 The study now uses fresh sender wallets, randomized timing, and three shuffled complete evaluation blocks. Schema 2 analysis checks the seed-derived plan and retained sender/funding/schedule observations, and reports timing adherence and session variation. The detector rule is unchanged, with fresh calibration preceding fresh evaluation. The [complete retained run](../evidence/randomized-study/README.md) confirmed all 63 payments across 21 sessions. The frozen detector missed all independent-wallet send windows under every condition; timing adherence, session variation, and a separately labeled post-hoc overlap diagnostic explain the result. Existing schema 1 reports remain supported. This development work is not included in the published 0.2.0 package.

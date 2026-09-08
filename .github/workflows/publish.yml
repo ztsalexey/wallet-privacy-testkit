@@ -33,7 +33,7 @@ jobs:
         run: |
           mkdir dist
           gh release download "$GITHUB_REF_NAME" --pattern '*.whl' --pattern '*.tar.gz' --dir dist
-      - name: Verify release checksums
-        run: sha256sum --check SHA256SUMS
+      - name: Verify exact reviewed file set, version, and checksums
+        run: python3 scripts/verify_release_assets.py --tag "$GITHUB_REF_NAME"
       - name: Publish to PyPI with attestations
         uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # v1.14.2

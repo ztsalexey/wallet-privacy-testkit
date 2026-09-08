@@ -49,6 +49,8 @@ def analyze_study(manifest_path):
         if hashlib.sha256(plan_path.read_bytes()).hexdigest() != manifest['plan_sha256']:
             raise ValueError('study plan checksum mismatch')
         plan = json.loads(plan_path.read_text())
+        if not isinstance(plan, dict):
+            raise ValueError('study plan must be a JSON object')
         if type(plan.get('schema_version', 1)) is not int or plan.get('schema_version', 1) != manifest['schema_version']:
             raise ValueError('study plan and manifest schema differ')
         if manifest['schema_version'] == 2:

@@ -20,6 +20,14 @@ class _EchoHandler(socketserver.BaseRequestHandler):
         self.request.sendall(payload)
 
 
+class _RespondAfterEOF(socketserver.BaseRequestHandler):
+    def handle(self):
+        payload = bytearray()
+        while chunk := self.request.recv(65_536):
+            payload.extend(chunk)
+        self.request.sendall(payload)
+
+
 class CaptureTests(unittest.TestCase):
     def test_parser_handles_fragmented_and_coalesced_records(self):
         first = b"\x17\x03\x03\x00\x03abc"
@@ -106,6 +114,85 @@ class CaptureTests(unittest.TestCase):
             trace.write_text("".join(json.dumps(row) + "\n" for row in rows))
             with self.assertRaisesRegex(ValueError, "incomplete c2s"):
                 summarize_trace(trace)
+
+    def test_half_close_preserves_the_peer_response(self):
+        upstream = socketserver.ThreadingTCPServer(("127.0.0.1", 0), _RespondAfterEOF)
+        worker = threading.Thread(target=upstream.serve_forever, daemon=True)
+        worker.start()
+        try:
+            with tempfile.TemporaryDirectory() as directory:
+                trace = Path(directory) / "trace.jsonl"
+                recorder = TraceRecorder(trace)
+                forwarder = TLSForwarder(upstream.server_address, recorder)
+                payload = b"\x17\x03\x03\x00\x06secret"
+                try:
+                    with socket.create_connection(forwarder.server_address, timeout=3) as client:
+                        client.sendall(payload)
+                        client.shutdown(socket.SHUT_WR)
+                        received = bytearray()
+                        while chunk := client.recv(65_536):
+                            received.extend(chunk)
+                        self.assertEqual(received, payload)
+                finally:
+                    forwarder.close()
+                    recorder.close()
+                summary = summarize_trace(trace)
+                self.assertEqual(summary['client_bytes'], len(payload))
+                self.assertEqual(summary['server_bytes'], len(payload))
+                self.assertTrue(summary['complete_accounting'])
+        finally:
+            upstream.shutdown()
+            upstream.server_close()
+            worker.join()
+
+    def test_summary_rejects_invalid_and_cross_connection_accounting(self):
+        valid = [
+            {'event': 'connect', 'connection': 1, 't_ns': 0},
+            {'event': 'chunk', 'connection': 1, 't_ns': 1, 'direction': 'c2s', 'bytes': 20},
+            {'event': 'tls_record', 'connection': 1, 't_ns': 2, 'direction': 'c2s',
+             'content_type': 23, 'record_bytes': 20},
+            {'event': 'close', 'connection': 1, 't_ns': 3},
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            trace = Path(directory) / 'trace.jsonl'
+            def write(rows):
+                trace.write_text(''.join(json.dumps(row) + '\n' for row in rows))
+
+            write(valid)
+            self.assertTrue(summarize_trace(trace)['complete_accounting'])
+            mutations = [
+                lambda rows: rows[0].update(t_ns=-1),
+                lambda rows: rows[1].update(t_ns=True),
+                lambda rows: rows[1].update(direction='unknown'),
+                lambda rows: rows[1].update(bytes=-20),
+                lambda rows: rows[2].update(content_type=999),
+                lambda rows: rows[2].update(record_bytes=20.0),
+                lambda rows: rows[2].update(connection=2),
+                lambda rows: rows[2].update(t_ns=0),
+                lambda rows: rows[3].update(event='unrecognized'),
+                lambda rows: rows.pop(0),
+            ]
+            for mutate in mutations:
+                with self.subTest(mutation=mutate):
+                    rows = [dict(row) for row in valid]
+                    mutate(rows)
+                    write(rows)
+                    with self.assertRaises(ValueError):
+                        summarize_trace(trace)
+            # These two streams total 40 chunk and record bytes, but one
+            # stream is incomplete and the other contains an orphan record.
+            rows = [dict(row) for row in valid]
+            rows[2]['record_bytes'] = 10
+            second = [dict(row, connection=2, t_ns=row['t_ns'] + 4) for row in valid]
+            second[2]['record_bytes'] = 30
+            write(rows + second)
+            with self.assertRaises(ValueError):
+                summarize_trace(trace)
+
+            write(valid[:-1])
+            with self.assertRaisesRegex(ValueError, 'unclosed'):
+                summarize_trace(trace)
+            self.assertFalse(summarize_trace(trace, require_complete=False)['complete_accounting'])
 
 
 if __name__ == "__main__":
