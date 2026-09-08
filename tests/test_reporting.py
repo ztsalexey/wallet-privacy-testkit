@@ -13,7 +13,7 @@ from wallet_privacy_testkit.reporting import example_run, render_report, verify_
 class ReportingTests(unittest.TestCase):
     def cli(self, *arguments):
         return subprocess.run([sys.executable, "-m", "wallet_privacy_testkit.cli", *arguments],
-                              text=True, capture_output=True)
+                              text=True, capture_output=True, timeout=60)
 
     def test_packaged_example_recomputes_real_failures_and_misses(self):
         with example_run() as root:
