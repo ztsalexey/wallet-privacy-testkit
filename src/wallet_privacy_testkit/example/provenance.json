@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "source_repository": "https://github.com/ztsalexey/wallet-privacy-testkit",
+  "source_commit": "f49b9e1e492f3f090f16ae05539d45dd196bb2aa",
+  "source_directory": "evidence/zingolib-v5-continuous/orbstack-aarch64",
+  "scope": "Exact retained real regtest observations; no wallets or network tests run by the example command.",
+  "sha256": {
+    "report.json": "f6ca0bab5bc0aed1822b179a3bb9379e3f7c2347c57b0c07477238a34cbe5005",
+    "privacy-manifest.json": "ac9bdeaafcda5345bf63f5ec3accfa600db5ceff566544a4aee816cd316dca31",
+    "calibration.trace.jsonl": "7b08d5e2a81ca009043eb8c1395056ec18007d704f1699fef776d2729c457920",
+    "evaluation.trace.jsonl": "e68e50498be03e040ff1e54df82a9f9cf36834810bd8a27a7f662cb453b8c028"
+  }
+}

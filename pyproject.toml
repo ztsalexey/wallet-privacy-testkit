@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "wallet-privacy-testkit"
-version = "0.3.0.dev0"
+version = "0.3.0"
 description = "Adversarial network privacy and transaction-delivery tests for Zcash wallets"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -38,3 +38,6 @@ wpt = "wallet_privacy_testkit.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+wallet_privacy_testkit = ["example/*.json", "example/*.jsonl"]

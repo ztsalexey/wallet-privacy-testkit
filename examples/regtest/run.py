@@ -11,9 +11,7 @@ import secrets
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'src'))
-from wallet_privacy_testkit.recovery import verify_recovery_report
-from wallet_privacy_testkit.privacy import analyze_privacy
-from wallet_privacy_testkit.study import analyze_study
+from wallet_privacy_testkit.reporting import render_report, verify_run
 from wallet_privacy_testkit.study_design import make_plan
 
 
@@ -54,11 +52,13 @@ def main():
         call('run', '--rm', '--no-deps', 'lab', 'bootstrap')
         call('restart', 'zebra')
         call('run', '--rm', '--no-deps', '-e', f'WPT_STUDY={int(args.study)}', 'lab', 'test')
-        report = json.loads((output / 'report.json').read_text())
-        print(json.dumps(verify_recovery_report(report), indent=2))
-        privacy = analyze_study(output / 'study-manifest.json') if args.study else analyze_privacy(output / 'privacy-manifest.json')
-        print(json.dumps({'privacy': [{'split': s['split'], 'metrics': s['metrics']}
-                                     for s in privacy['sessions']]}, indent=2))
+        verification = verify_run(output)
+        for format, filename in [('json', 'verification.json'), ('junit', 'verification.xml')]:
+            with (output / filename).open('x', encoding='utf-8') as destination:
+                destination.write(render_report(verification, format))
+        print(render_report(verification), end='', flush=True)
+        if verification['status'] != 'pass':
+            raise RuntimeError('run verification failed; inspect verification.json')
         passed = True
     finally:
         # The random project name belongs only to this invocation. Never prune

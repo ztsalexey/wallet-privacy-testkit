@@ -2,7 +2,7 @@
 
 The optional `--study` experiment tests whether one detector transfers from its calibration sessions to later sessions, different emulated network conditions, and an independent wallet implementation. It is separate from the smaller two-session example and does not rank wallets or estimate population privacy.
 
-## Randomized design (source development, 0.3.0.dev0)
+## Randomized design (0.3.0)
 
 The runner writes `study-plan.json` on the host before building images or creating wallets. A fresh public 256-bit seed determines the schedule; `--study-seed` accepts a saved seed for replay. Hash-derived draws and ordering are stable across Python versions. This seed controls timing and order only: wallet keys come from the wallets' normal random generation and are never reproducible from the plan.
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.0 - 2026-09-07
+
+- Adds `wpt verify-run` to check a complete lab run, separate recovery assertions from privacy evidence consistency, and produce a readable summary, JSON, or JUnit XML with meaningful exit codes.
+- Includes a compact real recorded example in the wheel: `wpt verify-run --example` works without Docker, a source checkout, or a wallet run.
+- Makes the randomized 21-session study available in the release, with fresh senders, randomized timing, shuffled condition blocks, and calibration-only detector freezing. Historical study evidence remains supported.
+- Saves JSON and JUnit verification results automatically from the Compose runner and retains them in the regtest workflow.
+- Adds an installation and CI quickstart, and corrects the documented evaluation-session count.
+- Requires the publishing workflow's downloaded artifacts to match exactly the reviewed checksum file set, package version, and release tag; rejects additional uploads and changed files.
+
 ## 0.3.0.dev0 - Unreleased
 
 - Replaces the source lab's study with 21 sessions: fresh sender state per session, randomized sub-window payment/sync timing, and three shuffled complete evaluation blocks covering both wallets under all three conditions.

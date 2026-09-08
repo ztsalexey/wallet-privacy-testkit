@@ -1,5 +1,6 @@
 """Record observable TLS lengths and timing while forwarding bytes unchanged."""
 
+import errno
 import json
 import selectors
 import socket
@@ -116,12 +117,20 @@ class _ForwardHandler(socketserver.BaseRequestHandler):
                 with selectors.DefaultSelector() as selector:
                     selector.register(self.request, selectors.EVENT_READ, (upstream, "c2s"))
                     selector.register(upstream, selectors.EVENT_READ, (self.request, "s2c"))
-                    while not server.stopping.is_set():
+                    while selector.get_map() and not server.stopping.is_set():
                         for key, _ in selector.select(timeout=0.1):
                             destination, direction = key.data
                             payload = key.fileobj.recv(65_536)
                             if not payload:
-                                return
+                                # TCP EOF closes one direction. The peer can
+                                # still return data after receiving that EOF.
+                                selector.unregister(key.fileobj)
+                                try:
+                                    destination.shutdown(socket.SHUT_WR)
+                                except OSError as error:
+                                    if error.errno != errno.ENOTCONN:
+                                        raise
+                                continue
                             recorder.emit(
                                 "chunk", connection, direction=direction, bytes=len(payload)
                             )
@@ -160,12 +169,73 @@ def read_trace(path):
 
 def summarize_trace(path, require_complete=True):
     events = read_trace(path)
+    accounting, open_connections = {}, set()
+    previous_time = -1
+    for row in events:
+        event, connection, timestamp = row['event'], row.get('connection'), row.get('t_ns')
+        if type(timestamp) is not int or timestamp < 0 or timestamp < previous_time:
+            raise ValueError('trace timestamps must be nonnegative and chronological')
+        previous_time = timestamp
+        if type(connection) is not int or connection < 0:
+            raise ValueError('invalid trace connection identifier')
+        if event == 'observation_boundary':
+            if connection != 0:
+                raise ValueError('observation boundaries must use connection zero')
+            continue
+        if connection == 0:
+            raise ValueError('traffic events require a positive connection identifier')
+        if event == 'connect':
+            if connection in accounting:
+                raise ValueError('duplicate trace connection')
+            accounting[connection] = {direction: [0, 0] for direction in VALID_DIRECTIONS}
+            open_connections.add(connection)
+            continue
+        if connection not in open_connections:
+            raise ValueError('trace event outside an open connection')
+        if event == 'close':
+            open_connections.remove(connection)
+            continue
+        if event == 'connection_error':
+            continue
+        if event not in ('chunk', 'tls_record', 'parse_error'):
+            raise ValueError('unknown trace event')
+        direction = row.get('direction')
+        if direction not in VALID_DIRECTIONS:
+            raise ValueError('invalid trace direction')
+        if event == 'parse_error':
+            continue
+        chunk_bytes, record_bytes = accounting[connection][direction]
+        if event == 'chunk':
+            size = row.get('bytes')
+            if type(size) is not int or size <= 0:
+                raise ValueError('chunk size must be a positive integer')
+            chunk_bytes += size
+        else:
+            size, content_type = row.get('record_bytes'), row.get('content_type')
+            if (type(size) is not int or not TLS_HEADER_BYTES <= size <= TLS_MAX_CIPHERTEXT_BYTES + TLS_HEADER_BYTES
+                    or type(content_type) is not int or content_type not in TLS_CONTENT_TYPES):
+                raise ValueError('invalid TLS record observation')
+            record_bytes += size
+            if record_bytes > chunk_bytes:
+                raise ValueError('TLS records exceed captured bytes on their connection')
+        accounting[connection][direction] = [chunk_bytes, record_bytes]
     failures = [
         row for row in events if row["event"] in ("parse_error", "connection_error")
     ]
     if failures:
         kinds = sorted({row["event"] for row in failures})
         raise ValueError(f"trace contains capture failures: {', '.join(kinds)}")
+    complete = not open_connections and all(
+        chunks == records for directions in accounting.values() for chunks, records in directions.values()
+    )
+    if require_complete:
+        for connection, directions in accounting.items():
+            for direction, (chunks, records) in directions.items():
+                if chunks != records:
+                    raise ValueError(f'incomplete {direction} TLS record accounting on connection {connection}: '
+                                     f'{chunks} chunk bytes, {records} complete record bytes')
+        if open_connections:
+            raise ValueError('trace contains unclosed connections; capture may be truncated')
     chunks = [row for row in events if row["event"] == "chunk"]
     records = [row for row in events if row["event"] == "tls_record"]
     if not chunks or not records:
@@ -180,11 +250,6 @@ def summarize_trace(path, require_complete=True):
             for row in records
             if row.get("direction") == direction
         )
-        if require_complete and chunk_bytes != record_bytes:
-            raise ValueError(
-                f"incomplete {direction} TLS record accounting: "
-                f"{chunk_bytes} chunk bytes, {record_bytes} complete record bytes"
-            )
         totals[direction] = {
             "chunk_bytes": chunk_bytes,
             "complete_record_bytes": record_bytes,
@@ -205,9 +270,5 @@ def summarize_trace(path, require_complete=True):
             row["record_bytes"] for row in application_records
         ),
         "complete_tls_records": len(records),
-        "complete_accounting": all(
-            totals[direction]["chunk_bytes"]
-            == totals[direction]["complete_record_bytes"]
-            for direction in VALID_DIRECTIONS
-        ),
+        "complete_accounting": complete,
     }

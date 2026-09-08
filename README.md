@@ -1,10 +1,10 @@
 # Wallet Privacy Testkit for Zcash
 
-Wallet Privacy Testkit is an adversarial test layer for Zcash wallet-to-indexer traffic. It records the lengths and timing visible outside TLS, injects uncertainty around `SendTransaction`, and evaluates size-only transaction matching without awarding full credit to ties.
+Wallet Privacy Testkit helps Zcash wallet teams check payment recovery after a lost response and study what encrypted network traffic reveals. It supplies a passive TLS metadata recorder, a transaction-delivery fault relay, and tools to independently recompute recorded experiment results.
 
 This is an independent project maintained at [ztsalexey/wallet-privacy-testkit](https://github.com/ztsalexey/wallet-privacy-testkit). It is not affiliated with or endorsed by the Zcash Foundation, Electric Coin Company, or any wallet or indexer maintainer.
 
-Version 0.2.0 is a research preview. It supplies reusable test components and a verified Zingolib case study. It does not certify a wallet, assign a privacy score, inspect mainnet funds, or replace a wallet's existing integration tests.
+Version 0.3.0 is a research preview. It includes a complete recorded example, reusable test components, and a randomized two-wallet study. It does not certify a wallet, assign a privacy score, inspect mainnet funds, or replace a wallet's existing integration tests.
 
 ## Why this exists
 
@@ -17,22 +17,28 @@ Existing projects already provision Zcash regtest networks and test wallet behav
 
 The [methodology](docs/METHODOLOGY.md) defines what each result means. The [threat model](docs/THREAT_MODEL.md) states what it does not establish.
 
-## Install
+## Try it on a real recorded run
 
-Python 3.11 or newer is required.
-
-Install version 0.2.0 from [PyPI](https://pypi.org/project/wallet-privacy-testkit/0.2.0/):
+Start by verifying the real observations included with the package. This requires Python 3.11+ and an Internet connection for installation; verification itself uses local files and needs no Docker, wallet, or node.
 
 ```sh
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install wallet-privacy-testkit==0.2.0
-wpt --help
+python -m pip install wallet-privacy-testkit==0.3.0
+wpt verify-run --example
 ```
+
+The command recomputes five recovery scenarios, checks the live negative control, and verifies a two-session privacy experiment from retained observations. It identifies this as recorded evidence, without running a wallet. Its concise summary separates successful evidence checks from detector performance. A successful verification is a consistency result, not a privacy endorsement.
+
+The [quickstart](docs/QUICKSTART.md) explains the output, JSON/JUnit exports, the larger randomized study, and collecting a fresh run. The source archive includes the full retained evidence and lab; the installed wheel includes the reusable Python tools and this compact example.
 
 ## Develop from a source checkout
 
+For contributors, clone the repository and install the development dependencies:
+
 ```sh
+git clone https://github.com/ztsalexey/wallet-privacy-testkit.git
+cd wallet-privacy-testkit
 python3 -m venv .venv
 source .venv/bin/activate
 .venv/bin/python -m pip install -r requirements-dev.txt
@@ -42,7 +48,7 @@ source .venv/bin/activate
 
 The release was developed with Python 3.12.9, gRPC 1.83.1, and protobuf 7.36.1. CI tests the pinned development environment on Python 3.11–3.13 on Linux and macOS. The broader runtime dependency ranges are not exhaustively tested.
 
-Packaged wheels and source archives are available from [GitHub Releases](https://github.com/ztsalexey/wallet-privacy-testkit/releases). After activating a virtual environment, install a downloaded wheel with `python -m pip install ./wallet_privacy_testkit-0.2.0-py3-none-any.whl`.
+Packaged wheels and source archives are available from [GitHub Releases](https://github.com/ztsalexey/wallet-privacy-testkit/releases). After activating a virtual environment, install a downloaded wheel with `python -m pip install ./wallet_privacy_testkit-0.3.0-py3-none-any.whl`.
 
 ## Passive TLS metadata capture
 
@@ -66,7 +72,7 @@ The forwarder copies bytes unchanged. Its trace contains connection numbers, mon
 
 ## Transaction delivery faults
 
-Version 0.2.0 includes `after-hold`, report verification, and continuous-traffic analysis. The [disposable Compose lab](examples/regtest/README.md) is included in the source archive and repository.
+The [disposable Compose lab](examples/regtest/README.md) is included in the source archive and repository. It combines the fault relay with wallet and node observations to check recovery.
 
 The semantic relay terminates a test TLS connection and forwards the real gRPC service. It understands only enough of the lightwalletd protocol to identify and hash `RawTransaction.data`; it never writes signed transaction bytes. All other known RPCs are forwarded as opaque bytes using their required streaming cardinality.
 
@@ -114,11 +120,11 @@ The privacy experiment keeps the wallet running during two continuous sessions, 
 
 These checks establish consistency of supplied observations, not their authenticity. The small, scheduled local experiment measures send activity under its stated conditions; it does not establish transaction linkage, user identification, or real-world privacy. Historical development summaries lack the new observations and cannot pass the new verifier.
 
-The source development version (0.3.0.dev0) expands the study to 21 sessions with fresh sender wallets, randomized timing, shuffled condition blocks, and the independent zcash-devtool wallet. Install the source checkout first; PyPI 0.2.0 contains the earlier study design:
+Version 0.3.0 expands the study to 21 sessions with fresh sender wallets, randomized timing, shuffled condition blocks, and the independent zcash-devtool wallet. Use the matching source checkout or source archive for the lab:
 
 ```sh
 python3 examples/regtest/run.py --context orbstack --study --output /tmp/wpt-study
-wpt analyze-study /tmp/wpt-study/study-manifest.json
+wpt verify-run /tmp/wpt-study
 ```
 
 The study records its plan before capture and saves the fitted detector before any evaluation session. The [new 21-session results](evidence/randomized-study/README.md) confirmed all 63 payments. Zingolib evaluation window recall ranged from 52.9% to 69.2%; the independent wallet had no flagged window under any condition. A separately labeled post-hoc diagnostic shows that every Zingolib evaluation payment overlapped at least one flagged window, illustrating why window recall and whole-operation coverage differ. See the [methodology](docs/PRIVACY_STUDY.md) for the small sample and shared-state limitations. The [historical 0.2.0 study](evidence/privacy-study-020/README.md) remains reproducible.

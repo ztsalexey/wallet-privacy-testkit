@@ -10,6 +10,8 @@ From the repository root with Python 3.11+ and Docker Compose v2:
 python3 examples/regtest/run.py --output /tmp/wpt-first-run
 ```
 
+To inspect a completed run first, follow the [quickstart](../../docs/QUICKSTART.md). It verifies retained real observations without building images. Install this source checkout with `python -m pip install .` to use the current CLI alongside the runner.
+
 To explicitly choose OrbStack on macOS:
 
 ```sh
@@ -50,9 +52,12 @@ The passive forwarder observes every connection during each session without decr
 A threshold is selected only from calibration data by balanced accuracy; ties select the higher cutoff. The evaluation report includes the confusion matrix, recall, false-positive rate, precision, balanced accuracy, and individual window observations. There is no required accuracy score: a poor detector is still a valid experimental result. The runner fails on missing or inconsistent observations, not on an unfavorable privacy result.
 
 ```sh
+wpt verify-run /tmp/wpt-first-run
 wpt verify-recovery /tmp/wpt-first-run/report.json
 wpt analyze-privacy /tmp/wpt-first-run/privacy-manifest.json
 ```
+
+`verify-run` checks recovery and privacy evidence together and prints a concise summary. The individual commands above expose the full JSON results. A verified privacy experiment can contain detector misses or false positives; detection accuracy is not a pass criterion.
 
 The sessions use one wallet, one local transport, a prescribed sync/mining schedule, and three sends per split. Neighboring windows are correlated. Command duration is operator-provided ground truth and may include work beyond network submission. The threshold is not evaluated on different wallets or networks, and these sample counts do not justify population accuracy estimates. Detection of a local send window does not identify a public transaction or a person. This is a reproducible local experiment, not a field study.
 
@@ -67,11 +72,12 @@ The recipe targets Docker Engine, OrbStack, and Docker Desktop. Only environment
 
 ## Repeated two-wallet study
 
-Add `--study` to run the [predeclared repeated study](../../docs/PRIVACY_STUDY.md) after the recovery scenarios. It replaces the two-session privacy example with three calibration sessions and twelve evaluation sessions using a frozen detector, emulated latency/bandwidth, and a second wallet implementation. The host receives `study-plan.json`, `frozen-detector.json`, `study-manifest.json`, `study-report.json`, and one metadata trace per session.
+Add `--study` to run the [predeclared repeated study](../../docs/PRIVACY_STUDY.md) after the recovery scenarios. It replaces the two-session privacy example with three calibration sessions and eighteen evaluation sessions using fresh sender wallets, a frozen detector, emulated latency/bandwidth, and a second wallet implementation. The host receives `study-plan.json`, `frozen-detector.json`, `study-manifest.json`, `study-report.json`, and one metadata trace per session.
 
 ```sh
 python3 examples/regtest/run.py --context orbstack --study --output /tmp/wpt-study
+wpt verify-run /tmp/wpt-study
 wpt analyze-study /tmp/wpt-study/study-manifest.json
 ```
 
-The current source study uses schema 2, with fresh senders and shuffled complete blocks. A scheduling seed is generated and the plan saved before lab setup; use `--study-seed` with 64 lowercase hexadecimal characters to reproduce the schedule, never wallet keys. The installed analyzer must be built from this source (0.3.0.dev0); published 0.2.0 reads the earlier schema 1. See the [study design](../../docs/PRIVACY_STUDY.md).
+Version 0.3.0 uses study schema 2, with fresh senders and shuffled complete blocks. A scheduling seed is generated and the plan saved before lab setup; use `--study-seed` with 64 lowercase hexadecimal characters to reproduce the schedule, never wallet keys. Use the matching 0.3.0 analyzer and source release. The runner saves `verification.json` and `verification.xml` automatically and prints a concise summary; the individual analysis commands remain available for detailed output. See the [study design](../../docs/PRIVACY_STUDY.md).

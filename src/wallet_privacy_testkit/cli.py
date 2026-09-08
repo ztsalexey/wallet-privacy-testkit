@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import sys
 import time
 from pathlib import Path
 
@@ -12,6 +13,7 @@ from .matching import evaluate_size_matching
 from .recovery import verify_recovery_report
 from .privacy import analyze_privacy
 from .study import analyze_study
+from .reporting import example_run, render_report, verify_run
 
 
 def _port(value, *, allow_zero=False):
@@ -35,12 +37,16 @@ def _write_new(path, value):
 
 def _capture(args):
     recorder = TraceRecorder(args.output)
-    forwarder = TLSForwarder(
-        (args.target_host, args.target_port),
-        recorder,
-        args.listen_host,
-        args.listen_port,
-    )
+    try:
+        forwarder = TLSForwarder(
+            (args.target_host, args.target_port),
+            recorder,
+            args.listen_host,
+            args.listen_port,
+        )
+    except Exception:
+        recorder.close()
+        raise
     print(
         json.dumps(
             {
@@ -75,6 +81,23 @@ def _match(args):
     )
 
 
+def _verify_run(args):
+    if bool(args.directory) == args.example:
+        raise ValueError("provide either RUN_DIR or --example")
+    if args.example:
+        with example_run() as directory:
+            report = verify_run(directory, example=True)
+    else:
+        report = verify_run(args.directory)
+    rendered = render_report(report, args.format)
+    if args.output:
+        with args.output.open("x", encoding="utf-8") as destination:
+            destination.write(rendered)
+    else:
+        print(rendered, end="")
+    return 0 if report["status"] == "pass" else 1
+
+
 def _fault_relay(args):
     if args.events.exists():
         raise FileExistsError(f"event output already exists: {args.events}")
@@ -107,6 +130,13 @@ def parser():
     )
     root.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     commands = root.add_subparsers(dest="command", required=True)
+
+    verify = commands.add_parser("verify-run", help="recompute a lab run; readable summary or CI report")
+    verify.add_argument("directory", nargs="?", type=Path, metavar="RUN_DIR")
+    verify.add_argument("--example", action="store_true", help="verify packaged retained evidence; run no wallets")
+    verify.add_argument("--format", choices=("text", "json", "junit"), default="text")
+    verify.add_argument("--output", type=Path, help="write a new file instead of stdout; never overwrite")
+    verify.set_defaults(handler=_verify_run)
 
     capture = commands.add_parser("capture", help="record passive TLS metadata")
     capture.add_argument("--target-host", required=True)
@@ -156,7 +186,13 @@ def parser():
 
 def main():
     args = parser().parse_args()
-    args.handler(args)
+    try:
+        status = args.handler(args)
+    except (OSError, ValueError) as error:
+        print(f"wpt: error: {error}", file=sys.stderr)
+        raise SystemExit(2) from None
+    if status:
+        raise SystemExit(status)
 
 
 if __name__ == "__main__":
