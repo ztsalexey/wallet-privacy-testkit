@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "testkit_version": "0.3.0",
+  "source": "/home/runner/work/_temp/wpt-regtest",
+  "example": false,
+  "status": "pass",
+  "checks": [
+    {
+      "name": "recovery",
+      "status": "pass",
+      "detail": {
+        "status": "pass",
+        "scenarios": [
+          {
+            "name": "after-once",
+            "recipient_balance_delta": 100000,
+            "status": "pass"
+          },
+          {
+            "name": "after-hold",
+            "recipient_balance_delta": 100000,
+            "status": "pass"
+          },
+          {
+            "name": "indexer-restart",
+            "recipient_balance_delta": 100000,
+            "status": "pass"
+          },
+          {
+            "name": "outage",
+            "recipient_balance_delta": 100000,
+            "status": "pass"
+          },
+          {
+            "name": "alternate-indexer",
+            "recipient_balance_delta": 100000,
+            "status": "pass"
+          }
+        ],
+        "negative_control_detected": [
+          "node_confirmation",
+          "wallet_confirmation",
+          "recipient_balance_delta",
+          "final_mempool"
+        ],
+        "scope": "consistency of supplied observations; not proof of their authenticity"
+      }
+    },
+    {
+      "name": "privacy_evidence",
+      "status": "pass",
+      "detail": {
+        "kind": "continuous",
+        "manifest": "privacy-manifest.json",
+        "threshold_bytes": 9207,
+        "window_ns": 4000000000,
+        "sessions": [
+          {
+            "split": "calibration",
+            "windows": 18,
+            "payment_operations": 3,
+            "negative_windows_with_traffic": 7,
+            "metrics": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 6,
+              "tn": 9,
+              "recall": 0.3333333333333333,
+              "false_positive_rate": 0.0,
+              "precision": 1.0,
+              "balanced_accuracy": 0.6666666666666666
+            }
+          },
+          {
+            "split": "evaluation",
+            "windows": 18,
+            "payment_operations": 3,
+            "negative_windows_with_traffic": 7,
+            "metrics": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 6,
+              "tn": 9,
+              "recall": 0.3333333333333333,
+              "false_positive_rate": 0.0,
+              "precision": 1.0,
+              "balanced_accuracy": 0.6666666666666666
+            }
+          }
+        ],
+        "groups": [],
+        "payment_operations": 6,
+        "scope": "local send-activity detection; not transaction matching or user identification"
+      }
+    }
+  ],
+  "scope": "Checks consistency of supplied observations, not their authenticity. Privacy metrics describe local send-command windows in a small, correlated sample; they are not a privacy guarantee, wallet ranking, or identity linkage. No detector accuracy threshold is used to pass this verification."
+}

@@ -1,0 +1,30 @@
+{
+  "platform": "OrbStack Linux aarch64, Docker Engine 29.4.0",
+  "collection_completed_at_utc": "2026-09-08T00:17:23.870866+00:00",
+  "collection_base_commit": "f49b9e1e492f3f090f16ae05539d45dd196bb2aa",
+  "collection_source_note": "Collected from the working tree after the TCP half-close and per-connection trace-integrity fixes, before committing the 0.3.0 release preparation. The instrument reported 0.3.0.dev0. The host runner process started before the readable report export change; text, JSON and JUnit were independently generated afterward using the updated CLI. All collector source hashes below match the verification commit.",
+  "collector_testkit_version": "0.3.0.dev0",
+  "verification_source_commit": "b0ee69ed8fe74110fb315dab1420d1d55d54755c",
+  "verification_testkit_version": "0.3.0",
+  "image_id": "sha256:7e1e583c2798a584b4b0934ced4e44658e3ea1dcb1849fe6c035e36143f3546b",
+  "command": "python examples/regtest/run.py --context orbstack --output /private/tmp/wpt-product-readiness-live",
+  "source_sha256_observed_inside_collector": {
+    "examples/regtest/lab.py": "f667f3fa976207cc2729805f3baea812e947b416d5e06f53902dfccdea16e54d",
+    "examples/regtest/privacy_run.py": "35360c987a21da8728b07d9f9b0d79bc146888ea498ee064cde368e1ba83f6ea",
+    "examples/regtest/patch_trust.py": "a19d9a40dbf7b544b66111113661cc1a25bf18eddaeb9a25dc1bbffbb221694e",
+    "src/wallet_privacy_testkit/capture.py": "60811cc3006614553b5809312846c4e32b4a6115998501ee31c18fc1ac037f4c",
+    "src/wallet_privacy_testkit/fault_relay.py": "4bc9ca59147355d956f326836eaa88370d013e22fca5f86f338d13ab0b98d42d",
+    "src/wallet_privacy_testkit/privacy.py": "e3489fd52ba5a161f6ea5e330f5a04c26f45ce2fa034917261ae1ea6e8e6b105",
+    "src/wallet_privacy_testkit/protocol.py": "e14d4136affe770f38ff108d0a87c396b30ddfddbf7208345549490d33f3fc71",
+    "src/wallet_privacy_testkit/recovery.py": "b9e71471b9e7c57bb4b6ad81a93317b39dc61181b9c1c34b0b1112d6a47efea0"
+  },
+  "files_sha256": {
+    "report.json": "c25a2adf5532d97d65177e13044b4b5ff6094c3360502b73ee90a35949eef15e",
+    "privacy-manifest.json": "9433e08e6d5ff65499536ce85d4930a9299671558c87030e3b9a2b5532d588c7",
+    "privacy-report.json": "b3dbc5ac4dedb9f43818ebc534b2ddaa9e0979c839911f96b2552bd000a96508",
+    "calibration.trace.jsonl": "92f3142de6a1dfdcc4ba407a714b570b9b49095a494f937af1ae3c6ab2334e70",
+    "evaluation.trace.jsonl": "fa991399827db893154820b75c306e2c60bfb5cd13e1ef162b70511bdadc3c5e",
+    "verification.json": "8ae74eb3e4f1b7dc97201d65356caa299b777667b21f7385f70aa3e939120bef"
+  },
+  "scope": "Checks consistency of supplied observations, not their authenticity. Privacy metrics describe local send-command windows in a small, correlated sample; they are not a privacy guarantee, wallet ranking, or identity linkage. No detector accuracy threshold is used to pass this verification."
+}

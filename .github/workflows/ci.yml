@@ -30,3 +30,9 @@ jobs:
       - run: python scripts/release_audit.py
       - run: python -m build
       - run: python scripts/release_audit.py --artifacts
+      - name: Verify the built wheel outside the source checkout
+        run: |
+          python -m venv "$RUNNER_TEMP/wpt-wheel"
+          "$RUNNER_TEMP/wpt-wheel/bin/python" -m pip install dist/*.whl
+          cd "$RUNNER_TEMP"
+          "$RUNNER_TEMP/wpt-wheel/bin/wpt" verify-run --example

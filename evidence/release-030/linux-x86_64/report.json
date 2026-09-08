@@ -1,0 +1,470 @@
+{
+  "schema_version": 2,
+  "status": "pass",
+  "sources": {
+    "zingolib": "9e897f8b2fc5f12a99604f2533164af62af7d3ac",
+    "lightwalletd": "d79cd1100575ff909d70e00d5514a4092df94934",
+    "zebra": "6.2.3"
+  },
+  "architecture": "x86_64",
+  "testkit_version": "0.3.0",
+  "binaries": {
+    "zingo-cli": "fb0aa61210a44b8d6ef4104f64dba1606ee5b7935a5999bdce557937f67887ec",
+    "lightwalletd": "9d7ea1d54364e163c42c2e88dac5b0f91570c378dd8250ad53e547d699c7290a"
+  },
+  "scenarios": [
+    {
+      "name": "after-once",
+      "intent": {
+        "amount": 100000
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "transaction_sha256": "f1b9436374b6c5eaaf5451f428b6ac5a2e234876ce4078984ca379b0b07721bc",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": 0,
+          "accepted_txid": "ae2873e55fefe03838191919e72374746b7c4bf2d202116e36cd9d43e981929c",
+          "response_lost": true,
+          "response_held": false
+        },
+        {
+          "attempt": 2,
+          "transaction_sha256": "f1b9436374b6c5eaaf5451f428b6ac5a2e234876ce4078984ca379b0b07721bc",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": -1,
+          "accepted_txid": null,
+          "response_lost": false,
+          "response_held": false
+        },
+        {
+          "attempt": 3,
+          "transaction_sha256": "f1b9436374b6c5eaaf5451f428b6ac5a2e234876ce4078984ca379b0b07721bc",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": -1,
+          "accepted_txid": null,
+          "response_lost": false,
+          "response_held": false
+        },
+        {
+          "attempt": 4,
+          "transaction_sha256": "f1b9436374b6c5eaaf5451f428b6ac5a2e234876ce4078984ca379b0b07721bc",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": -1,
+          "accepted_txid": null,
+          "response_lost": false,
+          "response_held": false
+        }
+      ],
+      "recipient": {
+        "before": 0,
+        "after": 100000
+      },
+      "wallet": {
+        "after_reopen": "failed",
+        "after_sync": "confirmed"
+      },
+      "node": {
+        "mempool_before": [],
+        "mempool_after_submit": [
+          "ae2873e55fefe03838191919e72374746b7c4bf2d202116e36cd9d43e981929c"
+        ],
+        "mempool_final": [],
+        "transaction": {
+          "txid": "ae2873e55fefe03838191919e72374746b7c4bf2d202116e36cd9d43e981929c",
+          "sha256": "f1b9436374b6c5eaaf5451f428b6ac5a2e234876ce4078984ca379b0b07721bc",
+          "confirmations": 3
+        }
+      },
+      "intervention": {
+        "wallet_exit_code": 0
+      }
+    },
+    {
+      "name": "after-hold",
+      "intent": {
+        "amount": 100000
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "transaction_sha256": "48e6fc7795ef9fa007a7072361a6e8b153c1624add210cbb1df2f657bee2a2a1",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": 0,
+          "accepted_txid": "93e3d2c6ae988bb1a2dfd7b59a9ab2511d8c87933dba1d84c5a0449ad77d8cdd",
+          "response_lost": true,
+          "response_held": true
+        }
+      ],
+      "recipient": {
+        "before": 100000,
+        "after": 200000
+      },
+      "wallet": {
+        "after_reopen": "calculated",
+        "after_sync": "confirmed"
+      },
+      "node": {
+        "mempool_before": [],
+        "mempool_after_submit": [
+          "93e3d2c6ae988bb1a2dfd7b59a9ab2511d8c87933dba1d84c5a0449ad77d8cdd"
+        ],
+        "mempool_final": [],
+        "transaction": {
+          "txid": "93e3d2c6ae988bb1a2dfd7b59a9ab2511d8c87933dba1d84c5a0449ad77d8cdd",
+          "sha256": "48e6fc7795ef9fa007a7072361a6e8b153c1624add210cbb1df2f657bee2a2a1",
+          "confirmations": 3
+        }
+      },
+      "intervention": {
+        "accepted_time_ns": 988089860097,
+        "kill_time_ns": 988097776496,
+        "wallet_exit_code": -9
+      }
+    },
+    {
+      "name": "indexer-restart",
+      "intent": {
+        "amount": 100000
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "transaction_sha256": "6db90fe9e76b62371ca2f632bc371bd151f88b47de7a3203ec4184ab381de963",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": 0,
+          "accepted_txid": "661c9b10aa06fce6318362145c9817e465932f2b41fe56f3982158a53a4658e6",
+          "response_lost": true,
+          "response_held": false
+        },
+        {
+          "attempt": 2,
+          "transaction_sha256": "6db90fe9e76b62371ca2f632bc371bd151f88b47de7a3203ec4184ab381de963",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": -1,
+          "accepted_txid": null,
+          "response_lost": false,
+          "response_held": false
+        },
+        {
+          "attempt": 3,
+          "transaction_sha256": "6db90fe9e76b62371ca2f632bc371bd151f88b47de7a3203ec4184ab381de963",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": -1,
+          "accepted_txid": null,
+          "response_lost": false,
+          "response_held": false
+        },
+        {
+          "attempt": 4,
+          "transaction_sha256": "6db90fe9e76b62371ca2f632bc371bd151f88b47de7a3203ec4184ab381de963",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": -1,
+          "accepted_txid": null,
+          "response_lost": false,
+          "response_held": false
+        }
+      ],
+      "recipient": {
+        "before": 200000,
+        "after": 300000
+      },
+      "wallet": {
+        "after_reopen": "failed",
+        "after_sync": "confirmed"
+      },
+      "node": {
+        "mempool_before": [],
+        "mempool_after_submit": [
+          "661c9b10aa06fce6318362145c9817e465932f2b41fe56f3982158a53a4658e6"
+        ],
+        "mempool_final": [],
+        "transaction": {
+          "txid": "661c9b10aa06fce6318362145c9817e465932f2b41fe56f3982158a53a4658e6",
+          "sha256": "6db90fe9e76b62371ca2f632bc371bd151f88b47de7a3203ec4184ab381de963",
+          "confirmations": 3
+        }
+      },
+      "intervention": {
+        "wallet_exit_code": 0,
+        "old_pid": 7,
+        "indexer_stopped": true,
+        "new_pid": 278
+      }
+    },
+    {
+      "name": "outage",
+      "intent": {
+        "amount": 100000
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "transaction_sha256": "f570a9b305d9827948bdc6c8e191a28c91004ae83ed119d045ba70ce686f8dc6",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": 0,
+          "accepted_txid": "de3f6ad0aea954913e3082ef7e041c2b33777e035322c8ce96b965645c14a2ff",
+          "response_lost": true,
+          "response_held": false
+        },
+        {
+          "attempt": 2,
+          "transaction_sha256": "f570a9b305d9827948bdc6c8e191a28c91004ae83ed119d045ba70ce686f8dc6",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": -1,
+          "accepted_txid": null,
+          "response_lost": false,
+          "response_held": false
+        },
+        {
+          "attempt": 3,
+          "transaction_sha256": "f570a9b305d9827948bdc6c8e191a28c91004ae83ed119d045ba70ce686f8dc6",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": -1,
+          "accepted_txid": null,
+          "response_lost": false,
+          "response_held": false
+        },
+        {
+          "attempt": 4,
+          "transaction_sha256": "f570a9b305d9827948bdc6c8e191a28c91004ae83ed119d045ba70ce686f8dc6",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": -1,
+          "accepted_txid": null,
+          "response_lost": false,
+          "response_held": false
+        }
+      ],
+      "recipient": {
+        "before": 300000,
+        "after": 400000
+      },
+      "wallet": {
+        "after_reopen": "failed",
+        "after_sync": "confirmed"
+      },
+      "node": {
+        "mempool_before": [],
+        "mempool_after_submit": [
+          "de3f6ad0aea954913e3082ef7e041c2b33777e035322c8ce96b965645c14a2ff"
+        ],
+        "mempool_final": [],
+        "transaction": {
+          "txid": "de3f6ad0aea954913e3082ef7e041c2b33777e035322c8ce96b965645c14a2ff",
+          "sha256": "f570a9b305d9827948bdc6c8e191a28c91004ae83ed119d045ba70ce686f8dc6",
+          "confirmations": 3
+        }
+      },
+      "intervention": {
+        "wallet_exit_code": 0,
+        "old_pid": 278,
+        "indexer_stopped": true,
+        "endpoint_unavailable": true,
+        "outage_elapsed_ns": 13013591075,
+        "new_pid": 385
+      }
+    },
+    {
+      "name": "alternate-indexer",
+      "intent": {
+        "amount": 100000
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "transaction_sha256": "c9581a2391836cd9b3cc9ab2e38b49630eccee4f212f73a3a8ad4c5cbd6d4015",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": 0,
+          "accepted_txid": "716a0b7b297bc62b9742ec3898c9fdba4619f7f92ecdc133fd3c2674e95e544f",
+          "response_lost": true,
+          "response_held": false
+        },
+        {
+          "attempt": 2,
+          "transaction_sha256": "c9581a2391836cd9b3cc9ab2e38b49630eccee4f212f73a3a8ad4c5cbd6d4015",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": -1,
+          "accepted_txid": null,
+          "response_lost": false,
+          "response_held": false
+        },
+        {
+          "attempt": 3,
+          "transaction_sha256": "c9581a2391836cd9b3cc9ab2e38b49630eccee4f212f73a3a8ad4c5cbd6d4015",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": -1,
+          "accepted_txid": null,
+          "response_lost": false,
+          "response_held": false
+        },
+        {
+          "attempt": 4,
+          "transaction_sha256": "c9581a2391836cd9b3cc9ab2e38b49630eccee4f212f73a3a8ad4c5cbd6d4015",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": -1,
+          "accepted_txid": null,
+          "response_lost": false,
+          "response_held": false
+        }
+      ],
+      "recipient": {
+        "before": 400000,
+        "after": 500000
+      },
+      "wallet": {
+        "after_reopen": "failed",
+        "after_sync": "confirmed"
+      },
+      "node": {
+        "mempool_before": [],
+        "mempool_after_submit": [
+          "716a0b7b297bc62b9742ec3898c9fdba4619f7f92ecdc133fd3c2674e95e544f"
+        ],
+        "mempool_final": [],
+        "transaction": {
+          "txid": "716a0b7b297bc62b9742ec3898c9fdba4619f7f92ecdc133fd3c2674e95e544f",
+          "sha256": "c9581a2391836cd9b3cc9ab2e38b49630eccee4f212f73a3a8ad4c5cbd6d4015",
+          "confirmations": 3
+        }
+      },
+      "intervention": {
+        "wallet_exit_code": 0,
+        "old_pid": 385,
+        "indexer_stopped": true,
+        "original_indexer_stopped": true,
+        "original_port": 9067,
+        "recovery_port": 9077,
+        "fresh_indexer_state": true
+      }
+    }
+  ],
+  "negative_controls": [
+    {
+      "name": "no-mining",
+      "intent": {
+        "amount": 100000
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "transaction_sha256": "d554a8c2feee8fc8d79ddb911f52e69d464c4d7f4611084c51f41fce37dcc0fd",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": 0,
+          "accepted_txid": "dc1d05019c6ba0f3f66c4a230e6644ac6b8a8db797432082eda2ff942d404293",
+          "response_lost": true,
+          "response_held": false
+        },
+        {
+          "attempt": 2,
+          "transaction_sha256": "d554a8c2feee8fc8d79ddb911f52e69d464c4d7f4611084c51f41fce37dcc0fd",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": -1,
+          "accepted_txid": null,
+          "response_lost": false,
+          "response_held": false
+        },
+        {
+          "attempt": 3,
+          "transaction_sha256": "d554a8c2feee8fc8d79ddb911f52e69d464c4d7f4611084c51f41fce37dcc0fd",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": -1,
+          "accepted_txid": null,
+          "response_lost": false,
+          "response_held": false
+        },
+        {
+          "attempt": 4,
+          "transaction_sha256": "d554a8c2feee8fc8d79ddb911f52e69d464c4d7f4611084c51f41fce37dcc0fd",
+          "transaction_bytes": 9165,
+          "forwarded": true,
+          "upstream_code": -1,
+          "accepted_txid": null,
+          "response_lost": false,
+          "response_held": false
+        }
+      ],
+      "recipient": {
+        "before": 500000,
+        "after": 500000
+      },
+      "wallet": {
+        "after_reopen": "failed",
+        "after_sync": "failed"
+      },
+      "node": {
+        "mempool_before": [],
+        "mempool_after_submit": [
+          "dc1d05019c6ba0f3f66c4a230e6644ac6b8a8db797432082eda2ff942d404293"
+        ],
+        "mempool_final": [
+          "dc1d05019c6ba0f3f66c4a230e6644ac6b8a8db797432082eda2ff942d404293"
+        ],
+        "transaction": {
+          "txid": "dc1d05019c6ba0f3f66c4a230e6644ac6b8a8db797432082eda2ff942d404293",
+          "sha256": "d554a8c2feee8fc8d79ddb911f52e69d464c4d7f4611084c51f41fce37dcc0fd",
+          "confirmations": 0
+        }
+      },
+      "intervention": {
+        "wallet_exit_code": 0
+      }
+    }
+  ],
+  "verification": {
+    "status": "pass",
+    "scenarios": [
+      {
+        "name": "after-once",
+        "recipient_balance_delta": 100000,
+        "status": "pass"
+      },
+      {
+        "name": "after-hold",
+        "recipient_balance_delta": 100000,
+        "status": "pass"
+      },
+      {
+        "name": "indexer-restart",
+        "recipient_balance_delta": 100000,
+        "status": "pass"
+      },
+      {
+        "name": "outage",
+        "recipient_balance_delta": 100000,
+        "status": "pass"
+      },
+      {
+        "name": "alternate-indexer",
+        "recipient_balance_delta": 100000,
+        "status": "pass"
+      }
+    ],
+    "negative_control_detected": [
+      "node_confirmation",
+      "wallet_confirmation",
+      "recipient_balance_delta",
+      "final_mempool"
+    ],
+    "scope": "consistency of supplied observations; not proof of their authenticity"
+  }
+}
