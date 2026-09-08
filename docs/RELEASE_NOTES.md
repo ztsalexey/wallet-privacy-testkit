@@ -13,6 +13,10 @@ The example contains retained real observations. It checks five recovery scenari
 
 This release includes the [21-session randomized study](../evidence/randomized-study/README.md), previously available from source development. All 63 payments confirmed, while the frozen detector missed every independent-wallet send window. A passing verification means the supplied observations satisfy the checks. It does not require a favorable detector score or certify wallet privacy. The study's timing, shared-state, sampling, and wallet-lifecycle limitations remain explicit.
 
+The TLS forwarder now preserves upstream responses after a client half-close, and trace validation checks lifecycle and byte accounting per connection. A malformed study plan produces a structured validation failure. Sixty-two tests cover these regressions and the existing experiment behavior.
+
+Fresh [OrbStack and native Linux regressions](../evidence/release-030/README.md) pass the recovery checks and retain detector misses and false positives. Each run fits its own calibration cutoff; these are separate small experiments.
+
 Publishing now checks that exactly the two reviewed artifacts are present, that their names agree with the package version and release tag, and that their hashes match the committed checksum file. Extra, missing, or changed artifacts prevent publication.
 
 ## 0.3.0.dev0 (source development)

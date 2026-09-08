@@ -78,4 +78,21 @@ Publication requires auditing the final wheel and source archive, testing a clea
 - [x] Retained [traces, observations, provenance, results, and limitations](../evidence/randomized-study/README.md) reproduce with the installed analyzer.
 - [x] A post-hoc per-payment overlap diagnostic is explicitly separate from the predeclared window scores.
 
-This work is available from the source checkout. PyPI 0.2.0 remains the published release and does not read study schema 2.
+This development work is included in 0.3.0. The older 0.2.0 package does not read study schema 2.
+
+
+## 0.3.0 validation
+
+- [x] Sixty-two tests pass in the Python 3.11–3.13 Linux/macOS matrix and against a clean wheel installation.
+- [x] The installed wheel verifies its packaged real example without a source checkout or Docker.
+- [x] Recovery failures, corrupt or missing privacy evidence, and malformed study plans produce failed verification reports; the negative control remains required.
+- [x] A real socket regression confirms that a TCP half-close preserves the peer's remaining response. Trace validation now checks connection lifecycle and byte accounting per connection.
+- [x] Every retained valid privacy and study report still recomputes unchanged.
+- [x] A fresh OrbStack run passes five recovery scenarios, the live negative control, and six confirmed privacy payments; its disposable state is removed.
+- [x] A fresh native Linux Docker run passes the same regression using the release implementation.
+- [x] Package metadata, source contents, both built artifacts, and current dependency advisories pass their audits.
+- [x] Publication verifies the exact two artifact names, tag/version agreement, and committed SHA-256 hashes; extra uploads cannot enter the publish set.
+
+The [fresh release regressions](../evidence/release-030/README.md) retain both platforms’ observations, metadata traces, results, and collection/verification provenance.
+
+The GitHub [0.3.0 release](https://github.com/ztsalexey/wallet-privacy-testkit/releases/tag/v0.3.0), committed checksum file, and [publishing workflow](https://github.com/ztsalexey/wallet-privacy-testkit/actions/workflows/publish.yml) record publication. Before finishing publication, compare both PyPI artifact hashes with the reviewed files, check their attestations, and exercise a fresh PyPI installation. Repository CI also installs each built wheel in an isolated environment and runs its packaged example outside the checkout.

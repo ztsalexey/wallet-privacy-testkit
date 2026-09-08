@@ -1,0 +1,30 @@
+{
+  "platform": "GitHub Actions ubuntu-latest, native Linux Docker x86_64",
+  "workflow_head_commit": "b0ee69ed8fe74110fb315dab1420d1d55d54755c",
+  "workflow_run_url": "https://github.com/ztsalexey/wallet-privacy-testkit/actions/runs/34172732719",
+  "job_url": "https://github.com/ztsalexey/wallet-privacy-testkit/actions/runs/34172732719/job/101896029518",
+  "workflow_started_at_utc": "2026-09-08T00:15:34Z",
+  "workflow_completed_at_utc": "2026-09-08T00:34:24Z",
+  "collector_testkit_version": "0.3.0",
+  "verification_source_commit": "b0ee69ed8fe74110fb315dab1420d1d55d54755c",
+  "verification_testkit_version": "0.3.0",
+  "verified_at_utc": "2026-09-08T01:47:19.050291+00:00",
+  "command": "python3 examples/regtest/run.py --output \"$RUNNER_TEMP/wpt-regtest\"",
+  "cleanup": {
+    "project": "wpt-6fcef19d8076",
+    "successful_removal_log_lines": [
+      "wallet-recovery\tUNKNOWN STEP\t2026-09-08T00:34:19.9922156Z  Container wpt-6fcef19d8076-zebra-1  Removed",
+      "wallet-recovery\tUNKNOWN STEP\t2026-09-08T00:34:20.0040195Z  Volume wpt-6fcef19d8076_lab  Removed",
+      "wallet-recovery\tUNKNOWN STEP\t2026-09-08T00:34:20.0373575Z  Network wpt-6fcef19d8076_default  Removed"
+    ]
+  },
+  "files_sha256": {
+    "report.json": "cd2f1e0250a6f910adec380887f1bd2f8d249e820d427eadc9c2cbb95fbc1cef",
+    "privacy-manifest.json": "6fd10d6f08fed3ab9621adca7fade52b2e3fc9f965ae5bd7bec9a05e2e18a123",
+    "privacy-report.json": "0123eeab57865b7695df7d6c496595e74f600780d8862bf9dc57e7f75b2d05ea",
+    "calibration.trace.jsonl": "f35c461730282882cc2d614f9e9b792c06a1918ac8b7ba4bfd888f8fdc4c1903",
+    "evaluation.trace.jsonl": "73b81c5dddaf39e548c3175387866a8997a055d46a16e63287c7df28c18ced93",
+    "verification.json": "a1e6e0d185e9a8b458fd643164dd3cca6a505714b21a5be4db4f573959cdff9b"
+  },
+  "scope": "Checks consistency of supplied observations, not their authenticity. Privacy metrics describe local send-command windows in a small, correlated sample; they are not a privacy guarantee, wallet ranking, or identity linkage. No detector accuracy threshold is used to pass this verification."
+}
